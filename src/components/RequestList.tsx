@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DIMENSIONS, DIMENSION_LABELS, FLAG_LABELS } from "../../shared/types.ts";
+import { DIMENSIONS, DIMENSION_LABELS, FLAG_HINTS, FLAG_LABELS } from "../../shared/types.ts";
 import type { RankedRequest } from "../lib/rank.ts";
 
 const SHORT = { reach: "Reach", impact: "Impact", urgency: "Urgency", fit: "Fit", feasibility: "Ease" } as const;
@@ -42,7 +42,7 @@ function Row({ r }: { r: RankedRequest }) {
         </span>
         <span className="badges">
           {(r.flags ?? []).map((f) => (
-            <span className="badge flag" key={f.type}>
+            <span className="badge flag" key={f.type} title={FLAG_HINTS[f.type]}>
               {FLAG_LABELS[f.type]}
             </span>
           ))}

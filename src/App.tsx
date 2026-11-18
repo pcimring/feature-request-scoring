@@ -26,11 +26,14 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
     const all = sortRequests(rankRequests(dataset?.requests ?? [], weights), sortBy);
     if (showOnly.size === 0) return all;
     // Ticked boxes combine with OR: a request shows if it matches any of them.
-    return all.filter(
-      (r) =>
-        (showOnly.has("low") && r.confidence.level === "low") ||
-        (r.flags ?? []).some((f) => showOnly.has(f.type)),
-    );
+    // Visible rows are renumbered 1, 2, 3 so the numbers always match what is on screen.
+    return all
+      .filter(
+        (r) =>
+          (showOnly.has("low") && r.confidence.level === "low") ||
+          (r.flags ?? []).some((f) => showOnly.has(f.type)),
+      )
+      .map((r, i) => ({ ...r, rank: i + 1 }));
   }, [dataset, weights, showOnly, sortBy]);
 
   return (

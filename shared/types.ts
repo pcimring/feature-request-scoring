@@ -78,6 +78,13 @@ export const FLAG_LABELS: Record<FlagType, string> = {
   pr_waiting: "PR waiting",
 };
 
+/** Hover text for each flag: what it means and what a PM might do about it. */
+export const FLAG_HINTS: Record<FlagType, string> = {
+  mixed_requests: "The thread drifted into several separate asks. Consider splitting it into one issue per ask.",
+  possibly_resolved: "The thread suggests this may already be done, or an accepted alternative exists. Check before building; it may be ready to close.",
+  pr_waiting: "Someone has opened a pull request for this. Reviewing and merging it may be cheaper than building from scratch.",
+};
+
 export interface Dataset {
   generatedAt: string;
   org: string;

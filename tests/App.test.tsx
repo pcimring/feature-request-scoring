@@ -224,3 +224,28 @@ describe("show only", () => {
     expect(screen.getByLabelText("Counts")).toHaveTextContent("low-confidence scores");
   });
 });
+
+describe("numbering under a filter", () => {
+  it("numbers the visible rows 1, 2, 3 whatever the filter and sort", () => {
+    const d = fixtureDataset();
+    d.requests = d.requests.map((r) =>
+      r.problem === "Reachy problem" ? r : { ...r, flags: [{ type: "mixed_requests" as const, reason: "drifted" }] },
+    );
+    render(<App dataset={d} />);
+    fireEvent.click(screen.getByLabelText("Mixed requests"));
+    const ranks = () => rows().map((r) => r.querySelector(".rank")?.textContent);
+    expect(ranks()).toEqual(["1", "2"]);
+    fireEvent.change(screen.getByLabelText("Sort by"), { target: { value: "confidence" } });
+    expect(ranks()).toEqual(["1", "2"]);
+  });
+});
+
+describe("flag tooltips", () => {
+  it("explains each flag badge on hover", () => {
+    const d = fixtureDataset();
+    d.requests = d.requests.map((r, i) => (i === 0 ? { ...r, flags: [{ type: "pr_waiting" as const, reason: "PR #60" }] } : r));
+    render(<App dataset={d} />);
+    const badge = within(screen.getByRole("list", { name: "Ranked feature requests" })).getByText("PR waiting");
+    expect(badge).toHaveAttribute("title", expect.stringMatching(/pull request/i));
+  });
+});

@@ -39,13 +39,13 @@ a { color: var(--color-accent); }
 .updated { flex-basis: 100%; margin: 0; color: var(--color-muted); font-size: 13px; }
 
 .controls { margin-bottom: 20px; padding: 16px; background: var(--color-surface); border-radius: 8px; }
-.sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 20px; margin: 0 0 12px; padding: 0; border: 0; }
+.sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px 20px; margin: 0 0 12px; padding: 0; border: 0; }
 .sliders legend { margin-bottom: 8px; font-weight: 600; }
-.slider { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 8px; font-size: 14px; }
+.slider { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto 1fr; align-content: start; align-items: center; gap: 2px 8px; font-size: 14px; }
 .slider-name { font-weight: 600; }
 .slider input { grid-column: 1; width: 100%; accent-color: var(--color-accent); }
 .slider-value { grid-column: 2; grid-row: 2; font-variant-numeric: tabular-nums; }
-.slider-hint { grid-column: 1 / -1; color: var(--color-muted); font-size: 12px; }
+.slider-hint { grid-column: 1 / -1; align-self: start; color: var(--color-muted); font-size: 12px; }
 .toggle { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; cursor: pointer; }
 
 .list { margin: 0 0 32px; padding: 0; list-style: none; }
@@ -115,7 +115,8 @@ a { color: var(--color-accent); }
 .confidence.medium { color: var(--color-muted); }
 .confidence.high { color: var(--color-live); }
 .filters { display: flex; flex-direction: column; gap: 6px; }
-.show-only { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; border: 0; }
-.show-only legend { margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+.show-only { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin: 0; padding: 0; border: 0; }
+.show-only legend { float: left; margin-right: 6px; font-weight: 600; font-size: 14px; }
+.show-only .toggle { font-weight: 400; }
 .showing { margin-left: 12px; color: var(--color-muted); font-weight: 400; }
-.list-options { align-items: flex-start; }
+.list-options { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 14px; border-top: 1px solid var(--color-border); }

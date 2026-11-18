@@ -1,4 +1,4 @@
-import { FLAG_LABELS, type FlagType } from "../../shared/types.ts";
+import { FLAG_HINTS, FLAG_LABELS, type FlagType } from "../../shared/types.ts";
 
 export type FilterKey = "low" | FlagType;
 
@@ -7,6 +7,11 @@ export const FILTER_LABELS: Record<FilterKey, string> = {
   possibly_resolved: FLAG_LABELS.possibly_resolved,
   mixed_requests: FLAG_LABELS.mixed_requests,
   pr_waiting: FLAG_LABELS.pr_waiting,
+};
+
+const HINTS: Record<FilterKey, string> = {
+  low: "Requests where the AI is unsure of its scores. A product manager should review them.",
+  ...FLAG_HINTS,
 };
 
 const KEYS: FilterKey[] = ["low", "possibly_resolved", "mixed_requests", "pr_waiting"];
@@ -34,7 +39,7 @@ export function ShowOnly({
         Show only <span className="showing">{`Showing ${shown} of ${total}`}</span>
       </legend>
       {KEYS.map((k) => (
-        <label className="toggle" key={k}>
+        <label className="toggle" key={k} title={HINTS[k]}>
           <input type="checkbox" checked={selected.has(k)} onChange={() => toggle(k)} />
           {FILTER_LABELS[k]}
         </label>
