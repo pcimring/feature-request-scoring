@@ -32,7 +32,7 @@ a { color: var(--color-accent); }
 .source { margin: 0; color: var(--color-muted); font-size: 14px; }
 .notice { padding: 16px; background: var(--color-surface); border-radius: 8px; }
 
-.counts { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-bottom: 20px; }
+.counts { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; margin-bottom: 20px; }
 .count { flex: 1 1 160px; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 8px; }
 .count-value { display: block; font-size: 28px; font-weight: 700; }
 .count-label { color: var(--color-muted); font-size: 14px; }
