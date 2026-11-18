@@ -13,6 +13,7 @@ const ORG = "cloudinary";
 const BUDGET_USD = 1.5;
 const SCORES_FILE = "public/data/scores.json";
 const CLASS_FILE = "data/classifications.json";
+const STATS_FILE = "data/repo-stats.json";
 
 function readJson<T>(path: string): T | undefined {
   return existsSync(path) ? (JSON.parse(readFileSync(path, "utf8")) as T) : undefined;
@@ -31,8 +32,18 @@ const meter = new CostMeter(BUDGET_USD);
 const strategy = readFileSync("pipeline/strategy.md", "utf8").split("\nSources:")[0].trim();
 
 const fetched = await fetchOpenIssues(ORG, { token: process.env.GITHUB_TOKEN });
-const repoStats = await fetchRepoStats(ORG, [...new Set(fetched.map((i) => i.repo))], { token: process.env.GITHUB_TOKEN });
-const issues = fetched.map((i) => ({ ...i, repoStars: repoStats[i.repo].stars, repoForks: repoStats[i.repo].forks }));
+// Star and fork counts barely change, so they are saved and reused; only repos not seen before are looked up.
+const repoStats = readJson<Record<string, { stars: number; forks: number }>>(STATS_FILE) ?? {};
+for (const repo of new Set(fetched.map((i) => i.repo))) {
+  if (repoStats[repo]) continue;
+  try {
+    Object.assign(repoStats, await fetchRepoStats(ORG, [repo], { token: process.env.GITHUB_TOKEN }));
+  } catch (e) {
+    console.log(`Skipping stars for ${repo}: ${(e as Error).message}`);
+  }
+}
+writeJson(STATS_FILE, repoStats);
+const issues = fetched.map((i) => ({ ...i, repoStars: repoStats[i.repo]?.stars, repoForks: repoStats[i.repo]?.forks }));
 let summary: string | undefined;
 console.log(`Fetched ${issues.length} open issues from ${ORG}.`);
 

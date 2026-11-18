@@ -1,0 +1,110 @@
+{
+  "cloudinary_npm": {
+    "stars": 673,
+    "forks": 318
+  },
+  "CloudinaryDotNet": {
+    "stars": 105,
+    "forks": 72
+  },
+  "ssimulacra2": {
+    "stars": 325,
+    "forks": 12
+  },
+  "n8n-nodes-cloudinary": {
+    "stars": 4,
+    "forks": 2
+  },
+  "cloudinary_gem": {
+    "stars": 421,
+    "forks": 281
+  },
+  "cld-migrate-assets-in-bulk": {
+    "stars": 2,
+    "forks": 4
+  },
+  "cloudinary-react-native": {
+    "stars": 28,
+    "forks": 21
+  },
+  "cloudinary_android": {
+    "stars": 69,
+    "forks": 60
+  },
+  "frontend-frameworks": {
+    "stars": 49,
+    "forks": 17
+  },
+  "cloudinary_flutter": {
+    "stars": 10,
+    "forks": 9
+  },
+  "cloudinary_java": {
+    "stars": 176,
+    "forks": 114
+  },
+  "cloudinary_kotlin": {
+    "stars": 10,
+    "forks": 5
+  },
+  "cloudinary_js": {
+    "stars": 332,
+    "forks": 213
+  },
+  "js-url-gen": {
+    "stars": 56,
+    "forks": 11
+  },
+  "js-transformation-builder-sdk": {
+    "stars": 2,
+    "forks": 3
+  },
+  "cloudinary_ios": {
+    "stars": 169,
+    "forks": 107
+  },
+  "cloudinary-vue": {
+    "stars": 96,
+    "forks": 10
+  },
+  "cloudinary-react": {
+    "stars": 499,
+    "forks": 211
+  },
+  "ssimulacra": {
+    "stars": 101,
+    "forks": 14
+  },
+  "cloudinary-cli": {
+    "stars": 3,
+    "forks": 0
+  },
+  "cloudinary-go": {
+    "stars": 52,
+    "forks": 25
+  },
+  "pycloudinary": {
+    "stars": 262,
+    "forks": 133
+  },
+  "cloudinary_angular": {
+    "stars": 304,
+    "forks": 224
+  },
+  "vue-cli-plugin-cloudinary": {
+    "stars": 2,
+    "forks": 2
+  },
+  "pkg-cloudinary-core": {
+    "stars": 54,
+    "forks": 27
+  },
+  "responsive_breakpoints_generator": {
+    "stars": 443,
+    "forks": 33
+  },
+  "cloudinary_scala": {
+    "stars": 15,
+    "forks": 14
+  }
+}
