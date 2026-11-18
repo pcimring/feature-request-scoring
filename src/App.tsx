@@ -48,7 +48,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
           {dataset && ` This demo runs it on ${dataset.company}'s public repos.`}
         </p>
         <p className="lead-more">
-          For a step-by-step look at what the tool does and why, see <a href="#how-it-works">How it works</a> below.
+          For a more detailed overview, see <a href="#how-it-works">How it works</a> below.
         </p>
         {dataset && (
           <p className="source">
