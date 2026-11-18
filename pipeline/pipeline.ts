@@ -63,12 +63,15 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
     }
   };
 
-  await pool(deps.issues, stop, async (i) => {
+  // Reuse stored classifications first, so a budget stop below can never drop already-paid results.
+  const toClassify: RawIssue[] = [];
+  for (const i of deps.issues) {
     const prev = prevClass[i.id];
-    if (prev && prev.updatedAt === i.updatedAt) {
-      classifications[i.id] = prev;
-      return;
-    }
+    if (prev && prev.updatedAt === i.updatedAt) classifications[i.id] = prev;
+    else toClassify.push(i);
+  }
+
+  await pool(toClassify, stop, async (i) => {
     try {
       classifications[i.id] = { updatedAt: i.updatedAt, ...(await deps.classify(i)) };
     } catch (e) {
@@ -123,7 +126,8 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
       company: deps.company ?? deps.org,
       counts: {
         openIssues: deps.issues.length,
-        featureRequests: features.length,
+        // Rows actually on the page, so the header count always matches the list.
+        featureRequests: requests.length,
         needsReview: requests.filter((r) => r.confidence.level === "low").length,
         flagged: requests.filter((r) => (r.flags ?? []).length > 0).length,
         failed,

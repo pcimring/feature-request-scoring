@@ -179,7 +179,31 @@ describe("runPipeline", () => {
       org: "cloudinary", issues: [1, 2, 3, 4, 5, 6].map((i) => raw(i)), classify: async () => feature, score: scorer.call, limit: 2, now,
     });
     expect(scorer.seen).toHaveLength(2);
-    expect(dataset.counts.featureRequests).toBe(6);
+    // The header count matches the rows the page lists.
+    expect(dataset.counts.featureRequests).toBe(dataset.requests.length);
+  });
+
+  it("keeps every cached classification and score when the budget trips during classification", async () => {
+    const ids = [1, 2, 3, 4, 5, 6, 7, 8];
+    const classifications: Record<number, ClassificationRecord> = Object.fromEntries(
+      ids.filter((id) => id >= 5).map((id) => [id, { updatedAt: "2026-02-01T00:00:00Z", ...feature }]),
+    );
+    const prevData: Dataset = {
+      generatedAt: "x", org: "cloudinary", company: "Cloudinary",
+      counts: { openIssues: 8, featureRequests: 4, needsReview: 0, flagged: 0, failed: 0 },
+      requests: [5, 6, 7, 8].map((id) => ({ ...raw(id), ...score() })),
+    };
+    let n = 0;
+    const { dataset, classifications: out } = await runPipeline({
+      org: "cloudinary",
+      // Changed issues first, so the budget trips before the pool would reach the cached ones.
+      issues: ids.map((id) => raw(id, id < 5 ? { updatedAt: "2026-02-02T00:00:00Z" } : {})),
+      classify: async () => { n++; if (n === 1) throw new BudgetExceededError(2, 1.5); return feature; },
+      score: async () => score(), now,
+      previous: { classifications, dataset: prevData },
+    });
+    expect(Object.keys(out).map(Number).sort()).toEqual(expect.arrayContaining([5, 6, 7, 8]));
+    expect(dataset.requests.map((r) => r.id).sort()).toEqual(expect.arrayContaining([5, 6, 7, 8]));
   });
 
   it("counts a failed classification and skips the issue", async () => {
