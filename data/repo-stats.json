@@ -106,5 +106,49 @@
   "cloudinary_scala": {
     "stars": 15,
     "forks": 14
+  },
+  "media-generation-mcp": {
+    "stars": 0,
+    "forks": 0
+  },
+  "structured-metadata-mcp": {
+    "stars": 0,
+    "forks": 0
+  },
+  "environment-config-mcp": {
+    "stars": 0,
+    "forks": 1
+  },
+  "cloudinary-video-player": {
+    "stars": 95,
+    "forks": 32
+  },
+  "asset-management-mcp": {
+    "stars": 0,
+    "forks": 1
+  },
+  "analysis-js": {
+    "stars": 4,
+    "forks": 1
+  },
+  "cloudinary_dart": {
+    "stars": 12,
+    "forks": 4
+  },
+  "cloudinary_php": {
+    "stars": 403,
+    "forks": 151
+  },
+  "php-transformation-builder-sdk": {
+    "stars": 3,
+    "forks": 6
+  },
+  "product-customization-sample-app": {
+    "stars": 2,
+    "forks": 1
+  },
+  "cloudinary_magento": {
+    "stars": 16,
+    "forks": 15
   }
 }
