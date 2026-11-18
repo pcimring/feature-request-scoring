@@ -71,7 +71,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
             </label>
             <label className="toggle">
               <input type="checkbox" checked={flaggedOnly} onChange={(e) => setFlaggedOnly(e.target.checked)} />
-              Only show candidates to close or split
+              Only show flagged requests (close, split or merge a PR)
             </label>
             </div>
           </section>

@@ -161,8 +161,17 @@ describe("backlog hygiene", () => {
 
   it("filters to candidates to close or split, and counts them", () => {
     render(<App dataset={flaggedData()} />);
-    expect(screen.getByLabelText("Counts")).toHaveTextContent("to close or split");
-    fireEvent.click(screen.getByLabelText(/Only show candidates to close or split/));
+    expect(screen.getByLabelText("Counts")).toHaveTextContent("flagged");
+    fireEvent.click(screen.getByLabelText(/Only show flagged requests/));
     expect(problems()).toEqual(["Impacty problem"]);
+  });
+});
+
+describe("PR waiting flag", () => {
+  it("has its own badge label", () => {
+    const data = fixtureDataset();
+    data.requests = data.requests.map((r, i) => (i === 0 ? { ...r, flags: [{ type: "pr_waiting" as const, reason: "PR #60" }] } : r));
+    render(<App dataset={data} />);
+    expect(screen.getByText("PR waiting")).toBeInTheDocument();
   });
 });

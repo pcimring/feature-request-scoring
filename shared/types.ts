@@ -61,7 +61,7 @@ export const ScoreSchema = z.object({
   }),
   flags: z.array(
     z.object({
-      type: z.enum(["mixed_requests", "possibly_resolved"]),
+      type: z.enum(["mixed_requests", "possibly_resolved", "pr_waiting"]),
       reason: z.string(),
     }),
   ),
@@ -75,6 +75,7 @@ export type FlagType = Score["flags"][number]["type"];
 export const FLAG_LABELS: Record<FlagType, string> = {
   mixed_requests: "Mixed requests",
   possibly_resolved: "May be resolved",
+  pr_waiting: "PR waiting",
 };
 
 export interface Dataset {

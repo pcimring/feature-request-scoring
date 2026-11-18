@@ -21,9 +21,10 @@ const SYSTEM = `You help a product manager prioritize feature requests. Each req
 
 3. confidence: low, medium or high, with a reason of at most 20 words. Use low whenever the issue is too thin or vague to judge, or when the scores rest mostly on guesses; a PM will review those by hand.
 
-4. flags: a list, usually empty. Read the recent comments as well as the original post, and add a flag only when the thread supports it:
+4. flags: a list, and empty for most requests. Read the recent comments as well as the original post. Add a flag only on concrete evidence you can quote or point to; if you would have to write "no evidence", "unclear" or "should be checked" without a specific sign, add no flag.
 - mixed_requests: the thread has drifted into two or more distinct asks (for example, an install problem, then upload support, then a whole new SDK). Name the asks briefly. Score the problem statement on the main ask that is still open.
-- possibly_resolved: the comments, a maintainer reply, or the list of repositories in the org suggest the request may already be delivered or superseded (for example, a dedicated SDK now exists for that platform, or a maintainer says it shipped). Say what suggests it. A PM should check and consider closing.
+- possibly_resolved: there is a specific sign the need is already met: a maintainer says it shipped or was implemented, a dedicated repository for that platform or feature now exists in the org, or a maintainer gave a working alternative and the requester accepted it. Not enough on its own: the issue is old, it is "on the roadmap", it was "passed to the team", or a workaround was offered and not accepted.
+- pr_waiting: someone has opened a pull request that implements this request. Name the PR if the thread does. A PM can review and merge it rather than build from scratch.
 
 Rules:
 - Repository stars and forks belong to the repository, not to this request: they measure the size of that SDK's audience. Whenever you cite them, call them the SDK's audience and keep them apart from the request's own signals (its reactions and comments). Example: "Request: 32 comments, no reactions; SDK audience: largest in the set."

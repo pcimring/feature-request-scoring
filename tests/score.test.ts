@@ -106,3 +106,13 @@ describe("thread and flags", () => {
     expect(String(calls[0].system)).toMatch(/possibly_resolved/);
   });
 });
+
+describe("flag rules", () => {
+  it("define a PR-waiting flag and require concrete evidence for possibly_resolved", async () => {
+    const { client, calls } = stubClient({ parsed_output: output });
+    await scoreRequest(client, issue, "s", new CostMeter(1.5));
+    const system = String(calls[0].system);
+    expect(system).toMatch(/pr_waiting/);
+    expect(system).toMatch(/roadmap/);
+  });
+});
