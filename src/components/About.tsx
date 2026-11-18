@@ -8,9 +8,34 @@ export function About({ company }: { company: string }) {
         Haiku sorts them into feature requests, bugs, questions and other.
       </p>
       <p>
-        It then restates each feature request as the underlying problem, separate from the solution the requester
-        proposed, scores it on five dimensions with a reason for each, and says how confident it is. A final pass looks at
-        all the requests side by side and adjusts Reach, Business Impact and Urgency relative to each other.
+        Next, Claude rewrites each feature request as the problem behind it, so it is judged on the need rather than on
+        the fix the requester suggested. It then scores the request from 1 to 5 on five dimensions, each with a one-line
+        reason you can check against the issue:
+      </p>
+      <ul className="rubric">
+        <li>
+          <strong>Reach:</strong> how many people want it. Mostly the number of distinct people in the thread, then
+          comments and reactions; the repo's star count only breaks ties.
+        </li>
+        <li>
+          <strong>Business Impact:</strong> likely effect on revenue, retention or expansion, judged from what the issue
+          says, such as production use or a paying team.
+        </li>
+        <li>
+          <strong>Urgency:</strong> whether something is blocked now or has a deadline.
+        </li>
+        <li>
+          <strong>Strategic Fit:</strong> how well it matches {company}'s stated direction, from a short summary of its
+          public announcements.
+        </li>
+        <li>
+          <strong>Feasibility:</strong> how easy it is to build; 5 is a small change in one repo.
+        </li>
+      </ul>
+      <p>
+        Claude also rates its confidence in each set of scores, so you know which ones to check first. Because each
+        request is scored on its own, scores tend to bunch in the middle; a final pass compares all the requests side by
+        side and spreads out Reach, Business Impact and Urgency so the ranking can tell them apart.
       </p>
       <p>
         It also reads the latest comments and flags threads that drifted into several requests, requests that may already
@@ -21,10 +46,7 @@ export function About({ company }: { company: string }) {
         The results are saved to a file. This page only does the arithmetic for the weights, so no AI runs while you
         browse.
       </p>
-      <p>
-        Strategic Fit is scored against a short summary of {company}'s public announcements. Pointing the tool at another
-        organization takes a new summary and one run.
-      </p>
+      <p>Pointing the tool at another organization takes a new strategy summary and one run.</p>
       <h3>Limits</h3>
       <p>
         These are public GitHub issues, not {company}'s full product wishlist; a real deployment would also pull from
