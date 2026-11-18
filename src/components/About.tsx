@@ -1,0 +1,28 @@
+export function About() {
+  return (
+    <section className="about" aria-labelledby="about-title">
+      <h2 id="about-title">About this demo</h2>
+      <h3>How it works</h3>
+      <p>
+        A script pulls every open issue from Cloudinary's public GitHub repos. Claude Haiku sorts them into feature
+        requests, bugs, questions and other. Claude Opus then restates each feature request as the underlying problem,
+        separate from the solution the requester proposed, scores it on five dimensions with a reason for each, and says
+        how confident it is. The results are saved to a file. This page only does the arithmetic for the weights, so no
+        AI runs while you browse.
+      </p>
+      <h3>Limits</h3>
+      <p>
+        These are public SDK requests from GitHub, not Cloudinary's full product wishlist; a real deployment would also
+        pull from tools like Productboard, Jira and Gong. Business Impact and Urgency are educated guesses from public
+        text, and the tool has no access to Cloudinary's internal data. That is why every score shows its reason and thin
+        requests are flagged for a product manager to review. The AI sorts; a person decides.
+      </p>
+      <h3>Pricing extension</h3>
+      <p>
+        With billing data, Reach and Business Impact could be weighted by plan tier and revenue, normalized by account
+        size. The ranking then becomes a pricing signal: which requests come from accounts close to an upgrade, and which
+        features could justify a higher tier.
+      </p>
+    </section>
+  );
+}

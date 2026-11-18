@@ -1,0 +1,103 @@
+:root {
+  --color-accent: #2454ff;
+  --color-bg: #ffffff;
+  --color-surface: #f7f8fa;
+  --color-border: #e2e2e2;
+  --color-text: #1a1a1a;
+  --color-muted: #5a5a5a;
+  --color-live: #1a7f37;
+  --color-review: #9a6700;
+  --color-review-bg: #fff4d6;
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-stack);
+  line-height: 1.5;
+}
+
+a { color: var(--color-accent); }
+
+.page { max-width: 1040px; margin: 0 auto; padding: 32px 20px 48px; }
+
+.header { margin-bottom: 24px; }
+.eyebrow { margin: 0; color: var(--color-accent); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+.header h1 { margin: 4px 0 8px; font-size: 32px; }
+.lead { margin: 0 0 8px; max-width: 760px; font-size: 17px; }
+.source { margin: 0; color: var(--color-muted); font-size: 14px; }
+.notice { padding: 16px; background: var(--color-surface); border-radius: 8px; }
+
+.counts { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-bottom: 20px; }
+.count { flex: 1 1 160px; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 8px; }
+.count-value { display: block; font-size: 28px; font-weight: 700; }
+.count-label { color: var(--color-muted); font-size: 14px; }
+.updated { flex-basis: 100%; margin: 0; color: var(--color-muted); font-size: 13px; }
+
+.controls { margin-bottom: 20px; padding: 16px; background: var(--color-surface); border-radius: 8px; }
+.sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 20px; margin: 0 0 12px; padding: 0; border: 0; }
+.sliders legend { margin-bottom: 8px; font-weight: 600; }
+.slider { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 8px; font-size: 14px; }
+.slider-name { font-weight: 600; }
+.slider input { grid-column: 1; width: 100%; accent-color: var(--color-accent); }
+.slider-value { grid-column: 2; grid-row: 2; font-variant-numeric: tabular-nums; }
+.slider-hint { grid-column: 1 / -1; color: var(--color-muted); font-size: 12px; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; cursor: pointer; }
+
+.list { margin: 0 0 32px; padding: 0; list-style: none; }
+.row { border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+.row.open { border-color: var(--color-accent); }
+.row-head {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  grid-template-areas: "rank problem total" "rank chips badge";
+  gap: 6px 14px;
+  width: 100%;
+  padding: 14px 16px 8px;
+  background: none;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.row-head:hover { background: var(--color-surface); }
+.row-head:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+.rank { grid-area: rank; font-size: 20px; font-weight: 700; color: var(--color-muted); }
+.problem { grid-area: problem; font-weight: 600; }
+.total { grid-area: total; font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.chips { grid-area: chips; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; gap: 4px; padding: 2px 8px; border-radius: 999px; background: var(--color-surface); font-size: 12px; }
+.chip-label { color: var(--color-muted); }
+.chip-score { font-weight: 700; }
+.chip.s4, .chip.s5 { background: #e6f4ea; }
+.chip.s1 { background: #f3f3f3; }
+.badge { grid-area: badge; align-self: center; justify-self: end; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.badge.low { background: var(--color-review-bg); color: var(--color-review); }
+.badge.medium { background: var(--color-surface); color: var(--color-muted); }
+.badge.high { background: #e6f4ea; color: var(--color-live); }
+.row-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0 16px 12px 66px; color: var(--color-muted); font-size: 13px; }
+.issue-title { font-style: italic; }
+.reasons { padding: 4px 16px 16px 66px; }
+.reasons dl { margin: 0; display: grid; gap: 8px; }
+.reason dt { font-weight: 600; font-size: 14px; }
+.reason dd { margin: 0; font-size: 14px; }
+.empty { padding: 24px; text-align: center; color: var(--color-muted); background: var(--color-surface); border-radius: 8px; }
+
+.about { padding: 20px 24px; border: 1px solid var(--color-border); border-radius: 8px; }
+.about h2 { margin: 0 0 8px; font-size: 22px; }
+.about h3 { margin: 16px 0 4px; font-size: 16px; }
+.about p { margin: 0; max-width: 760px; }
+
+.footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--color-border); color: var(--color-muted); font-size: 14px; }
+
+@media (max-width: 600px) {
+  .header h1 { font-size: 26px; }
+  .row-head { grid-template-columns: 28px 1fr auto; grid-template-areas: "rank problem total" "rank chips chips" "rank badge badge"; }
+  .badge { justify-self: start; }
+  .row-meta, .reasons { padding-left: 16px; }
+}
