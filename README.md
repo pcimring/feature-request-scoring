@@ -19,6 +19,8 @@ Product teams get more feature requests than they can build, and they often rank
 
    Every score has a one-line reason, and the model states its confidence. Low-confidence requests are flagged "Needs review".
 
+   The scorer also reads the last 5 comments of each thread and answers three yes-or-no checks, each with its evidence: **mixed requests** (the thread drifted into several asks), **may be resolved** (a maintainer says it shipped, a dedicated repo now exists, or an accepted alternative), and **PR waiting** (someone already opened a pull request). The page can filter to these, so the backlog can be cleaned up, not just ranked. Each row also shows its last activity date.
+
    Each request is scored on its own, so a final **comparative pass** shows the model all of them side by side and re-scores Reach, Business Impact and Urgency relative to each other.
 4. **Save:** the results go into `public/data/scores.json`.
 5. **Show:** a static page ranks the requests by an overall score: a weighted average of the five scores, using the slider weights. The weight sliders and the review filter are plain arithmetic in the browser, so no AI runs while you browse and no API key ever reaches the page.
@@ -39,6 +41,7 @@ With billing data, Reach and Business Impact could be weighted by plan tier and 
 
 - A daily scheduled refresh (GitHub Action), with "Last updated" on the page.
 - Grouping requests that describe the same problem, and scoring each group once.
+- Checking whether a waiting PR was merged or closed, through the GitHub API, instead of reading it from the thread.
 - An n8n version of the pipeline, reusing the same scoring prompt.
 - Drafting "close the loop" replies to requesters once a request ships.
 
@@ -55,7 +58,7 @@ npm run dev                 # the page, at http://localhost:5173
 npm test
 ```
 
-Cost: a full run of all 62 requests costs about $0.03 on Claude Haiku 5.5 (about $1 on Claude Opus 5.5, which scored similarly on a side-by-side test). The script stops itself if a run passes $1.50. Repo star counts are saved in `data/repo-stats.json` and reused. An optional `GITHUB_TOKEN` in `.env.local` raises GitHub's rate limit.
+Cost: a full run of all 62 requests costs about $0.03 on Claude Haiku 5.5 (about $1 on Claude Opus 5.5, which scored similarly on a side-by-side test). The script stops itself if a run passes $1.50. A `GITHUB_TOKEN` (fine-grained, public repos read-only) is needed for the comment lookups. Repo star counts are saved in `data/repo-stats.json` and reused.
 
 ## Stack
 
