@@ -12,9 +12,9 @@ const issue: RawIssue = {
 
 const d = (score: number, reason: string) => ({ score, reason });
 const output: Score = {
-  problem: "Dart backends — no server SDK",
+  problem: "Dart backends \u2014 no server SDK",
   scores: {
-    reach: d(4, "42 reactions — strong demand"),
+    reach: d(4, "42 reactions \u2014 strong demand"),
     impact: d(3, "may help retention"),
     urgency: d(2, "no blocker language"),
     fit: d(4, "fits SDK push"),
@@ -45,7 +45,7 @@ describe("scoreRequest", () => {
     const score = await scoreRequest(client, issue, "s", new CostMeter(1.5));
     expect(score.problem).toBe("Dart backends, no server SDK");
     expect(score.scores.reach.reason).toBe("42 reactions, strong demand");
-    expect(JSON.stringify(score)).not.toContain("—");
+    expect(JSON.stringify(score)).not.toContain("\u2014");
   });
 
   it("throws when the output did not parse", async () => {
