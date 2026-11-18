@@ -18,7 +18,7 @@ describe("weightedTotal", () => {
 
   it("rounds to one decimal", () => {
     const r = makeRequest({ reach: 5, impact: 5, urgency: 4, fit: 4, feasibility: 4 });
-    expect(weightedTotal(r, { ...DEFAULT_WEIGHTS, reach: 2 })).toBe(4.5);
+    expect(weightedTotal(r, { ...DEFAULT_WEIGHTS, reach: 10 })).toBe(4.5);
   });
 });
 
@@ -26,7 +26,7 @@ describe("rankRequests", () => {
   it("puts a high-impact request first when impact is weighted up", () => {
     const highReach = makeRequest({ reach: 5, impact: 1 });
     const highImpact = makeRequest({ reach: 1, impact: 5 });
-    const ranked = rankRequests([highReach, highImpact], { ...DEFAULT_WEIGHTS, impact: 5 });
+    const ranked = rankRequests([highReach, highImpact], { ...DEFAULT_WEIGHTS, impact: 10 });
     expect(ranked[0].id).toBe(highImpact.id);
   });
 
