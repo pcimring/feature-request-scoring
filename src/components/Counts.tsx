@@ -9,7 +9,7 @@ export function Counts({ dataset }: { dataset: Dataset }) {
   const items = [
     { value: counts.openIssues, label: "open issues scanned" },
     { value: counts.featureRequests, label: "feature requests found" },
-    { value: counts.needsReview, label: "need PM review" },
+    { value: counts.needsReview, label: "low-confidence scores" },
     { value: counts.flagged ?? 0, label: "flagged for cleanup" },
   ];
   return (

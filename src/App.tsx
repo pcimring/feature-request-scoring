@@ -3,6 +3,7 @@ import { DEFAULT_WEIGHTS, DIMENSIONS, DIMENSION_LABELS, type Dataset, type Weigh
 import { About } from "./components/About.tsx";
 import { Counts } from "./components/Counts.tsx";
 import { RequestList } from "./components/RequestList.tsx";
+import { ShowOnly, type FilterKey } from "./components/ShowOnly.tsx";
 import { WeightSliders } from "./components/WeightSliders.tsx";
 import { rankRequests, sortRequests, type SortKey } from "./lib/rank.ts";
 
@@ -10,8 +11,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
   const [dataset, setDataset] = useState<Dataset | undefined>(initial);
   const [error, setError] = useState(false);
   const [weights, setWeights] = useState<Weights>(DEFAULT_WEIGHTS);
-  const [reviewOnly, setReviewOnly] = useState(false);
-  const [flaggedOnly, setFlaggedOnly] = useState(false);
+  const [showOnly, setShowOnly] = useState<Set<FilterKey>>(new Set());
   const [sortBy, setSortBy] = useState<SortKey>("weighted");
 
   useEffect(() => {
@@ -24,10 +24,14 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
 
   const ranked = useMemo(() => {
     const all = sortRequests(rankRequests(dataset?.requests ?? [], weights), sortBy);
-    return all
-      .filter((r) => !reviewOnly || r.confidence.level === "low")
-      .filter((r) => !flaggedOnly || (r.flags ?? []).length > 0);
-  }, [dataset, weights, reviewOnly, flaggedOnly, sortBy]);
+    if (showOnly.size === 0) return all;
+    // Ticked boxes combine with OR: a request shows if it matches any of them.
+    return all.filter(
+      (r) =>
+        (showOnly.has("low") && r.confidence.level === "low") ||
+        (r.flags ?? []).some((f) => showOnly.has(f.type)),
+    );
+  }, [dataset, weights, showOnly, sortBy]);
 
   return (
     <div className="page">
@@ -65,16 +69,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
                   <option value="confidence">Confidence (lowest first)</option>
                 </select>
               </label>
-            <div className="filters">
-            <label className="toggle">
-              <input type="checkbox" checked={reviewOnly} onChange={(e) => setReviewOnly(e.target.checked)} />
-              Only show requests that need review
-            </label>
-            <label className="toggle">
-              <input type="checkbox" checked={flaggedOnly} onChange={(e) => setFlaggedOnly(e.target.checked)} />
-              Only show flagged requests (possibly resolved, mixed, PR waiting)
-            </label>
-            </div>
+              <ShowOnly selected={showOnly} onChange={setShowOnly} shown={ranked.length} total={dataset.requests.length} />
             </div>
           </section>
           <RequestList requests={ranked} />

@@ -34,7 +34,7 @@ describe("App", () => {
 
   it("filters to requests that need review", () => {
     render(<App dataset={fixtureDataset()} />);
-    fireEvent.click(screen.getByLabelText(/Only show requests that need review/));
+    fireEvent.click(screen.getByLabelText("Low-confidence scores"));
     expect(problems()).toEqual(["Vague problem"]);
   });
 
@@ -162,7 +162,7 @@ describe("backlog hygiene", () => {
   it("filters to candidates to close or split, and counts them", () => {
     render(<App dataset={flaggedData()} />);
     expect(screen.getByLabelText("Counts")).toHaveTextContent("flagged");
-    fireEvent.click(screen.getByLabelText(/Only show flagged requests/));
+    fireEvent.click(screen.getByLabelText("Possibly resolved"));
     expect(problems()).toEqual(["Impacty problem"]);
   });
 });
@@ -172,16 +172,11 @@ describe("PR waiting flag", () => {
     const data = fixtureDataset();
     data.requests = data.requests.map((r, i) => (i === 0 ? { ...r, flags: [{ type: "pr_waiting" as const, reason: "PR #60" }] } : r));
     render(<App dataset={data} />);
-    expect(screen.getByText("PR waiting")).toBeInTheDocument();
+    expect(within(screen.getByRole("list", { name: "Ranked feature requests" })).getByText("PR waiting")).toBeInTheDocument();
   });
 });
 
 describe("filters and confidence placement", () => {
-  it("names the three flags in the flagged filter", () => {
-    render(<App dataset={fixtureDataset()} />);
-    expect(screen.getByLabelText("Only show flagged requests (possibly resolved, mixed, PR waiting)")).toBeInTheDocument();
-  });
-
   it("shows confidence as one color-coded word under the score, apart from the flag badges", () => {
     render(<App dataset={fixtureDataset()} />);
     const row = rows().find((r) => within(r).getByTestId("problem").textContent === "Vague problem")!;
@@ -189,5 +184,43 @@ describe("filters and confidence placement", () => {
     expect(conf).toHaveTextContent(/^low$/);
     expect(conf).toHaveClass("low");
     expect(row.querySelector(".badges")?.textContent ?? "").not.toMatch(/confidence|review/i);
+  });
+});
+
+describe("show only", () => {
+  function data() {
+    const d = fixtureDataset();
+    d.requests = d.requests.map((r) =>
+      r.problem === "Impacty problem" ? { ...r, flags: [{ type: "pr_waiting" as const, reason: "PR #1" }] } : r,
+    );
+    return d;
+  }
+
+  it("has a 'Show only' group with one box per filter", () => {
+    render(<App dataset={data()} />);
+    const group = screen.getByRole("group", { name: /Show only/ });
+    for (const name of ["Low-confidence scores", "Possibly resolved", "Mixed requests", "PR waiting"]) {
+      expect(within(group).getByLabelText(name)).toBeInTheDocument();
+    }
+  });
+
+  it("shows everything when nothing is ticked, with a showing count", () => {
+    render(<App dataset={data()} />);
+    expect(problems()).toHaveLength(3);
+    expect(screen.getByText("Showing 3 of 3")).toBeInTheDocument();
+  });
+
+  it("combines ticked boxes with OR", () => {
+    render(<App dataset={data()} />);
+    fireEvent.click(screen.getByLabelText("Low-confidence scores"));
+    expect(problems()).toEqual(["Vague problem"]);
+    fireEvent.click(screen.getByLabelText("PR waiting"));
+    expect(problems().sort()).toEqual(["Impacty problem", "Vague problem"]);
+    expect(screen.getByText("Showing 2 of 3")).toBeInTheDocument();
+  });
+
+  it("labels the count card as low-confidence scores", () => {
+    render(<App dataset={data()} />);
+    expect(screen.getByLabelText("Counts")).toHaveTextContent("low-confidence scores");
   });
 });

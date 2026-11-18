@@ -115,3 +115,7 @@ a { color: var(--color-accent); }
 .confidence.medium { color: var(--color-muted); }
 .confidence.high { color: var(--color-live); }
 .filters { display: flex; flex-direction: column; gap: 6px; }
+.show-only { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; border: 0; }
+.show-only legend { margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+.showing { margin-left: 12px; color: var(--color-muted); font-weight: 400; }
+.list-options { align-items: flex-start; }
