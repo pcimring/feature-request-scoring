@@ -17,6 +17,7 @@ export function fixtureDataset(): Dataset {
   return {
     generatedAt: "2026-11-19T08:00:00Z",
     org: "cloudinary",
+    company: "Cloudinary",
     counts: { openIssues: 215, featureRequests: 62, needsReview: 16, flagged: 0, failed: 0 },
     requests: [vague, impacty, reachy],
   };

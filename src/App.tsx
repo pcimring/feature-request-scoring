@@ -42,13 +42,16 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
         <p className="eyebrow">AI demo</p>
         <h1>Feature-request scoring</h1>
         <p className="lead">
-          Product teams get more feature requests than they can build. This tool reads the open feature requests in
-          Cloudinary's public GitHub repos, scores each one against a five-part rubric, explains every score, and flags
-          the ones a product manager should review.
+          Product teams get more feature requests than they can build. This tool reads the open feature requests in a
+          GitHub organization, scores each one against a five-part rubric, explains every score, and flags the ones a
+          product manager should review.
+          {dataset && ` This demo runs it on ${dataset.company}'s public repos.`}
         </p>
-        <p className="source">
-          Data source: <a href="https://github.com/cloudinary">github.com/cloudinary</a>
-        </p>
+        {dataset && (
+          <p className="source">
+            Data source: <a href={`https://github.com/${dataset.org}`}>{`github.com/${dataset.org}`}</a>
+          </p>
+        )}
       </header>
 
       {error && <p className="notice">The scores could not be loaded. Please refresh the page.</p>}
@@ -58,7 +61,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
         <main>
           <Counts dataset={dataset} />
           <section className="controls" aria-label="Controls">
-            <WeightSliders weights={weights} onChange={setWeights} />
+            <WeightSliders weights={weights} onChange={setWeights} company={dataset.company} />
             <div className="list-options">
               <label className="sort">
                 Sort by
@@ -76,7 +79,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
             </div>
           </section>
           <RequestList requests={ranked} />
-          <About />
+          <About company={dataset.company} />
         </main>
       )}
 

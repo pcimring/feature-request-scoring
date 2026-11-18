@@ -1,6 +1,7 @@
 {
   "generatedAt": "2026-11-18T18:45:39.748Z",
   "org": "cloudinary",
+  "company": "Cloudinary",
   "counts": {
     "openIssues": 215,
     "featureRequests": 62,

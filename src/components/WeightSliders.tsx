@@ -1,14 +1,23 @@
 import { DIMENSIONS, DIMENSION_LABELS, type Dimension, type Weights } from "../../shared/types.ts";
 
-const HINTS: Record<Dimension, string> = {
+const hints = (company: string): Record<Dimension, string> => ({
   reach: "How many users ask or would be affected",
   impact: "Likely effect on revenue, retention or expansion",
   urgency: "Blocker or time-sensitive language",
-  fit: "Alignment with Cloudinary's stated direction",
+  fit: `Alignment with ${company}'s stated direction`,
   feasibility: "How easy it is to build (5 = easy)",
-};
+});
 
-export function WeightSliders({ weights, onChange }: { weights: Weights; onChange: (w: Weights) => void }) {
+export function WeightSliders({
+  weights,
+  onChange,
+  company,
+}: {
+  weights: Weights;
+  onChange: (w: Weights) => void;
+  company: string;
+}) {
+  const HINTS = hints(company);
   return (
     <fieldset className="sliders">
       <legend>Weights: what matters most to you?</legend>

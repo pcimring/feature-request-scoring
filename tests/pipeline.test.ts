@@ -133,7 +133,7 @@ describe("runPipeline", () => {
       2: { updatedAt: "2025-01-01T00:00:00Z", ...feature },
     };
     const prevData: Dataset = {
-      generatedAt: "x", org: "cloudinary", counts: { openIssues: 2, featureRequests: 2, needsReview: 0, flagged: 0, failed: 0 },
+      generatedAt: "x", org: "cloudinary", company: "Cloudinary", counts: { openIssues: 2, featureRequests: 2, needsReview: 0, flagged: 0, failed: 0 },
       requests: [1, 2].map((id) => {
         const { body: _b, labels: _l, ...meta } = raw(id, { updatedAt: id === 1 ? "2026-02-01T00:00:00Z" : "2025-01-01T00:00:00Z" });
         return { ...meta, ...score("high"), problem: `old ${id}` };

@@ -5,6 +5,8 @@ export type ClassificationRecord = { updatedAt: string } & Classification;
 
 export interface PipelineDeps {
   org: string;
+  /** Company name for the page; defaults to the org. */
+  company?: string;
   issues: RawIssue[];
   classify: (i: RawIssue) => Promise<Classification>;
   /** `all` is every feature request in this run, so the scorer can judge each one relative to the set. */
@@ -118,6 +120,7 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
     dataset: {
       generatedAt: deps.now(),
       org: deps.org,
+      company: deps.company ?? deps.org,
       counts: {
         openIssues: deps.issues.length,
         featureRequests: features.length,

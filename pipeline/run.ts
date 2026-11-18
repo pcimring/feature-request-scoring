@@ -8,8 +8,9 @@ import { runPipeline, type ClassificationRecord } from "./pipeline.ts";
 import { calibrateScores } from "./calibrate.ts";
 import { SCORE_MODEL, scoreRequest } from "./score.ts";
 import { setSummary } from "./setSummary.ts";
+import { TARGET } from "./target.ts";
 
-const ORG = "cloudinary";
+const ORG = TARGET.org;
 const BUDGET_USD = 1.5;
 const SCORES_FILE = "public/data/scores.json";
 const CLASS_FILE = "data/classifications.json";
@@ -29,7 +30,7 @@ const limit = limitArg > -1 ? Number(process.argv[limitArg + 1]) : undefined;
 
 const client = new Anthropic();
 const meter = new CostMeter(BUDGET_USD);
-const strategy = readFileSync("pipeline/strategy.md", "utf8").split("\nSources:")[0].trim();
+const strategy = readFileSync(TARGET.strategyFile, "utf8").split("\nSources:")[0].trim();
 
 const fetched = await fetchOpenIssues(ORG, { token: process.env.GITHUB_TOKEN });
 // Star and fork counts barely change, so they are saved and reused; only repos not seen before are looked up.
@@ -49,6 +50,7 @@ console.log(`Fetched ${issues.length} open issues from ${ORG}.`);
 
 const result = await runPipeline({
   org: ORG,
+  company: TARGET.company,
   issues,
   classify: (i) => classifyIssue(client, i, meter),
   score: (i, all) => scoreRequest(client, i, strategy, meter, (summary ??= setSummary(all, Object.keys(repoStats).sort()))),

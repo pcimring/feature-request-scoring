@@ -52,7 +52,7 @@ describe("App", () => {
   it("carries the limits and the pricing extension on the page", () => {
     render(<App dataset={fixtureDataset()} />);
     const about = screen.getByRole("region", { name: "About this demo" });
-    expect(about).toHaveTextContent(/public SDK requests/i);
+    expect(about).toHaveTextContent(/public GitHub issues/i);
     expect(about).toHaveTextContent(/educated guesses/i);
     expect(about).toHaveTextContent(/pricing/i);
   });

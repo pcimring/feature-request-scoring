@@ -88,6 +88,8 @@ export const FLAG_HINTS: Record<FlagType, string> = {
 export interface Dataset {
   generatedAt: string;
   org: string;
+  /** Company name for the page text. */
+  company: string;
   counts: { openIssues: number; featureRequests: number; needsReview: number; flagged: number; failed: number };
   requests: ScoredRequest[];
 }
