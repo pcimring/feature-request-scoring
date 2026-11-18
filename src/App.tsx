@@ -65,14 +65,16 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
                   <option value="confidence">Confidence (lowest first)</option>
                 </select>
               </label>
+            <div className="filters">
             <label className="toggle">
               <input type="checkbox" checked={reviewOnly} onChange={(e) => setReviewOnly(e.target.checked)} />
               Only show requests that need review
             </label>
             <label className="toggle">
               <input type="checkbox" checked={flaggedOnly} onChange={(e) => setFlaggedOnly(e.target.checked)} />
-              Only show flagged requests (close, split or merge a PR)
+              Only show flagged requests (possibly resolved, mixed, PR waiting)
             </label>
+            </div>
             </div>
           </section>
           <RequestList requests={ranked} />

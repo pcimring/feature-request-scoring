@@ -74,7 +74,7 @@ export type FlagType = Score["flags"][number]["type"];
 
 export const FLAG_LABELS: Record<FlagType, string> = {
   mixed_requests: "Mixed requests",
-  possibly_resolved: "May be resolved",
+  possibly_resolved: "Possibly resolved",
   pr_waiting: "PR waiting",
 };
 

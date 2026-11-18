@@ -69,7 +69,8 @@ a { color: var(--color-accent); }
 .row-head:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
 .rank { grid-area: rank; font-size: 20px; font-weight: 700; color: var(--color-muted); }
 .problem { grid-area: problem; font-weight: 600; }
-.total { grid-area: total; font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.score-col { grid-area: total; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.total { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .chips { grid-area: chips; display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { display: inline-flex; gap: 4px; padding: 2px 8px; border-radius: 999px; background: var(--color-surface); font-size: 12px; }
 .chip-label { color: var(--color-muted); }
@@ -109,3 +110,8 @@ a { color: var(--color-accent); }
 .sdk-stars { color: var(--color-muted); border-left: 1px solid var(--color-border); padding-left: 14px; }
 .badge.flag { background: #fde8e8; color: #a4262c; }
 .flag-reason dt { color: #a4262c; }
+.confidence { font-size: 12px; font-weight: 600; text-transform: lowercase; cursor: help; }
+.confidence.low { color: var(--color-review); }
+.confidence.medium { color: var(--color-muted); }
+.confidence.high { color: var(--color-live); }
+.filters { display: flex; flex-direction: column; gap: 6px; }

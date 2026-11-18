@@ -9,7 +9,7 @@ export function About() {
         the solution the requester proposed, scores it on five dimensions with a reason for each, and says how confident
         it is. A final pass looks at all the requests side by side and adjusts Reach, Business Impact and Urgency
         relative to each other. It also reads the latest comments and flags threads that drifted into several requests,
-        requests that may already be solved, and requests with a pull request waiting, so a product manager can clear
+        requests that may already be solved (possibly resolved), and requests with a pull request waiting, so a product manager can clear
         out dead weight instead of ranking it. The results are saved to a file. This page only does the arithmetic for the weights, so no
         AI runs while you browse.
       </p>

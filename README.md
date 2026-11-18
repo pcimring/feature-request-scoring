@@ -19,7 +19,7 @@ Product teams get more feature requests than they can build, and they often rank
 
    Every score has a one-line reason, and the model states its confidence. Low-confidence requests are flagged "Needs review".
 
-   The scorer also reads the last 5 comments of each thread and answers three yes-or-no checks, each with its evidence: **mixed requests** (the thread drifted into several asks), **may be resolved** (a maintainer says it shipped, a dedicated repo now exists, or an accepted alternative), and **PR waiting** (someone already opened a pull request). The page can filter to these, so the backlog can be cleaned up, not just ranked. Each row also shows its last activity date.
+   The scorer also reads the last 5 comments of each thread and answers three yes-or-no checks, each with its evidence: **mixed requests** (the thread drifted into several asks), **possibly resolved** (a maintainer says it shipped, a dedicated repo now exists, or an accepted alternative), and **PR waiting** (someone already opened a pull request). The page can filter to these, so the backlog can be cleaned up, not just ranked. Each row also shows its last activity date.
 
    Each request is scored on its own, so a final **comparative pass** shows the model all of them side by side and re-scores Reach, Business Impact and Urgency relative to each other.
 4. **Save:** the results go into `public/data/scores.json`.

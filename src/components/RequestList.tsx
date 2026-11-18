@@ -13,7 +13,7 @@ function commentsText(comments: number, people?: number): string {
   return `${comments} comments from ${people} ${people === 1 ? "person" : "people"}`;
 }
 
-const CONFIDENCE_LABEL = { low: "Needs review", medium: "Medium confidence", high: "High confidence" } as const;
+const CONFIDENCE_TITLE = "The AI's confidence in these scores. Low means a product manager should review them.";
 
 function Row({ r }: { r: RankedRequest }) {
   const [open, setOpen] = useState(false);
@@ -24,8 +24,13 @@ function Row({ r }: { r: RankedRequest }) {
         <span className="problem" data-testid="problem">
           {r.problem}
         </span>
-        <span className="total" title="Overall score out of 5, from the weights above">
-          {r.total.toFixed(1)}
+        <span className="score-col">
+          <span className="total" title="Overall score out of 5, from the weights above">
+            {r.total.toFixed(1)}
+          </span>
+          <span className={`confidence ${r.confidence.level}`} title={CONFIDENCE_TITLE}>
+            {r.confidence.level}
+          </span>
         </span>
         <span className="chips">
           {DIMENSIONS.map((d) => (
@@ -41,7 +46,6 @@ function Row({ r }: { r: RankedRequest }) {
               {FLAG_LABELS[f.type]}
             </span>
           ))}
-          <span className={`badge ${r.confidence.level}`}>{CONFIDENCE_LABEL[r.confidence.level]}</span>
         </span>
       </button>
       <div className="row-meta">

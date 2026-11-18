@@ -148,7 +148,7 @@ describe("backlog hygiene", () => {
   it("shows a flag badge and the flag reason when expanded", () => {
     render(<App dataset={flaggedData()} />);
     const row = rows().find((r) => within(r).getByTestId("problem").textContent === "Impacty problem")!;
-    expect(within(row).getByText("May be resolved")).toBeInTheDocument();
+    expect(within(row).getByText("Possibly resolved")).toBeInTheDocument();
     fireEvent.click(within(row).getByRole("button"));
     expect(within(row).getByText("SDK now exists")).toBeInTheDocument();
   });
@@ -173,5 +173,21 @@ describe("PR waiting flag", () => {
     data.requests = data.requests.map((r, i) => (i === 0 ? { ...r, flags: [{ type: "pr_waiting" as const, reason: "PR #60" }] } : r));
     render(<App dataset={data} />);
     expect(screen.getByText("PR waiting")).toBeInTheDocument();
+  });
+});
+
+describe("filters and confidence placement", () => {
+  it("names the three flags in the flagged filter", () => {
+    render(<App dataset={fixtureDataset()} />);
+    expect(screen.getByLabelText("Only show flagged requests (possibly resolved, mixed, PR waiting)")).toBeInTheDocument();
+  });
+
+  it("shows confidence as one color-coded word under the score, apart from the flag badges", () => {
+    render(<App dataset={fixtureDataset()} />);
+    const row = rows().find((r) => within(r).getByTestId("problem").textContent === "Vague problem")!;
+    const conf = row.querySelector(".score-col .confidence");
+    expect(conf).toHaveTextContent(/^low$/);
+    expect(conf).toHaveClass("low");
+    expect(row.querySelector(".badges")?.textContent ?? "").not.toMatch(/confidence|review/i);
   });
 });
