@@ -45,7 +45,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
           Product teams get more feature requests than they can build. This tool reads the open feature requests in a
           GitHub organization, scores each one against a five-part rubric, explains every score, and flags the ones a
           product manager should review.
-          {dataset && ` This demo runs it on ${dataset.company}'s public repos.`}
+          {dataset && ` This demo uses ${dataset.company}'s public repos.`}
         </p>
         <p className="lead-more">
           For a more detailed overview, see <a href="#how-it-works">How it works</a> below.
