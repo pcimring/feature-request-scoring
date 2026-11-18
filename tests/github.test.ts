@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BODY_LIMIT, fetchOpenIssues, fetchRepoStats } from "../pipeline/github.ts";
+import { BODY_LIMIT, countPeople, fetchOpenIssues, fetchRepoStats } from "../pipeline/github.ts";
 
 function item(n: number, body: string | null = "body") {
   return {
@@ -89,5 +89,28 @@ describe("fetchRepoStats", () => {
     const stats = await fetchRepoStats("cloudinary", ["a", "b"], { fetchFn });
     expect(calls).toEqual(["https://api.github.com/repos/cloudinary/a", "https://api.github.com/repos/cloudinary/b"]);
     expect(stats).toEqual({ a: { stars: 120, forks: 30 }, b: { stars: 5, forks: 1 } });
+  });
+});
+
+describe("countPeople", () => {
+  it("counts the author plus distinct commenters, ignoring bots, across pages", async () => {
+    const page1 = [...Array.from({ length: 98 }, () => ({ user: { login: "alice" } })), { user: { login: "bob" } }, { user: { login: "dependabot[bot]" } }];
+    const page2 = [{ user: { login: "carol" } }, { user: { login: "author" } }];
+    const urls: string[] = [];
+    const fetchFn = (async (url: string) => {
+      urls.push(url);
+      const page = Number(new URL(url).searchParams.get("page"));
+      return new Response(JSON.stringify(page === 1 ? page1 : page2));
+    }) as typeof fetch;
+    const n = await countPeople("cloudinary", "cloudinary_npm", 56, "author", { fetchFn, token: "t" });
+    expect(n).toBe(4);
+    expect(urls[0]).toBe("https://api.github.com/repos/cloudinary/cloudinary_npm/issues/56/comments?per_page=100&page=1");
+    expect(urls).toHaveLength(2);
+  });
+
+  it("maps the issue author from search results", async () => {
+    const { fetchFn } = stubFetch([[{ ...item(1), user: { login: "octo" } }]]);
+    const [issue] = await fetchOpenIssues("cloudinary", { fetchFn });
+    expect(issue.author).toBe("octo");
   });
 });

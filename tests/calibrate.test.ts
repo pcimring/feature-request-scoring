@@ -40,3 +40,12 @@ describe("calibrateScores", () => {
     await expect(calibrateScores(client, [makeRequest()], new CostMeter(1.5), "claude-haiku-5-5")).rejects.toThrow();
   });
 });
+
+describe("calibration input", () => {
+  it("includes the people count per request", async () => {
+    const a = makeRequest({}, { people: 21 });
+    const { client, calls } = stubClient({ parsed_output: { items: [] } });
+    await calibrateScores(client, [a], new CostMeter(1.5), "claude-haiku-5-5");
+    expect(userText(calls[0])).toContain("21 people");
+  });
+});

@@ -4,6 +4,11 @@ import type { RankedRequest } from "../lib/rank.ts";
 
 const SHORT = { reach: "Reach", impact: "Impact", urgency: "Urgency", fit: "Fit", feasibility: "Ease" } as const;
 
+function commentsText(comments: number, people?: number): string {
+  if (people === undefined || comments === 0) return `${comments} comments`;
+  return `${comments} comments from ${people} ${people === 1 ? "person" : "people"}`;
+}
+
 const CONFIDENCE_LABEL = { low: "Needs review", medium: "Medium confidence", high: "High confidence" } as const;
 
 function Row({ r }: { r: RankedRequest }) {
@@ -33,7 +38,7 @@ function Row({ r }: { r: RankedRequest }) {
           {`${r.repo}#${r.number}`}
         </a>
         <span>{r.reactions} reactions</span>
-        <span>{r.comments} comments</span>
+        <span>{commentsText(r.comments, r.people)}</span>
         {r.repoStars !== undefined && <span className="sdk-stars" title="Stars on the repository: the size of this SDK's audience">{`SDK: ${r.repoStars} stars`}</span>}
         <span className="issue-title">{r.title}</span>
       </div>

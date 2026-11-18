@@ -15,6 +15,7 @@ interface SearchItem {
   comments: number;
   reactions?: { total_count: number };
   labels: { name: string }[];
+  user?: { login: string };
 }
 
 function toIssue(i: SearchItem): RawIssue {
@@ -30,6 +31,7 @@ function toIssue(i: SearchItem): RawIssue {
     reactions: i.reactions?.total_count ?? 0,
     comments: i.comments,
     labels: i.labels.map((l) => l.name),
+    author: i.user?.login,
   };
 }
 
@@ -71,4 +73,26 @@ export async function fetchRepoStats(
     stats[repo] = { stars: r.stargazers_count, forks: r.forks_count };
   }
   return stats;
+}
+
+/** Distinct people in an issue thread: the author plus every commenter, bots excluded. */
+export async function countPeople(
+  org: string,
+  repo: string,
+  number: number,
+  author: string | undefined,
+  opts: { token?: string; fetchFn?: typeof fetch } = {},
+): Promise<number> {
+  const fetchFn = opts.fetchFn ?? fetch;
+  const headers: Record<string, string> = { Accept: "application/vnd.github+json" };
+  if (opts.token) headers.Authorization = `Bearer ${opts.token}`;
+  const people = new Set<string>(author ? [author] : []);
+  for (let page = 1; ; page++) {
+    const url = `https://api.github.com/repos/${org}/${repo}/issues/${number}/comments?per_page=${PER_PAGE}&page=${page}`;
+    const res = await fetchFn(url, { headers });
+    if (res.status !== 200) throw new Error(`GitHub comments lookup failed for ${repo}#${number} with status ${res.status}`);
+    const comments = (await res.json()) as { user: { login: string } | null }[];
+    for (const c of comments) if (c.user && !c.user.login.endsWith("[bot]")) people.add(c.user.login);
+    if (comments.length < PER_PAGE) return people.size;
+  }
 }

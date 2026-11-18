@@ -108,3 +108,26 @@ describe("row info line", () => {
     expect(within(rows()[0]).getByText("SDK: 673 stars")).toBeInTheDocument();
   });
 });
+
+describe("people count", () => {
+  it("shows how many people the comments come from", () => {
+    const data = fixtureDataset();
+    data.requests = data.requests.map((r) => ({ ...r, comments: 32, people: 21 }));
+    render(<App dataset={data} />);
+    expect(within(rows()[0]).getByText("32 comments from 21 people")).toBeInTheDocument();
+  });
+});
+
+describe("people count wording", () => {
+  it("drops the people count when there are no comments and says 'person' for one", () => {
+    const data = fixtureDataset();
+    data.requests = [
+      { ...data.requests[0], comments: 0, people: 1, reactions: 9 },
+      { ...data.requests[1], comments: 3, people: 1, reactions: 1 },
+    ];
+    render(<App dataset={data} />);
+    const row = (problem: string) => rows().find((r) => within(r).getByTestId("problem").textContent === problem)!;
+    expect(within(row(data.requests[0].problem)).getByText("0 comments")).toBeInTheDocument();
+    expect(within(row(data.requests[1].problem)).getByText("3 comments from 1 person")).toBeInTheDocument();
+  });
+});

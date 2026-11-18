@@ -26,7 +26,7 @@ Return every request by its id, with a reason of at most 20 words for each of th
 function line(r: ScoredRequest): string {
   const s = r.scores;
   return [
-    `id ${r.id} | ${r.repo} | ${r.reactions} reactions, ${r.comments} comments, repo stars ${r.repoStars ?? "unknown"}`,
+    `id ${r.id} | ${r.repo} | ${r.reactions} reactions, ${r.comments} comments from ${r.people ?? "unknown"} people, repo stars ${r.repoStars ?? "unknown"}`,
     `  problem: ${r.problem}`,
     `  current: reach ${s.reach.score} (${s.reach.reason}); impact ${s.impact.score} (${s.impact.reason}); urgency ${s.urgency.score} (${s.urgency.reason})`,
   ].join("\n");

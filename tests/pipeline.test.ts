@@ -58,6 +58,26 @@ describe("runPipeline", () => {
     expect(dataset.counts.failed).toBe(0);
   });
 
+  it("enriches feature requests before scoring and keeps the enriched fields", async () => {
+    let seenPeople: number | undefined;
+    const { dataset } = await runPipeline({
+      org: "cloudinary", issues: [raw(1)], classify: async () => feature, now,
+      enrich: async (i) => ({ ...i, people: 21 }),
+      score: async (i) => { seenPeople = i.people; return score(); },
+    });
+    expect(seenPeople).toBe(21);
+    expect(dataset.requests[0].people).toBe(21);
+  });
+
+  it("keeps a request unenriched when enrichment fails", async () => {
+    const { dataset } = await runPipeline({
+      org: "cloudinary", issues: [raw(1)], classify: async () => feature, score: async () => score(), now,
+      enrich: async () => { throw new Error("403"); },
+    });
+    expect(dataset.requests).toHaveLength(1);
+    expect(dataset.requests[0].people).toBeUndefined();
+  });
+
   it("passes the full set of feature requests to the scorer", async () => {
     const sets: number[][] = [];
     await runPipeline({

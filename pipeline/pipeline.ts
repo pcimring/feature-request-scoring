@@ -11,6 +11,8 @@ export interface PipelineDeps {
   score: (i: RawIssue, all: RawIssue[]) => Promise<Score>;
   /** Optional comparative pass over every row, run when something new was scored. */
   calibrate?: (rs: ScoredRequest[]) => Promise<ScoredRequest[]>;
+  /** Optional extra lookups for feature requests (e.g. people in the thread); a failure leaves the request as it was. */
+  enrich?: (i: RawIssue) => Promise<RawIssue>;
   previous?: { classifications: Record<number, ClassificationRecord>; dataset?: Dataset };
   /** Score at most this many new requests (reused scores don't count). */
   limit?: number;
@@ -72,7 +74,19 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
     }
   });
 
-  const features = deps.issues.filter((i) => classifications[i.id]?.label === "feature_request");
+  const featureIssues = deps.issues.filter((i) => classifications[i.id]?.label === "feature_request");
+  const enriched = new Map<number, RawIssue>();
+  if (deps.enrich) {
+    const enrich = deps.enrich;
+    await pool(featureIssues, () => false, async (i) => {
+      try {
+        enriched.set(i.id, await enrich(i));
+      } catch (e) {
+        log(`Enrichment failed for ${i.repo}#${i.number}: ${(e as Error).message}`);
+      }
+    });
+  }
+  const features = featureIssues.map((i) => enriched.get(i.id) ?? i);
   let requests: ScoredRequest[] = [];
   let scoredNew = 0;
   const toScore: RawIssue[] = [];

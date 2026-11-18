@@ -85,3 +85,11 @@ describe("scoring prompt", () => {
     expect(String(calls[0].system)).toMatch(/stars and forks belong to the repository/i);
   });
 });
+
+describe("people in the thread", () => {
+  it("are sent to the model with the request's signals", async () => {
+    const { client, calls } = stubClient({ parsed_output: output });
+    await scoreRequest(client, { ...issue, people: 21 }, "s", new CostMeter(1.5));
+    expect(userText(calls[0])).toContain("People in the thread: 21");
+  });
+});

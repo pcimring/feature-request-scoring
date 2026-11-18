@@ -26,6 +26,10 @@ export interface RawIssue {
   /** Stars and forks of the issue's repository: a proxy for the size of that SDK's audience. */
   repoStars?: number;
   repoForks?: number;
+  /** Login of the person who opened the issue. */
+  author?: string;
+  /** Distinct people in the thread: the author plus everyone who commented (bots excluded). */
+  people?: number;
 }
 
 export const ClassificationSchema = z.object({
