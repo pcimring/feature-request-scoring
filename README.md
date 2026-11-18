@@ -21,7 +21,7 @@ Product teams get more feature requests than they can build, and they often rank
 
    Each request is scored on its own, so a final **comparative pass** shows the model all of them side by side and re-scores Reach, Business Impact and Urgency relative to each other.
 4. **Save:** the results go into `public/data/scores.json`.
-5. **Show:** a static page ranks the requests by a weighted total. The weight sliders and the review filter are plain arithmetic in the browser, so no AI runs while you browse and no API key ever reaches the page.
+5. **Show:** a static page ranks the requests by an overall score: a weighted average of the five scores, using the slider weights. The weight sliders and the review filter are plain arithmetic in the browser, so no AI runs while you browse and no API key ever reaches the page.
 
 Re-running the script reuses the stored result for any issue that hasn't changed, so a refresh only pays for new or edited issues.
 

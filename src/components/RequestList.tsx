@@ -20,7 +20,7 @@ function Row({ r }: { r: RankedRequest }) {
         <span className="problem" data-testid="problem">
           {r.problem}
         </span>
-        <span className="total" title="Weighted score out of 5">
+        <span className="total" title="Overall score out of 5, from the weights above">
           {r.total.toFixed(1)}
         </span>
         <span className="chips">

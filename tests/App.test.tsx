@@ -81,9 +81,10 @@ describe("weight sliders", () => {
 });
 
 describe("sort by", () => {
-  it("defaults to the weighted score", () => {
+  it("defaults to the overall score", () => {
     render(<App dataset={fixtureDataset()} />);
     expect(screen.getByLabelText("Sort by")).toHaveValue("weighted");
+    expect(screen.getByRole("option", { name: "Overall score" })).toBeInTheDocument();
   });
 
   it("sorts by a single dimension, highest first", () => {

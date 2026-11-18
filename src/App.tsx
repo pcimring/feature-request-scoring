@@ -53,7 +53,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
               <label className="sort">
                 Sort by
                 <select value={sortBy} onChange={(e) => setSortBy(e.target.value as SortKey)}>
-                  <option value="weighted">Weighted score</option>
+                  <option value="weighted">Overall score</option>
                   {DIMENSIONS.map((d) => (
                     <option value={d} key={d}>
                       {DIMENSION_LABELS[d]}
