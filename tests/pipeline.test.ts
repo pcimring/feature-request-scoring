@@ -17,6 +17,7 @@ function score(level: "low" | "medium" | "high" = "medium"): Score {
     problem: "p",
     scores: { reach: d, impact: d, urgency: d, fit: d, feasibility: d },
     confidence: { level, reason: "c" },
+    flags: [],
   };
 }
 
@@ -78,6 +79,16 @@ describe("runPipeline", () => {
     expect(dataset.requests[0].people).toBeUndefined();
   });
 
+  it("counts flagged requests and keeps recent comments out of the saved rows", async () => {
+    const { dataset } = await runPipeline({
+      org: "cloudinary", issues: [raw(1), raw(2)], classify: async () => feature, now,
+      enrich: async (i) => ({ ...i, recentComments: ["c"] }),
+      score: async (i) => ({ ...score(), flags: i.id === 1 ? [{ type: "mixed_requests" as const, reason: "r" }] : [] }),
+    });
+    expect(dataset.counts.flagged).toBe(1);
+    expect(dataset.requests[0]).not.toHaveProperty("recentComments");
+  });
+
   it("passes the full set of feature requests to the scorer", async () => {
     const sets: number[][] = [];
     await runPipeline({
@@ -92,7 +103,7 @@ describe("runPipeline", () => {
     const scorer = recorder(() => score());
     const { dataset } = await runPipeline({ org: "cloudinary", issues: [raw(1), raw(2), raw(3)], classify: classify.call, score: scorer.call, now });
     expect(scorer.seen.sort()).toEqual([1, 3]);
-    expect(dataset.counts).toEqual({ openIssues: 3, featureRequests: 2, needsReview: 0, failed: 0 });
+    expect(dataset.counts).toEqual({ openIssues: 3, featureRequests: 2, needsReview: 0, flagged: 0, failed: 0 });
     expect(dataset.requests.map((r) => r.id).sort()).toEqual([1, 3]);
     expect(dataset.generatedAt).toBe("2026-11-19T08:00:00Z");
     expect(dataset.org).toBe("cloudinary");
@@ -122,7 +133,7 @@ describe("runPipeline", () => {
       2: { updatedAt: "2025-01-01T00:00:00Z", ...feature },
     };
     const prevData: Dataset = {
-      generatedAt: "x", org: "cloudinary", counts: { openIssues: 2, featureRequests: 2, needsReview: 0, failed: 0 },
+      generatedAt: "x", org: "cloudinary", counts: { openIssues: 2, featureRequests: 2, needsReview: 0, flagged: 0, failed: 0 },
       requests: [1, 2].map((id) => {
         const { body: _b, labels: _l, ...meta } = raw(id, { updatedAt: id === 1 ? "2026-02-01T00:00:00Z" : "2025-01-01T00:00:00Z" });
         return { ...meta, ...score("high"), problem: `old ${id}` };

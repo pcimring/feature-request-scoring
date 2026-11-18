@@ -21,6 +21,10 @@ const SYSTEM = `You help a product manager prioritize feature requests. Each req
 
 3. confidence: low, medium or high, with a reason of at most 20 words. Use low whenever the issue is too thin or vague to judge, or when the scores rest mostly on guesses; a PM will review those by hand.
 
+4. flags: a list, usually empty. Read the recent comments as well as the original post, and add a flag only when the thread supports it:
+- mixed_requests: the thread has drifted into two or more distinct asks (for example, an install problem, then upload support, then a whole new SDK). Name the asks briefly. Score the problem statement on the main ask that is still open.
+- possibly_resolved: the comments, a maintainer reply, or the list of repositories in the org suggest the request may already be delivered or superseded (for example, a dedicated SDK now exists for that platform, or a maintainer says it shipped). Say what suggests it. A PM should check and consider closing.
+
 Rules:
 - Repository stars and forks belong to the repository, not to this request: they measure the size of that SDK's audience. Whenever you cite them, call them the SDK's audience and keep them apart from the request's own signals (its reactions and comments). Example: "Request: 32 comments, no reactions; SDK audience: largest in the set."
 - Never claim or imply knowledge of Cloudinary's internal data, roadmap or customers. Base every reason on the issue text, its signals and the strategy summary.
@@ -34,6 +38,7 @@ function cleanScore(s: Score): Score {
     problem: cleanText(s.problem),
     scores,
     confidence: { ...s.confidence, reason: cleanText(s.confidence.reason) },
+    flags: s.flags.map((f) => ({ ...f, reason: cleanText(f.reason) })),
   };
 }
 

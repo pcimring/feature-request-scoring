@@ -2,6 +2,8 @@ import type { RawIssue } from "../shared/types.ts";
 
 export const BODY_LIMIT = 4000;
 const PER_PAGE = 100;
+const RECENT_COMMENTS = 5;
+const COMMENT_LIMIT = 600;
 
 interface SearchItem {
   id: number;
@@ -75,24 +77,29 @@ export async function fetchRepoStats(
   return stats;
 }
 
-/** Distinct people in an issue thread: the author plus every commenter, bots excluded. */
-export async function countPeople(
+/** One issue thread: distinct people (the author plus every commenter, bots excluded) and the last few human comments. */
+export async function fetchThread(
   org: string,
   repo: string,
   number: number,
   author: string | undefined,
   opts: { token?: string; fetchFn?: typeof fetch } = {},
-): Promise<number> {
+): Promise<{ people: number; recentComments: string[] }> {
   const fetchFn = opts.fetchFn ?? fetch;
   const headers: Record<string, string> = { Accept: "application/vnd.github+json" };
   if (opts.token) headers.Authorization = `Bearer ${opts.token}`;
   const people = new Set<string>(author ? [author] : []);
+  const human: string[] = [];
   for (let page = 1; ; page++) {
     const url = `https://api.github.com/repos/${org}/${repo}/issues/${number}/comments?per_page=${PER_PAGE}&page=${page}`;
     const res = await fetchFn(url, { headers });
     if (res.status !== 200) throw new Error(`GitHub comments lookup failed for ${repo}#${number} with status ${res.status}`);
-    const comments = (await res.json()) as { user: { login: string } | null }[];
-    for (const c of comments) if (c.user && !c.user.login.endsWith("[bot]")) people.add(c.user.login);
-    if (comments.length < PER_PAGE) return people.size;
+    const comments = (await res.json()) as { user: { login: string } | null; created_at?: string; body?: string | null }[];
+    for (const c of comments) {
+      if (!c.user || c.user.login.endsWith("[bot]")) continue;
+      people.add(c.user.login);
+      human.push(`${c.user.login} (${(c.created_at ?? "").slice(0, 10)}): ${(c.body ?? "").replace(/\s+/g, " ").trim().slice(0, COMMENT_LIMIT)}`);
+    }
+    if (comments.length < PER_PAGE) return { people: people.size, recentComments: human.slice(-RECENT_COMMENTS) };
   }
 }

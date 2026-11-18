@@ -21,6 +21,7 @@ const output: Score = {
     feasibility: d(2, "new SDK is large"),
   },
   confidence: { level: "medium", reason: "clear request" },
+  flags: [],
 };
 
 describe("scoreRequest", () => {
@@ -91,5 +92,17 @@ describe("people in the thread", () => {
     const { client, calls } = stubClient({ parsed_output: output });
     await scoreRequest(client, { ...issue, people: 21 }, "s", new CostMeter(1.5));
     expect(userText(calls[0])).toContain("People in the thread: 21");
+  });
+});
+
+describe("thread and flags", () => {
+  it("sends recent comments and cleans flag reasons", async () => {
+    const withFlags = { ...output, flags: [{ type: "possibly_resolved", reason: "a React Native SDK now exists \u2014 see repo" }] };
+    const { client, calls } = stubClient({ parsed_output: withFlags });
+    const score = await scoreRequest(client, { ...issue, recentComments: ["bob (2020-01-01): fixed in v2"] }, "s", new CostMeter(1.5));
+    expect(userText(calls[0])).toContain("bob (2020-01-01): fixed in v2");
+    expect(score.flags[0]).toEqual({ type: "possibly_resolved", reason: "a React Native SDK now exists, see repo" });
+    expect(String(calls[0].system)).toMatch(/mixed_requests/);
+    expect(String(calls[0].system)).toMatch(/possibly_resolved/);
   });
 });

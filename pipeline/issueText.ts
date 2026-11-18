@@ -15,5 +15,8 @@ export function issueText(issue: RawIssue): string {
     "<issue_body>",
     issue.body || "(empty)",
     "</issue_body>",
+    ...(issue.recentComments?.length
+      ? ["<recent_comments>", ...issue.recentComments, "</recent_comments>"]
+      : []),
   ].join("\n");
 }

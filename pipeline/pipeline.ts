@@ -37,8 +37,8 @@ async function pool<T>(items: T[], stop: () => boolean, work: (item: T) => Promi
   await Promise.all(Array.from({ length: Math.min(CONCURRENCY, items.length) }, worker));
 }
 
-function meta(i: RawIssue): Omit<RawIssue, "body" | "labels"> {
-  const { body: _body, labels: _labels, ...rest } = i;
+function meta(i: RawIssue): Omit<RawIssue, "body" | "labels" | "recentComments"> {
+  const { body: _body, labels: _labels, recentComments: _recent, ...rest } = i;
   return rest;
 }
 
@@ -122,6 +122,7 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
         openIssues: deps.issues.length,
         featureRequests: features.length,
         needsReview: requests.filter((r) => r.confidence.level === "low").length,
+        flagged: requests.filter((r) => (r.flags ?? []).length > 0).length,
         failed,
       },
       requests,

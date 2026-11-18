@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BODY_LIMIT, countPeople, fetchOpenIssues, fetchRepoStats } from "../pipeline/github.ts";
+import { BODY_LIMIT, fetchOpenIssues, fetchRepoStats, fetchThread } from "../pipeline/github.ts";
 
 function item(n: number, body: string | null = "body") {
   return {
@@ -92,7 +92,7 @@ describe("fetchRepoStats", () => {
   });
 });
 
-describe("countPeople", () => {
+describe("fetchThread", () => {
   it("counts the author plus distinct commenters, ignoring bots, across pages", async () => {
     const page1 = [...Array.from({ length: 98 }, () => ({ user: { login: "alice" } })), { user: { login: "bob" } }, { user: { login: "dependabot[bot]" } }];
     const page2 = [{ user: { login: "carol" } }, { user: { login: "author" } }];
@@ -102,8 +102,8 @@ describe("countPeople", () => {
       const page = Number(new URL(url).searchParams.get("page"));
       return new Response(JSON.stringify(page === 1 ? page1 : page2));
     }) as typeof fetch;
-    const n = await countPeople("cloudinary", "cloudinary_npm", 56, "author", { fetchFn, token: "t" });
-    expect(n).toBe(4);
+    const { people } = await fetchThread("cloudinary", "cloudinary_npm", 56, "author", { fetchFn, token: "t" });
+    expect(people).toBe(4);
     expect(urls[0]).toBe("https://api.github.com/repos/cloudinary/cloudinary_npm/issues/56/comments?per_page=100&page=1");
     expect(urls).toHaveLength(2);
   });
@@ -112,5 +112,22 @@ describe("countPeople", () => {
     const { fetchFn } = stubFetch([[{ ...item(1), user: { login: "octo" } }]]);
     const [issue] = await fetchOpenIssues("cloudinary", { fetchFn });
     expect(issue.author).toBe("octo");
+  });
+});
+
+describe("fetchThread recent comments", () => {
+  it("returns the last 5 human comments with author and date, each cut to 600 characters", async () => {
+    const comments = Array.from({ length: 7 }, (_, i) => ({
+      user: { login: `u${i}` },
+      created_at: `2020-0${i + 1}-01T00:00:00Z`,
+      body: i === 6 ? "x".repeat(900) : `comment ${i}`,
+    }));
+    comments.push({ user: { login: "ci[bot]" }, created_at: "2021-01-01T00:00:00Z", body: "bot noise" });
+    const fetchFn = (async () => new Response(JSON.stringify(comments))) as unknown as typeof fetch;
+    const { recentComments } = await fetchThread("cloudinary", "r", 1, "a", { fetchFn });
+    expect(recentComments).toHaveLength(5);
+    expect(recentComments[0]).toBe("u2 (2020-03-01): comment 2");
+    expect(recentComments[4].length).toBeLessThanOrEqual("u6 (2020-07-01): ".length + 600);
+    expect(recentComments.join(" ")).not.toContain("bot noise");
   });
 });

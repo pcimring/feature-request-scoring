@@ -11,6 +11,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
   const [error, setError] = useState(false);
   const [weights, setWeights] = useState<Weights>(DEFAULT_WEIGHTS);
   const [reviewOnly, setReviewOnly] = useState(false);
+  const [flaggedOnly, setFlaggedOnly] = useState(false);
   const [sortBy, setSortBy] = useState<SortKey>("weighted");
 
   useEffect(() => {
@@ -23,8 +24,10 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
 
   const ranked = useMemo(() => {
     const all = sortRequests(rankRequests(dataset?.requests ?? [], weights), sortBy);
-    return reviewOnly ? all.filter((r) => r.confidence.level === "low") : all;
-  }, [dataset, weights, reviewOnly, sortBy]);
+    return all
+      .filter((r) => !reviewOnly || r.confidence.level === "low")
+      .filter((r) => !flaggedOnly || (r.flags ?? []).length > 0);
+  }, [dataset, weights, reviewOnly, flaggedOnly, sortBy]);
 
   return (
     <div className="page">
@@ -65,6 +68,10 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
             <label className="toggle">
               <input type="checkbox" checked={reviewOnly} onChange={(e) => setReviewOnly(e.target.checked)} />
               Only show requests that need review
+            </label>
+            <label className="toggle">
+              <input type="checkbox" checked={flaggedOnly} onChange={(e) => setFlaggedOnly(e.target.checked)} />
+              Only show candidates to close or split
             </label>
             </div>
           </section>

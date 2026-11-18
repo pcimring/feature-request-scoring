@@ -18,3 +18,10 @@ describe("setSummary", () => {
     expect(text).toContain("repository stars range from 10 to 900");
   });
 });
+
+describe("setSummary repos", () => {
+  it("lists the org's repositories so the model can spot work that already exists elsewhere", () => {
+    const text = setSummary([issue(0, 1, 10)], ["cloudinary_npm", "cloudinary-react-native"]);
+    expect(text).toContain("Repositories in the org: cloudinary_npm, cloudinary-react-native");
+  });
+});

@@ -132,3 +132,37 @@ describe("people count wording", () => {
     expect(within(row(data.requests[1].problem)).getByText("3 comments from 1 person")).toBeInTheDocument();
   });
 });
+
+describe("backlog hygiene", () => {
+  function flaggedData() {
+    const data = fixtureDataset();
+    data.counts = { ...data.counts, flagged: 1 };
+    data.requests = data.requests.map((r) =>
+      r.problem === "Impacty problem"
+        ? { ...r, updatedAt: "2021-01-12T00:00:00Z", flags: [{ type: "possibly_resolved" as const, reason: "SDK now exists" }] }
+        : r,
+    );
+    return data;
+  }
+
+  it("shows a flag badge and the flag reason when expanded", () => {
+    render(<App dataset={flaggedData()} />);
+    const row = rows().find((r) => within(r).getByTestId("problem").textContent === "Impacty problem")!;
+    expect(within(row).getByText("May be resolved")).toBeInTheDocument();
+    fireEvent.click(within(row).getByRole("button"));
+    expect(within(row).getByText("SDK now exists")).toBeInTheDocument();
+  });
+
+  it("shows the last activity date on each row", () => {
+    render(<App dataset={flaggedData()} />);
+    const row = rows().find((r) => within(r).getByTestId("problem").textContent === "Impacty problem")!;
+    expect(within(row).getByText("Last activity Jan 2021")).toBeInTheDocument();
+  });
+
+  it("filters to candidates to close or split, and counts them", () => {
+    render(<App dataset={flaggedData()} />);
+    expect(screen.getByLabelText("Counts")).toHaveTextContent("to close or split");
+    fireEvent.click(screen.getByLabelText(/Only show candidates to close or split/));
+    expect(problems()).toEqual(["Impacty problem"]);
+  });
+});

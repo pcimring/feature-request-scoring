@@ -10,6 +10,7 @@ export function Counts({ dataset }: { dataset: Dataset }) {
     { value: counts.openIssues, label: "open issues scanned" },
     { value: counts.featureRequests, label: "feature requests found" },
     { value: counts.needsReview, label: "need PM review" },
+    { value: counts.flagged ?? 0, label: "to close or split" },
   ];
   return (
     <section className="counts" aria-label="Counts">

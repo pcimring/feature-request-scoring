@@ -21,6 +21,7 @@ export function makeRequest(
     problem: `Problem ${id}`,
     scores: { reach: s("reach"), impact: s("impact"), urgency: s("urgency"), fit: s("fit"), feasibility: s("feasibility") },
     confidence: { level: "medium", reason: "enough detail" },
+    flags: [],
     ...extra,
   };
 }

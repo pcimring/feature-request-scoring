@@ -7,7 +7,7 @@ function median(xs: number[]): number {
 }
 
 /** Plain-text description of the whole set, so the model can score each request relative to the others. */
-export function setSummary(features: RawIssue[]): string {
+export function setSummary(features: RawIssue[], repos: string[] = []): string {
   const reactions = features.map((f) => f.reactions);
   const comments = features.map((f) => f.comments);
   const stars = features.map((f) => f.repoStars ?? 0);
@@ -16,5 +16,6 @@ export function setSummary(features: RawIssue[]): string {
     `Reactions: ${reactions.filter((r) => r === 0).length} of ${features.length} have no reactions; most reactions: ${Math.max(...reactions)}.`,
     `Comments: median comments: ${median(comments)}; most comments: ${Math.max(...comments)}.`,
     `Audience: repository stars range from ${Math.min(...stars)} to ${Math.max(...stars)} (median ${median(stars)}).`,
+    ...(repos.length ? [`Repositories in the org: ${repos.join(", ")}`] : []),
   ].join("\n");
 }

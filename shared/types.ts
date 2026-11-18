@@ -30,6 +30,8 @@ export interface RawIssue {
   author?: string;
   /** Distinct people in the thread: the author plus everyone who commented (bots excluded). */
   people?: number;
+  /** The last few human comments, "login (date): text", for the scorer only; never saved. */
+  recentComments?: string[];
 }
 
 export const ClassificationSchema = z.object({
@@ -57,15 +59,28 @@ export const ScoreSchema = z.object({
     level: z.enum(["low", "medium", "high"]),
     reason: z.string(),
   }),
+  flags: z.array(
+    z.object({
+      type: z.enum(["mixed_requests", "possibly_resolved"]),
+      reason: z.string(),
+    }),
+  ),
 });
 export type Score = z.infer<typeof ScoreSchema>;
 
-export type ScoredRequest = Omit<RawIssue, "body" | "labels"> & Score;
+export type ScoredRequest = Omit<RawIssue, "body" | "labels" | "recentComments"> & Score;
+
+export type FlagType = Score["flags"][number]["type"];
+
+export const FLAG_LABELS: Record<FlagType, string> = {
+  mixed_requests: "Mixed requests",
+  possibly_resolved: "May be resolved",
+};
 
 export interface Dataset {
   generatedAt: string;
   org: string;
-  counts: { openIssues: number; featureRequests: number; needsReview: number; failed: number };
+  counts: { openIssues: number; featureRequests: number; needsReview: number; flagged: number; failed: number };
   requests: ScoredRequest[];
 }
 

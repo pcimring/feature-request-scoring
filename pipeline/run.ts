@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import type { Dataset } from "../shared/types.ts";
 import { classifyIssue } from "./classify.ts";
 import { CostMeter } from "./cost.ts";
-import { countPeople, fetchOpenIssues, fetchRepoStats } from "./github.ts";
+import { fetchOpenIssues, fetchRepoStats, fetchThread } from "./github.ts";
 import { runPipeline, type ClassificationRecord } from "./pipeline.ts";
 import { calibrateScores } from "./calibrate.ts";
 import { SCORE_MODEL, scoreRequest } from "./score.ts";
@@ -51,9 +51,9 @@ const result = await runPipeline({
   org: ORG,
   issues,
   classify: (i) => classifyIssue(client, i, meter),
-  score: (i, all) => scoreRequest(client, i, strategy, meter, (summary ??= setSummary(all))),
+  score: (i, all) => scoreRequest(client, i, strategy, meter, (summary ??= setSummary(all, Object.keys(repoStats).sort()))),
   calibrate: (rs) => calibrateScores(client, rs, meter, SCORE_MODEL),
-  enrich: async (i) => ({ ...i, people: await countPeople(ORG, i.repo, i.number, i.author, { token: process.env.GITHUB_TOKEN }) }),
+  enrich: async (i) => ({ ...i, ...(await fetchThread(ORG, i.repo, i.number, i.author, { token: process.env.GITHUB_TOKEN })) }),
   previous: {
     classifications: readJson<Record<number, ClassificationRecord>>(CLASS_FILE) ?? {},
     dataset: readJson<Dataset>(SCORES_FILE),
