@@ -249,3 +249,13 @@ describe("flag tooltips", () => {
     expect(badge).toHaveAttribute("title", expect.stringMatching(/pull request/i));
   });
 });
+
+describe("page navigation", () => {
+  it("links from the top to How it works, and from the bottom back to the top", () => {
+    render(<App dataset={fixtureDataset()} />);
+    expect(screen.getByRole("link", { name: "How it works" })).toHaveAttribute("href", "#how-it-works");
+    expect(document.getElementById("how-it-works")).toHaveTextContent("How it works");
+    expect(screen.getByRole("link", { name: /back to top/i })).toHaveAttribute("href", "#top");
+    expect(document.getElementById("top")).not.toBeNull();
+  });
+});

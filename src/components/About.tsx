@@ -2,7 +2,7 @@ export function About({ company }: { company: string }) {
   return (
     <section className="about" aria-labelledby="about-title">
       <h2 id="about-title">About this demo</h2>
-      <h3>How it works</h3>
+      <h3 id="how-it-works">How it works</h3>
       <p>
         A script pulls every open issue from a GitHub organization's public repos; this demo uses {company}'s. Claude
         Haiku sorts them into feature requests, bugs, questions and other.

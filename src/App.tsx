@@ -37,7 +37,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
   }, [dataset, weights, showOnly, sortBy]);
 
   return (
-    <div className="page">
+    <div className="page" id="top">
       <header className="header">
         <p className="eyebrow">AI demo</p>
         <h1>Feature-request scoring</h1>
@@ -50,6 +50,8 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
         {dataset && (
           <p className="source">
             Data source: <a href={`https://github.com/${dataset.org}`}>{`github.com/${dataset.org}`}</a>
+            <span className="sep">·</span>
+            <a href="#how-it-works">How it works</a>
           </p>
         )}
       </header>
@@ -87,7 +89,11 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
         <span>
           Built by Peter Cimring · <a href="https://petercimring.space">petercimring.space</a>
         </span>
-        <a href="https://github.com/pcimring/feature-request-scoring">Source code on GitHub</a>
+        <span>
+          <a href="https://github.com/pcimring/feature-request-scoring">Source code on GitHub</a>
+          <span className="sep">·</span>
+          <a href="#top">Back to top ↑</a>
+        </span>
       </footer>
     </div>
   );
