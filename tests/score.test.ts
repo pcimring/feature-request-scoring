@@ -97,7 +97,14 @@ describe("people in the thread", () => {
 
 describe("thread and flags", () => {
   it("sends recent comments and cleans flag reasons", async () => {
-    const withFlags = { ...output, flags: [{ type: "possibly_resolved", reason: "a React Native SDK now exists \u2014 see repo" }] };
+    const withFlags = {
+      ...output,
+      checks: {
+        mixed_requests: { applies: false, evidence: "" },
+        possibly_resolved: { applies: true, evidence: "a React Native SDK now exists \u2014 see repo" },
+        pr_waiting: { applies: false, evidence: "" },
+      },
+    };
     const { client, calls } = stubClient({ parsed_output: withFlags });
     const score = await scoreRequest(client, { ...issue, recentComments: ["bob (2020-01-01): fixed in v2"] }, "s", new CostMeter(1.5));
     expect(userText(calls[0])).toContain("bob (2020-01-01): fixed in v2");
@@ -114,5 +121,23 @@ describe("flag rules", () => {
     const system = String(calls[0].system);
     expect(system).toMatch(/pr_waiting/);
     expect(system).toMatch(/roadmap/);
+  });
+});
+
+describe("flag checks", () => {
+  it("turns yes/no checks into flags and drops the noes", async () => {
+    const { flags: _f, ...base } = output;
+    const parsed = {
+      ...base,
+      checks: {
+        mixed_requests: { applies: false, evidence: "single ask" },
+        possibly_resolved: { applies: true, evidence: "maintainer says v2 shipped it \u2014 2021" },
+        pr_waiting: { applies: false, evidence: "only an offer to open one" },
+      },
+    };
+    const { client } = stubClient({ parsed_output: parsed });
+    const score = await scoreRequest(client, issue, "s", new CostMeter(1.5));
+    expect(score.flags).toEqual([{ type: "possibly_resolved", reason: "maintainer says v2 shipped it, 2021" }]);
+    expect(score).not.toHaveProperty("checks");
   });
 });
