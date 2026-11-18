@@ -10,14 +10,16 @@ Product teams get more feature requests than they can build, and they often rank
 
 1. **Fetch:** a script pulls every open issue across the `cloudinary` GitHub org (215 issues in 38 repos on 2026-11-18, mostly SDKs).
 2. **Classify:** Claude Haiku 5.5 labels each issue as a feature request, bug, question or other. Only feature requests go on (62 of 215).
-3. **Score:** Claude Opus 5.5 restates each feature request as the underlying problem, separate from the solution the requester proposed, then scores it from 1 to 5 on:
-   - **Reach:** how many users ask or would be affected (reactions, comments, how widely the SDK is used).
+3. **Score:** Claude Haiku 5.5 restates each feature request as the underlying problem, separate from the solution the requester proposed, then scores it from 1 to 5 on:
+   - **Reach:** how many users ask or would be affected (reactions, comments, and the repo's stars and forks as a measure of the SDK's audience).
    - **Business Impact:** likely effect on revenue, retention or expansion.
    - **Urgency:** blocker or time-sensitive language.
    - **Strategic Fit:** alignment with Cloudinary's stated direction, from a short summary of its public announcements (`pipeline/strategy.md`).
    - **Feasibility:** how easy it is to build (5 = easy).
 
    Every score has a one-line reason, and the model states its confidence. Low-confidence requests are flagged "Needs review".
+
+   Each request is scored on its own, so a final **comparative pass** shows the model all of them side by side and re-scores Reach, Business Impact and Urgency relative to each other.
 4. **Save:** the results go into `public/data/scores.json`.
 5. **Show:** a static page ranks the requests by a weighted total. The weight sliders and the review filter are plain arithmetic in the browser, so no AI runs while you browse and no API key ever reaches the page.
 
@@ -53,7 +55,7 @@ npm run dev                 # the page, at http://localhost:5173
 npm test
 ```
 
-Cost: the first full run cost about $1 in API calls. The script stops itself if a run passes $1.50. An optional `GITHUB_TOKEN` in `.env.local` raises GitHub's rate limit.
+Cost: a full run of all 62 requests costs about $0.03 on Claude Haiku 5.5 (about $1 on Claude Opus 5.5, which scored similarly on a side-by-side test). The script stops itself if a run passes $1.50. Repo star counts are saved in `data/repo-stats.json` and reused. An optional `GITHUB_TOKEN` in `.env.local` raises GitHub's rate limit.
 
 ## Stack
 

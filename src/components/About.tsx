@@ -5,9 +5,10 @@ export function About() {
       <h3>How it works</h3>
       <p>
         A script pulls every open issue from Cloudinary's public GitHub repos. Claude Haiku sorts them into feature
-        requests, bugs, questions and other. Claude Opus then restates each feature request as the underlying problem,
-        separate from the solution the requester proposed, scores it on five dimensions with a reason for each, and says
-        how confident it is. The results are saved to a file. This page only does the arithmetic for the weights, so no
+        requests, bugs, questions and other, then restates each feature request as the underlying problem, separate from
+        the solution the requester proposed, scores it on five dimensions with a reason for each, and says how confident
+        it is. A final pass looks at all the requests side by side and adjusts Reach, Business Impact and Urgency
+        relative to each other. The results are saved to a file. This page only does the arithmetic for the weights, so no
         AI runs while you browse.
       </p>
       <h3>Limits</h3>
