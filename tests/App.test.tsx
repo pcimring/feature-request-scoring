@@ -79,3 +79,23 @@ describe("weight sliders", () => {
     expect(slider).toHaveValue("5");
   });
 });
+
+describe("sort by", () => {
+  it("defaults to the weighted score", () => {
+    render(<App dataset={fixtureDataset()} />);
+    expect(screen.getByLabelText("Sort by")).toHaveValue("weighted");
+  });
+
+  it("sorts by a single dimension, highest first", () => {
+    render(<App dataset={fixtureDataset()} />);
+    fireEvent.change(screen.getByLabelText("Sort by"), { target: { value: "impact" } });
+    expect(problems()[0]).toBe("Impacty problem");
+    expect(rows()[0].querySelector(".rank")).toHaveTextContent("1");
+  });
+
+  it("sorts by confidence, lowest first", () => {
+    render(<App dataset={fixtureDataset()} />);
+    fireEvent.change(screen.getByLabelText("Sort by"), { target: { value: "confidence" } });
+    expect(problems()[0]).toBe("Vague problem");
+  });
+});

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULT_WEIGHTS } from "../shared/types.ts";
-import { rankRequests, weightedTotal } from "../src/lib/rank.ts";
+import { rankRequests, sortRequests, weightedTotal } from "../src/lib/rank.ts";
 import { makeRequest } from "./helpers.ts";
 
 describe("weightedTotal", () => {
@@ -42,5 +42,28 @@ describe("rankRequests", () => {
     const ranked = rankRequests([makeRequest(), makeRequest(), makeRequest()], DEFAULT_WEIGHTS);
     expect(ranked.map((r) => r.rank)).toEqual([1, 2, 3]);
     expect(ranked[0].total).toBe(3);
+  });
+});
+
+describe("sortRequests", () => {
+  it("orders by one dimension and breaks ties by weighted total", () => {
+    const a = makeRequest({ reach: 4, impact: 1 });
+    const b = makeRequest({ reach: 4, impact: 5 });
+    const c = makeRequest({ reach: 5, impact: 1 });
+    const out = sortRequests(rankRequests([a, b, c], DEFAULT_WEIGHTS), "reach");
+    expect(out.map((r) => r.id)).toEqual([c.id, b.id, a.id]);
+    expect(out.map((r) => r.rank)).toEqual([1, 2, 3]);
+  });
+
+  it("orders by confidence from low to high", () => {
+    const hi = makeRequest({}, { confidence: { level: "high", reason: "" } });
+    const lo = makeRequest({}, { confidence: { level: "low", reason: "" } });
+    const out = sortRequests(rankRequests([hi, lo], DEFAULT_WEIGHTS), "confidence");
+    expect(out.map((r) => r.id)).toEqual([lo.id, hi.id]);
+  });
+
+  it("keeps the weighted order for 'weighted'", () => {
+    const ranked = rankRequests([makeRequest({ reach: 1 }), makeRequest({ reach: 5 })], DEFAULT_WEIGHTS);
+    expect(sortRequests(ranked, "weighted")).toEqual(ranked);
   });
 });

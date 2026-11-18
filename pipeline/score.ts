@@ -41,12 +41,14 @@ export async function scoreRequest(
   strategy: string,
   meter: CostMeter,
   set = "",
+  model: string = SCORE_MODEL,
 ): Promise<Score> {
+  // Opus can fall back to another model on a refusal; Haiku has no server-side fallback.
+  const fallback = model === "claude-haiku-5-5" ? {} : { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" as const };
   const response = await client.beta.messages.parse({
-    model: SCORE_MODEL,
+    model,
     max_tokens: 16000,
-    betas: ["server-side-fallback-2026-07-01"],
-    fallbacks: "default",
+    ...fallback,
     system: SYSTEM,
     messages: [
       {
@@ -56,7 +58,7 @@ export async function scoreRequest(
     ],
     output_config: { effort: "low", format: betaZodOutputFormat(ScoreSchema) },
   });
-  meter.add(SCORE_MODEL, response.usage);
+  meter.add(model, response.usage);
   if (response.stop_reason === "refusal") throw new Error(`Scoring refused for issue ${issue.id}`);
   if (!response.parsed_output) throw new Error(`Scoring did not parse for issue ${issue.id}`);
   return cleanScore(response.parsed_output);

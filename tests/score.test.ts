@@ -60,3 +60,13 @@ describe("scoreRequest", () => {
     await expect(scoreRequest(client, issue, "s", new CostMeter(1.5))).rejects.toThrow(/refused/);
   });
 });
+
+describe("scoreRequest with Haiku 5.5", () => {
+  it("uses the given model and sends no fallbacks (Haiku has none)", async () => {
+    const { client, calls } = stubClient({ parsed_output: output });
+    await scoreRequest(client, issue, "s", new CostMeter(1.5), "", "claude-haiku-5-5");
+    expect(calls[0].model).toBe("claude-haiku-5-5");
+    expect(calls[0].fallbacks).toBeUndefined();
+    expect(calls[0].betas).toBeUndefined();
+  });
+});

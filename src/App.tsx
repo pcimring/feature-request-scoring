@@ -1,16 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
-import { DEFAULT_WEIGHTS, type Dataset, type Weights } from "../shared/types.ts";
+import { DEFAULT_WEIGHTS, DIMENSIONS, DIMENSION_LABELS, type Dataset, type Weights } from "../shared/types.ts";
 import { About } from "./components/About.tsx";
 import { Counts } from "./components/Counts.tsx";
 import { RequestList } from "./components/RequestList.tsx";
 import { WeightSliders } from "./components/WeightSliders.tsx";
-import { rankRequests } from "./lib/rank.ts";
+import { rankRequests, sortRequests, type SortKey } from "./lib/rank.ts";
 
 export default function App({ dataset: initial }: { dataset?: Dataset }) {
   const [dataset, setDataset] = useState<Dataset | undefined>(initial);
   const [error, setError] = useState(false);
   const [weights, setWeights] = useState<Weights>(DEFAULT_WEIGHTS);
   const [reviewOnly, setReviewOnly] = useState(false);
+  const [sortBy, setSortBy] = useState<SortKey>("weighted");
 
   useEffect(() => {
     if (initial) return;
@@ -21,9 +22,9 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
   }, [initial]);
 
   const ranked = useMemo(() => {
-    const all = rankRequests(dataset?.requests ?? [], weights);
+    const all = sortRequests(rankRequests(dataset?.requests ?? [], weights), sortBy);
     return reviewOnly ? all.filter((r) => r.confidence.level === "low") : all;
-  }, [dataset, weights, reviewOnly]);
+  }, [dataset, weights, reviewOnly, sortBy]);
 
   return (
     <div className="page">
@@ -48,10 +49,24 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
           <Counts dataset={dataset} />
           <section className="controls" aria-label="Controls">
             <WeightSliders weights={weights} onChange={setWeights} />
+            <div className="list-options">
+              <label className="sort">
+                Sort by
+                <select value={sortBy} onChange={(e) => setSortBy(e.target.value as SortKey)}>
+                  <option value="weighted">Weighted score</option>
+                  {DIMENSIONS.map((d) => (
+                    <option value={d} key={d}>
+                      {DIMENSION_LABELS[d]}
+                    </option>
+                  ))}
+                  <option value="confidence">Confidence (lowest first)</option>
+                </select>
+              </label>
             <label className="toggle">
               <input type="checkbox" checked={reviewOnly} onChange={(e) => setReviewOnly(e.target.checked)} />
               Only show requests that need review
             </label>
+            </div>
           </section>
           <RequestList requests={ranked} />
           <About />

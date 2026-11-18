@@ -101,3 +101,7 @@ a { color: var(--color-accent); }
   .badge { justify-self: start; }
   .row-meta, .reasons { padding-left: 16px; }
 }
+
+.list-options { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.sort { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; }
+.sort select { padding: 4px 8px; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-bg); font: inherit; font-weight: 400; }
