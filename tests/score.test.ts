@@ -77,3 +77,11 @@ describe("scoreRequest with Haiku 5.5", () => {
     expect(calls[0].betas).toBeUndefined();
   });
 });
+
+describe("scoring prompt", () => {
+  it("keeps the SDK's audience apart from the request's own signals", async () => {
+    const { client, calls } = stubClient({ parsed_output: output });
+    await scoreRequest(client, issue, "s", new CostMeter(1.5));
+    expect(String(calls[0].system)).toMatch(/stars and forks belong to the repository/i);
+  });
+});

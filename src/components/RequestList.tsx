@@ -34,6 +34,7 @@ function Row({ r }: { r: RankedRequest }) {
         </a>
         <span>{r.reactions} reactions</span>
         <span>{r.comments} comments</span>
+        {r.repoStars !== undefined && <span className="sdk-stars" title="Stars on the repository: the size of this SDK's audience">{`SDK: ${r.repoStars} stars`}</span>}
         <span className="issue-title">{r.title}</span>
       </div>
       {open && (

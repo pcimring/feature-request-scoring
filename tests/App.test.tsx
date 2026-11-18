@@ -99,3 +99,12 @@ describe("sort by", () => {
     expect(problems()[0]).toBe("Vague problem");
   });
 });
+
+describe("row info line", () => {
+  it("labels repo stars as the SDK's, apart from the request's reactions and comments", () => {
+    const data = fixtureDataset();
+    data.requests = data.requests.map((r) => ({ ...r, repoStars: 673 }));
+    render(<App dataset={data} />);
+    expect(within(rows()[0]).getByText("SDK: 673 stars")).toBeInTheDocument();
+  });
+});
