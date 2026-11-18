@@ -1,0 +1,1077 @@
+{
+  "26192125": {
+    "updatedAt": "2019-09-22T09:08:04Z",
+    "label": "question",
+    "reason": "The issue asks how to handle multiple file uploads and requests an example, without asking for a change to the SDK's behavior or a new capability."
+  },
+  "29885950": {
+    "updatedAt": "2023-07-20T20:54:02Z",
+    "label": "other",
+    "reason": "The issue requests internal test coverage for the Carrierwave modules, which is a maintenance chore rather than a new user-facing capability, a defect, or a how-to question."
+  },
+  "37798106": {
+    "updatedAt": "2023-07-20T20:54:10Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, namely implementing Django's storage API and making CloudinaryField behave like a FileField, rather than reporting a defect or asking how to do something."
+  },
+  "55153046": {
+    "updatedAt": "2019-02-05T02:37:25Z",
+    "label": "bug",
+    "reason": "The issue reports that passing a transformation name containing spaces to the API returns a 400 error, which is broken behavior compared to the expected result of retrieving the transformation."
+  },
+  "56876859": {
+    "updatedAt": "2022-02-09T12:00:47Z",
+    "label": "question",
+    "reason": "The issue asks how to upload multiple images and track progress using the SDK, seeking guidance without requesting a new capability or defect fix."
+  },
+  "57303096": {
+    "updatedAt": "2019-09-22T09:07:49Z",
+    "label": "other",
+    "reason": "The issue asks the maintainers to stop publishing snapshot artifacts, which is a release and packaging process change rather than a new SDK capability or a defect in SDK behavior."
+  },
+  "68974925": {
+    "updatedAt": "2023-07-20T20:54:16Z",
+    "label": "feature_request",
+    "reason": "The reporter asks the gem to change its behavior by skipping the remote destroy call when CarrierWave processing is disabled, which is a requested behavior change rather than a defect, and the issue is already labeled enhancement."
+  },
+  "96807195": {
+    "updatedAt": "2021-01-12T14:02:37Z",
+    "label": "feature_request",
+    "reason": "The issue asks for the SDK to work with React Native, which is new platform support rather than a defect in documented behavior, and it is labeled enhancement."
+  },
+  "103793336": {
+    "updatedAt": "2022-11-09T04:12:27Z",
+    "label": "question",
+    "reason": "The issue asks whether the SDK supports Xamarin mobile clients, which seeks information rather than requesting a specific change or reporting a defect."
+  },
+  "110949687": {
+    "updatedAt": "2021-03-03T18:45:28Z",
+    "label": "bug",
+    "reason": "The issue reports that `record.pdf.read` returns an empty string because the generated Cloudinary URL is malformed when the file's identifier is passed, which is broken behavior rather than a how-to question, even though the existing label says question."
+  },
+  "119849802": {
+    "updatedAt": "2023-07-20T20:54:20Z",
+    "label": "feature_request",
+    "reason": "The issue proposes restructuring the gem's source code into a core component and a separate Rails integration file so non-Rails frameworks can use it, which is a request for a change rather than a defect, question, or other item."
+  },
+  "125278857": {
+    "updatedAt": "2023-07-20T20:54:28Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a change in the SDK's upload implementation (streaming the request body instead of loading it fully into memory) to reduce memory usage, which is an improvement rather than a defect."
+  },
+  "141306577": {
+    "updatedAt": "2018-07-03T21:25:47Z",
+    "label": "feature_request",
+    "reason": "The title explicitly asks to remove the lodash dependency, which is a requested change to the SDK rather than a defect or a how-to question, though the body also asks why it exists."
+  },
+  "146988661": {
+    "updatedAt": "2023-07-20T20:54:33Z",
+    "label": "feature_request",
+    "reason": "The issue asks for the SDK to gain a new capability (integrating responsive breakpoints with new helpers and a directive) that the gem does not currently provide, rather than reporting a defect or asking how to use existing functionality."
+  },
+  "150640620": {
+    "updatedAt": "2016-11-15T12:00:31Z",
+    "label": "bug",
+    "reason": "The reporter describes URL generation in the SDK consuming excessive CPU and blocking the main thread (around 100ms), which is unexpected behavior rather than a new capability or a how-to question."
+  },
+  "152564589": {
+    "updatedAt": "2023-07-20T20:54:39Z",
+    "label": "bug",
+    "reason": "The issue reports that the upload method throws RuntimeException in several cases even though its signature declares IOException, so the actual behavior contradicts the documented contract."
+  },
+  "156801828": {
+    "updatedAt": "2016-07-12T23:01:13Z",
+    "label": "bug",
+    "reason": "The reporter says the generator produces illogical breakpoints (such as 1867px and 2060px instead of common sizes) when double resolution is enabled, which is a defect in its output rather than a request for a new capability or a how-to question."
+  },
+  "201885691": {
+    "updatedAt": "2023-07-20T20:54:47Z",
+    "label": "feature_request",
+    "reason": "The issue asks whether the SDK will add macOS platform support, which is a request for a new capability rather than a defect or a how-to question."
+  },
+  "202012332": {
+    "updatedAt": "2024-06-05T10:05:15Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a change in behavior, so errors should be Error instances rather than plain objects, and it is labeled enhancement rather than reporting a defect against documented behavior."
+  },
+  "213053458": {
+    "updatedAt": "2019-07-18T22:43:27Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability (lazy loading of responsive images) that the SDK does not currently provide, rather than reporting a defect or asking how to do something."
+  },
+  "214276602": {
+    "updatedAt": "2017-03-23T12:16:09Z",
+    "label": "feature_request",
+    "reason": "The issue asks whether RestClient timeouts should be wrapped in CloudinaryExceptions, proposes that behavior change, is labeled enhancement, and offers to submit a PR, so it is a request for a non-defect behavior change rather than a pure question."
+  },
+  "214917082": {
+    "updatedAt": "2019-09-22T08:56:10Z",
+    "label": "feature_request",
+    "reason": "The issue asks the maintainers to publish the SDK for Scala 2.12 as well, which is a request for new platform support rather than a defect or a how-to question."
+  },
+  "222609970": {
+    "updatedAt": "2017-05-21T07:03:43Z",
+    "label": "question",
+    "reason": "The issue asks how to accomplish a task (uploading multiple images via Django admin) without requesting a change to the SDK, so it is a how-to question."
+  },
+  "231823746": {
+    "updatedAt": "2020-06-13T08:27:42Z",
+    "label": "feature_request",
+    "reason": "The issue asks the SDK to replace generic Map-based configuration and results with typed OOP classes and meaningful exceptions, which is a request for a new API design rather than a defect report or a how-to question."
+  },
+  "241242671": {
+    "updatedAt": "2017-09-25T10:14:53Z",
+    "label": "feature_request",
+    "reason": "The author concluded the off-center cropping is intentional smart cropping and asks for an optional new setting to force center cropping, which is a request for a new option rather than a defect."
+  },
+  "257993327": {
+    "updatedAt": "2018-10-04T21:49:08Z",
+    "label": "bug",
+    "reason": "The reporter describes cl-transformation being ignored when cl-image has an ng-if, which is behavior differing from expected, so it is a defect report."
+  },
+  "293321984": {
+    "updatedAt": "2019-02-21T09:26:03Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for the SDK to allow passing proxy information (a new capability) or at least return a clearer error, which is a request for a change rather than a defect report or question."
+  },
+  "298258456": {
+    "updatedAt": "2018-03-13T08:26:58Z",
+    "label": "question",
+    "reason": "The user asks how to specify a folder and filename and whether transformations are possible for large video uploads, seeking guidance rather than requesting a specific change or reporting a defect."
+  },
+  "304820548": {
+    "updatedAt": "2021-04-28T23:26:12Z",
+    "label": "question",
+    "reason": "The author asks for a workaround to make cloudinary-url in SCSS work with webpacker, seeking help rather than requesting a new capability or reporting a defect."
+  },
+  "312573481": {
+    "updatedAt": "2019-11-12T18:14:10Z",
+    "label": "bug",
+    "reason": "The issue reports that resources_by_tag fails to find uploads when tags contain special URI characters, because the URI is assembled without encoding, which is behavior differing from expected correct functionality."
+  },
+  "314055329": {
+    "updatedAt": "2020-05-24T09:03:37Z",
+    "label": "bug",
+    "reason": "The issue reports a RuntimeException (Invalid Content-Range header) thrown by the SDK when the device locale is Arabic, which is broken behavior rather than a request for a new capability or a how-to question."
+  },
+  "320726370": {
+    "updatedAt": "2021-08-26T09:53:42Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for a change in behavior so the uploader can skip requiring api_secret when a precomputed signature and timestamp are supplied, which is a new capability rather than a defect."
+  },
+  "321239790": {
+    "updatedAt": "2023-07-20T20:55:31Z",
+    "label": "bug",
+    "reason": "After upgrading CarrierWave, the Cloudinary integration returns nil for model.image.file until the model is reloaded, which is a regression where the SDK behaves differently than expected."
+  },
+  "330322161": {
+    "updatedAt": "2018-11-27T22:10:08Z",
+    "label": "feature_request",
+    "reason": "The issue asks for the SDK to support additional blur transform options that it currently lacks, which is a new capability rather than a defect, even though it is labeled as a bug."
+  },
+  "341363412": {
+    "updatedAt": "2023-07-20T20:55:18Z",
+    "label": "question",
+    "reason": "The reporter asks whether they can override the behavior of keeping old images when updating through CarrierWave, which is a request for help rather than a report of a defect in the SDK, even though the title and existing label call it a bug."
+  },
+  "341547465": {
+    "updatedAt": "2018-08-28T07:13:57Z",
+    "label": "bug",
+    "reason": "The reporter describes a failure: the SDK throws UnknownHostException for api.cloudinary.com, which worked a few days earlier with no code change, so something is broken even if the cause may be environmental."
+  },
+  "345734533": {
+    "updatedAt": "2019-11-17T12:25:17Z",
+    "label": "bug",
+    "reason": "The reporter describes the model keeping the old image after an update, while Cloudinary shows the new one, which is behavior that differs from what the integration should do, even though the title is phrased as a question."
+  },
+  "381722945": {
+    "updatedAt": "2019-01-03T10:05:46Z",
+    "label": "bug",
+    "reason": "The reporter says version 1.25.0 of the SDK fails to resolve a dependency (support-appcompat) and that it works on 1.24.0, indicating the new release is broken compared to the previous one."
+  },
+  "396964904": {
+    "updatedAt": "2022-09-21T07:44:14Z",
+    "label": "bug",
+    "reason": "The reporter describes an upload failing with a decode error for a base64 data URI, which indicates the SDK or service is behaving incorrectly rather than asking how to do something or requesting a change."
+  },
+  "398442027": {
+    "updatedAt": "2020-06-18T10:12:28Z",
+    "label": "bug",
+    "reason": "The report describes the build failing after an OpenCV 4.0.1 upgrade because the Makefile's pkg-config name and the `cv.hpp` include no longer match the installed library, so the project behaves differently from how it builds per its instructions."
+  },
+  "402645227": {
+    "updatedAt": "2021-03-31T00:14:40Z",
+    "label": "bug",
+    "reason": "The reporter describes broken behavior: after updating a record, the new image and the previous one both disappear from Cloudinary and the stored URL returns a 404, which differs from the expected replacement behavior."
+  },
+  "403414906": {
+    "updatedAt": "2019-02-07T08:36:41Z",
+    "label": "bug",
+    "reason": "The reporter describes a regression where data.result changed from the expected object in versions before 1.1.2 to returning the cloudinary_cors.html contents in 1.1.3+, which is behavior differing from expected operation rather than a request for help or a new feature."
+  },
+  "404202411": {
+    "updatedAt": "2019-05-05T09:28:38Z",
+    "label": "bug",
+    "reason": "The reporter says the video player breaks in release 2.6.0 while the earlier 2.5.0 version works, which describes a regression in existing behavior rather than a new feature or a usage question."
+  },
+  "408350676": {
+    "updatedAt": "2020-10-17T15:26:43Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK's Transformation class replaces spaces with underscores in overlay text and font names, producing output that differs from the intended text and an invalid URL, which is broken behavior rather than a question or feature request."
+  },
+  "417211419": {
+    "updatedAt": "2019-05-05T09:17:33Z",
+    "label": "bug",
+    "reason": "The reporter describes an upload that reaches 100% and then fails with an EOFException on a specific device, which is a defect in the SDK's behavior rather than a request or a how-to question."
+  },
+  "428150205": {
+    "updatedAt": "2019-05-05T09:14:34Z",
+    "label": "question",
+    "reason": "The reporter asks whether they are doing something wrong to explain slow URL generation in MediaManager, which is a request for help rather than a defect report or a feature request."
+  },
+  "433369753": {
+    "updatedAt": "2019-05-05T09:13:03Z",
+    "label": "bug",
+    "reason": "The reporter says that upgrading above version 2.5.0 breaks image display in IE 10/11, which is a regression where the SDK behaves differently than before, even though the issue carries a 'question' label."
+  },
+  "447169794": {
+    "updatedAt": "2019-05-27T09:33:50Z",
+    "label": "question",
+    "reason": "The author is asking how to integrate the upload widget into a Gatsby app without a script tag and for guidance on using it via npm, rather than reporting a defect or requesting a specific change."
+  },
+  "453424438": {
+    "updatedAt": "2019-06-12T21:03:21Z",
+    "label": "bug",
+    "reason": "The reporter says that setting a fixed DPR of 2.0 generates oversized images for all devices, while the documented automatic DPR detection is not working as expected, so the behavior differs from the documentation."
+  },
+  "457707499": {
+    "updatedAt": "2023-07-20T20:55:12Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new, more specific exception class (such as Cloudinary::HttpClientError) so callers can rescue HTTP client errors without parsing messages, which is a request for new SDK capability rather than a defect, question, or other item."
+  },
+  "474585832": {
+    "updatedAt": "2019-12-31T14:03:57Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK's Transformation.overlay method incorrectly alters a public ID by replacing '-' with 'sub', which is behavior differing from expected correct output, so it is a defect."
+  },
+  "499675543": {
+    "updatedAt": "2022-08-23T17:42:24Z",
+    "label": "bug",
+    "reason": "The issue reports that the preprocessing chain's BitmapDecoder fails to honor EXIF orientation tags, so images come out unrotated, which is behavior differing from expected correct handling."
+  },
+  "508976852": {
+    "updatedAt": "2019-10-21T07:32:28Z",
+    "label": "bug",
+    "reason": "The issue reports that the tool crashes with an OpenCV assertion error when given 16-bit images, which is broken behavior rather than a request or a question."
+  },
+  "516772447": {
+    "updatedAt": "2019-11-03T11:58:14Z",
+    "label": "question",
+    "reason": "The user asks how to make the helper output a data-src attribute instead of src, which is a request for guidance on usage rather than a defect report or a requested change."
+  },
+  "549233253": {
+    "updatedAt": "2020-01-19T14:53:26Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK generates the wrong file extension (mp4v instead of mp4) for video/mp4 content, which breaks image delivery URLs, so it describes defective behavior rather than a request or question."
+  },
+  "563255919": {
+    "updatedAt": "2020-03-20T10:29:05Z",
+    "label": "bug",
+    "reason": "The issue reports that images with loading=\"lazy\" stop displaying in Chrome 80 while working in earlier versions, which is broken behavior compared to expected functionality."
+  },
+  "570466492": {
+    "updatedAt": "2020-02-27T01:24:01Z",
+    "label": "question",
+    "reason": "The issue asks how to achieve a specific behavior (storing external image URLs in a CloudinaryField alongside uploaded images) rather than requesting a new SDK capability or reporting a defect."
+  },
+  "616030141": {
+    "updatedAt": "2020-05-11T16:52:12Z",
+    "label": "bug",
+    "reason": "The title explicitly tags the issue as a bug and reports that a generated file is placed outside the expected src folder, which is broken behavior, though the body is empty so details are limited."
+  },
+  "616031087": {
+    "updatedAt": "2020-05-11T16:53:41Z",
+    "label": "feature_request",
+    "reason": "The title asks to allow more configuration options on the CLI, which is a request for new capability rather than a defect, question, or other chore, though the body is empty and the request is vague."
+  },
+  "616031646": {
+    "updatedAt": "2020-05-11T16:54:41Z",
+    "label": "feature_request",
+    "reason": "The title tagged as [Improvement] asks for a new capability, a GUI for configuration, which is not a defect, and the body is empty so no other category fits better."
+  },
+  "616032389": {
+    "updatedAt": "2020-05-11T16:55:50Z",
+    "label": "bug",
+    "reason": "The title explicitly tags the issue as a BUG and requests upgrading a dependency version used for auto-install, which suggests a broken or outdated install behavior, though the body is empty."
+  },
+  "674758911": {
+    "updatedAt": "2020-08-11T09:27:27Z",
+    "label": "bug",
+    "reason": "After upgrading to the latest @cloudinary/angular-5.x version, the user reports a compile error in the cloudinary-core type definitions, which is something broken rather than a feature request or usage question."
+  },
+  "675150746": {
+    "updatedAt": "2020-08-13T03:01:02Z",
+    "label": "question",
+    "reason": "The reporter is asking how to set the cdn_domain configuration field because the documentation does not explain it, which is a request for help rather than a defect report or a feature change."
+  },
+  "689281163": {
+    "updatedAt": "2020-08-31T17:21:47Z",
+    "label": "bug",
+    "reason": "The issue reports that generated URLs are broken (missing the upload preset's folder part), which is behavior differing from what is expected, so it is a defect rather than a feature request or question."
+  },
+  "716587237": {
+    "updatedAt": "2021-02-26T14:16:01Z",
+    "label": "bug",
+    "reason": "The issue reports that the clear checkbox no longer appears when using CloudinaryFileField in forms, which differs from the behavior of the CloudinaryField model field the user was using before."
+  },
+  "722042169": {
+    "updatedAt": "2020-10-15T06:33:08Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, adding support for rendering a picture element in the Vue SDK, which the SDK does not currently provide."
+  },
+  "740068693": {
+    "updatedAt": "2021-11-16T18:28:59Z",
+    "label": "bug",
+    "reason": "The issue reports that a 404 response still causes a 0-byte file to be written to the cache, which is broken behavior compared to expected handling of failed requests."
+  },
+  "759759050": {
+    "updatedAt": "2021-10-14T13:34:56Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new input option to customize the background image position instead of the hardcoded 'center center' default, which is a new capability rather than a defect or a question."
+  },
+  "775018797": {
+    "updatedAt": "2020-12-29T17:49:28Z",
+    "label": "question",
+    "reason": "The author is asking why processed JPEGs grow in file size rather than requesting a change or reporting a clearly documented behavior as broken, so it reads as a how-or-why question about the tool's output."
+  },
+  "778876826": {
+    "updatedAt": "2023-10-04T06:56:59Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new, more specific exception type (BadFormat/BadFileType) instead of the generic Error, which is a request for a new capability rather than a defect or a usage question."
+  },
+  "792649400": {
+    "updatedAt": "2021-01-24T15:22:37Z",
+    "label": "bug",
+    "reason": "The reporter describes an upload that fails in Safari with a CORS Authorization-header error while working in Chrome, which is broken behavior rather than a feature request or a pure how-to question."
+  },
+  "804838218": {
+    "updatedAt": "2022-01-10T17:32:36Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, custom error types and error interfaces that separate errors by behavior, rather than reporting a defect or asking how to do something."
+  },
+  "807997323": {
+    "updatedAt": "2021-02-22T18:59:24Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new SDK hook/API to receive background URLSession task completion events, which is a new capability rather than a defect or a usage question."
+  },
+  "811603678": {
+    "updatedAt": "2026-04-26T16:14:19Z",
+    "label": "bug",
+    "reason": "The reporter describes a performance regression after upgrading to SDK 2.x, where response times for URL generation dropped compared to 1.x, which counts as behavior that is broken relative to the prior version."
+  },
+  "839211756": {
+    "updatedAt": "2021-03-24T17:26:46Z",
+    "label": "question",
+    "reason": "The author asks how to dynamically set resource_type per file and whether multiple uploaders are needed, seeking guidance without requesting a change to the SDK or reporting a defect."
+  },
+  "869952364": {
+    "updatedAt": "2021-05-02T10:51:03Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK no longer compiles for tvOS in version 3.0.0 although 2.9.0 built fine, which is broken behavior rather than a request or question."
+  },
+  "875339199": {
+    "updatedAt": "2023-05-28T13:44:00Z",
+    "label": "feature_request",
+    "reason": "The user asks for the CLI to support syncing Area of Interest metadata during pull and push, which is a new capability the SDK lacks, even though it is phrased as a question and labeled 'question'."
+  },
+  "903351765": {
+    "updatedAt": "2023-05-28T13:42:36Z",
+    "label": "feature_request",
+    "reason": "The issue proposes and discusses adding a new declarative API style alongside the existing imperative one, which is a request for a new capability rather than a defect or a usage question."
+  },
+  "921857944": {
+    "updatedAt": "2025-10-12T17:05:11Z",
+    "label": "bug",
+    "reason": "The reporter shows that Map and numeric-valued Object inputs for context/metadata are mis-encoded or dropped silently, contradicting the documented behavior that these options accept Maps."
+  },
+  "924336766": {
+    "updatedAt": "2021-06-20T15:21:10Z",
+    "label": "bug",
+    "reason": "The issue reports that Cloudinary.Upload() throws a FormatException from the SDK's header handling, which is broken behavior rather than a feature request or usage question."
+  },
+  "924779363": {
+    "updatedAt": "2021-06-20T07:51:49Z",
+    "label": "feature_request",
+    "reason": "The issue asks the maintainers to evaluate SSIMULACRA against the CLIC 2021 perceptual dataset and submit results, which is a request for new work/capability rather than a defect or a how-to question."
+  },
+  "951702910": {
+    "updatedAt": "2022-11-17T10:38:46Z",
+    "label": "bug",
+    "reason": "The issue reports that font family names containing spaces are not escaped in generated URLs, producing invalid URIs, which is broken behavior compared to the text transformation path that is correctly escaped."
+  },
+  "968301490": {
+    "updatedAt": "2021-08-27T08:29:51Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, a prop to pass a CSS class through to the rendered img element, which the SDK does not currently support."
+  },
+  "976325875": {
+    "updatedAt": "2021-08-25T12:57:56Z",
+    "label": "bug",
+    "reason": "The reporter describes an import error where the SDK imports 'lodash/cloneDeep' while declaring 'lodash.cloneDeep' as its dependency, causing module resolution to fail in their Next.js project, which is broken behavior rather than a feature request or question."
+  },
+  "978256391": {
+    "updatedAt": "2021-08-24T23:02:46Z",
+    "label": "feature_request",
+    "reason": "The issue asks for new options to control placeholder modes and transitions, which is a request for added capability rather than a defect, question, or other item."
+  },
+  "991775931": {
+    "updatedAt": "2021-09-13T22:29:07Z",
+    "label": "bug",
+    "reason": "The reporter says uploading a TTF font through ActiveStorage fails because the gem assigns the image resource type to font/ttf files, which is broken behavior rather than a missing capability, even though the template is titled as a feature request."
+  },
+  "996881081": {
+    "updatedAt": "2021-09-19T11:36:09Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability in the SDK, rendering raw SVG as an inline svg element instead of an img tag, which the component does not currently support."
+  },
+  "1016700942": {
+    "updatedAt": "2021-12-07T05:59:29Z",
+    "label": "bug",
+    "reason": "The reporter describes a startup failure caused by a missing Microsoft.Extensions.Options assembly after upgrading to versions 1.15.1 and 1.15.2, which works on 1.14.0, so the SDK is behaving incorrectly."
+  },
+  "1093255460": {
+    "updatedAt": "2022-01-11T18:04:13Z",
+    "label": "feature_request",
+    "reason": "The issue asks for support for token-based authentication in the SDK, proposing a token prop on CloudinaryContext that the SDK does not currently provide, which is a new capability rather than a defect or a pure how-to question."
+  },
+  "1095034389": {
+    "updatedAt": "2022-01-10T12:41:56Z",
+    "label": "question",
+    "reason": "The issue asks whether ssimulacra has a quality threshold analogous to Butteraugli's, which is a request for information rather than a defect report or a change request."
+  },
+  "1119549153": {
+    "updatedAt": "2023-05-28T13:58:09Z",
+    "label": "bug",
+    "reason": "The issue reports an exception ('unrecognized selector') thrown during uploadFile after a React Native upgrade, which is broken behavior rather than a feature request or a how-to question."
+  },
+  "1144500978": {
+    "updatedAt": "2022-02-21T10:52:54Z",
+    "label": "question",
+    "reason": "The title asks how to integrate the sample app with Magento, which is a request for guidance rather than a defect report or a requested change."
+  },
+  "1175733084": {
+    "updatedAt": "2023-05-28T12:24:07Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK's TypeScript type definitions use unions where intersections are intended, so the typings accept wrong value types, which is broken behavior relative to the intended types rather than a new capability or a question."
+  },
+  "1250115117": {
+    "updatedAt": "2023-05-05T12:54:57Z",
+    "label": "bug",
+    "reason": "The reporter says the SDK's AdminApi lacks the updateResourcesAccessMode method that the documentation describes, causing a fatal error, so the SDK behaves differently from its documented API."
+  },
+  "1252092578": {
+    "updatedAt": "2023-05-28T12:09:16Z",
+    "label": "bug",
+    "reason": "The issue reports that binding effect with :effect produces an invalid transformation URL while the static effect attribute produces the correct one, which is behavior differing from expected and therefore a defect."
+  },
+  "1319419524": {
+    "updatedAt": "2023-05-28T12:04:01Z",
+    "label": "question",
+    "reason": "The user is asking for help with a 400 error from an upload request they wrote, with no request for an SDK change, so it reads as a usage/troubleshooting question rather than a defect in the library."
+  },
+  "1380883970": {
+    "updatedAt": "2023-05-10T10:36:46Z",
+    "label": "bug",
+    "reason": "The reporter describes a runtime exception ('General Error') during signed uploads with the chunk_size option, which is a broken behavior rather than a request for a new capability or a usage question."
+  },
+  "1390044464": {
+    "updatedAt": "2023-05-09T16:01:05Z",
+    "label": "bug",
+    "reason": "The reporter says the documented CarrierWave integration leaves source.metadata nil during after_save, which is behavior that differs from the documentation, so it is a defect report."
+  },
+  "1435494386": {
+    "updatedAt": "2023-05-28T13:08:03Z",
+    "label": "question",
+    "reason": "The user reports a TypeScript error when calling Cloudinary.uploader.destroy in a React app and seems to be seeking help using the API, not requesting a change or reporting a defect in the SDK."
+  },
+  "1450380689": {
+    "updatedAt": "2022-11-20T13:33:03Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new option on CLDUploadRequestParams to allow sending a Content-MD5 header, which is a new capability the SDK currently lacks rather than a defect."
+  },
+  "1558691860": {
+    "updatedAt": "2023-02-01T15:16:35Z",
+    "label": "bug",
+    "reason": "The reporter says the test cloud returns public IDs that are inconsistent with a real Cloudinary environment and behave differently from expected, which describes incorrect behavior rather than a new feature or a question."
+  },
+  "1578652152": {
+    "updatedAt": "2023-02-17T19:31:10Z",
+    "label": "question",
+    "reason": "The user asks how to upload, distinguish, and play audio files stored as video in Cloudinary, seeking help rather than requesting a change or reporting a defect."
+  },
+  "1608559274": {
+    "updatedAt": "2023-03-05T09:51:02Z",
+    "label": "bug",
+    "reason": "The issue reports that the PHPDoc for a method's $gravity parameter names the wrong class, so the documentation is inconsistent with the actual behavior, which matches the bug category of behaving differently from documentation."
+  },
+  "1664991208": {
+    "updatedAt": "2023-04-12T17:55:38Z",
+    "label": "question",
+    "reason": "The issue asks how to parse a Cloudinary URL into its cloudName and publicId and whether a utility or regex is provided, without requesting a change to the SDK."
+  },
+  "1667907835": {
+    "updatedAt": "2023-04-25T05:28:11Z",
+    "label": "question",
+    "reason": "The issue is a terse query asking about the status of createUploadWidget in the cloudinary types without explicitly requesting a specific change or reporting a defect."
+  },
+  "1686672125": {
+    "updatedAt": "2023-05-28T12:02:45Z",
+    "label": "bug",
+    "reason": "The reporter describes a ReferenceError (URLSearchParams undefined in SSR) introduced in version 1.10.0 that is resolved by reverting to 1.9.2, which is broken behavior rather than a question or feature request, despite being labeled 'question'."
+  },
+  "1715781931": {
+    "updatedAt": "2023-08-14T16:42:32Z",
+    "label": "bug",
+    "reason": "The reporter shows a traceback where calling cloudinary.api.resources_by_asset_folder fails with a JSON decode error, indicating the SDK call is broken rather than asking how to use it."
+  },
+  "1746977092": {
+    "updatedAt": "2023-06-09T04:33:23Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a change in the SDK's default behavior, making URLs use https:// without calling Secure() each time, which is a non-defect behavior change rather than a how-to question."
+  },
+  "1760547544": {
+    "updatedAt": "2023-06-18T06:51:48Z",
+    "label": "bug",
+    "reason": "The reporter describes a ClassCastException thrown by the SDK when uploading with a Transformation option, which is behavior that is broken relative to expected usage."
+  },
+  "1805959232": {
+    "updatedAt": "2023-07-15T07:54:33Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, a Cloudinary image provider that works with Flutter's precacheImage, which the SDK does not currently offer, even though the title is phrased as a how-to question."
+  },
+  "1808016765": {
+    "updatedAt": "2024-04-02T12:16:59Z",
+    "label": "bug",
+    "reason": "The user reports an error ('Cannot read properties of undefined') when calling the SDK's upload method, indicating the SDK behaves unexpectedly, though the root cause may be in their own code (req.file being undefined)."
+  },
+  "1811740536": {
+    "updatedAt": "2023-07-21T09:07:03Z",
+    "label": "bug",
+    "reason": "The reporter says the documented token-authentication code fails because the SDK's Url builder has no Type(\"authenticated\") method, so the SDK behaves differently from its documentation, though the request for a sample also makes it partly a question."
+  },
+  "1812139407": {
+    "updatedAt": "2023-07-20T08:50:18Z",
+    "label": "question",
+    "reason": "The issue asks whether the library is recommended for server-side or client-side use, which is a request for guidance rather than a change or defect report."
+  },
+  "1814683054": {
+    "updatedAt": "2023-07-22T14:18:45Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, a Cloudinary-ready video player for HLS on Android and iOS in the React Native SDK, which the SDK does not currently provide."
+  },
+  "1844825264": {
+    "updatedAt": "2023-08-10T09:46:05Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new option to automatically generate a default log folder path, which is a new capability rather than a defect or a usage question."
+  },
+  "1847156698": {
+    "updatedAt": "2023-10-06T17:06:28Z",
+    "label": "bug",
+    "reason": "The reporter says base64 uploading via the Go SDK is not working as expected with their code, which describes the SDK behaving differently from its intended functionality rather than asking how to do something or requesting a new feature."
+  },
+  "1865665325": {
+    "updatedAt": "2023-08-24T18:21:44Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new configuration option to set the CSV delimiter, which is a new capability rather than a defect or a usage question."
+  },
+  "1878976190": {
+    "updatedAt": "2023-09-26T07:32:58Z",
+    "label": "bug",
+    "reason": "The reporter says the SDK's TypeScript declaration for ResourceApiResponse is missing the next_cursor property that the API actually returns, so the typings behave differently from what the response contains, which is a defect in the d.ts files."
+  },
+  "1893511058": {
+    "updatedAt": "2023-09-13T00:15:50Z",
+    "label": "bug",
+    "reason": "The issue reports that the status is set to MIGRATED by default before the response is received, which behaves differently from the intended status logic described in the issue, so it points to a defect rather than a new capability or a question."
+  },
+  "1930886564": {
+    "updatedAt": "2023-10-06T20:20:19Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for the SDK's Transformation methods to accept string parameters in their type signatures as well as the typed action objects, which is a new capability rather than a defect or a usage question."
+  },
+  "1931580675": {
+    "updatedAt": "2023-10-11T13:47:35Z",
+    "label": "bug",
+    "reason": "The issue reports broken behavior: the upload route works under `next dev` but throws an HTTP 500 with a JSON parse error after `next build && next start`, which the SDK's upload_stream flow is expected to handle."
+  },
+  "2021625604": {
+    "updatedAt": "2023-12-01T23:05:16Z",
+    "label": "bug",
+    "reason": "The report describes the SDK mangling the preview:duration effect into an invalid 'du_15.0' transformation, causing an exception during upload, which is behavior not working as expected."
+  },
+  "2028325666": {
+    "updatedAt": "2023-12-20T12:39:38Z",
+    "label": "bug",
+    "reason": "The issue reports a RangeError thrown when calling the SDK's image constructor on certain Android devices, where the code is documented to work and behaves differently on that hardware, so it is a defect."
+  },
+  "2036852767": {
+    "updatedAt": "2023-12-16T05:02:31Z",
+    "label": "feature_request",
+    "reason": "The issue asks whether a capability (image previews of Cloudinary files for various document types) exists and requests it be added if it doesn't, which is primarily a request for new functionality, though it begins with a question."
+  },
+  "2038375173": {
+    "updatedAt": "2023-12-12T18:54:44Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK throws a required-cloudName error even in configurations where cloudName is not used, which is behavior differing from what is needed and a defect in validation logic."
+  },
+  "2072474949": {
+    "updatedAt": "2024-01-09T16:47:05Z",
+    "label": "question",
+    "reason": "The user is asking how to access width and height attributes from a Cloudinary resource in Django, which is a request for help rather than a request for a change or a defect report."
+  },
+  "2116938574": {
+    "updatedAt": "2024-10-01T10:57:51Z",
+    "label": "bug",
+    "reason": "The reporter says the resources_by_asset_folder call fails with a 404 and an HTML error page instead of the documented JSON response, which is behavior differing from expected functionality."
+  },
+  "2122073816": {
+    "updatedAt": "2024-05-07T09:04:39Z",
+    "label": "bug",
+    "reason": "The issue reports that the package fails at runtime with a missing native module error in bare React Native projects, which is broken behavior compared to the expected usability described in the documentation."
+  },
+  "2151014807": {
+    "updatedAt": "2024-02-24T10:32:08Z",
+    "label": "bug",
+    "reason": "The issue reports that using the Cloudinary React Native SDK causes custom fonts and icons to fail to load on Expo, which is broken behavior rather than a request or question."
+  },
+  "2157753246": {
+    "updatedAt": "2024-02-28T15:23:46Z",
+    "label": "bug",
+    "reason": "The reporter says the image is not deleted even though the SDK call returns successfully, which means the behavior differs from what is expected of the delete API."
+  },
+  "2158798755": {
+    "updatedAt": "2024-02-28T12:47:08Z",
+    "label": "feature_request",
+    "reason": "The issue asks the SDK to mark the ResourceType enum with [Flags] so callers can request both images and videos in one call, which is a new capability rather than a defect."
+  },
+  "2175306361": {
+    "updatedAt": "2024-03-13T08:28:43Z",
+    "label": "bug",
+    "reason": "The reporter says the package installation broke after updating to 1.4, because Composer now fetches it via a git SSH URL instead of the previous one, which is a regression rather than a new capability or a question."
+  },
+  "2200987118": {
+    "updatedAt": "2024-03-21T19:23:53Z",
+    "label": "bug",
+    "reason": "The reporter describes the AdvancedVideo component failing to load or playing videos indefinitely on mobile Chrome and Safari, which is broken behavior compared to the expected behavior that all videos load and play."
+  },
+  "2214957441": {
+    "updatedAt": "2024-04-01T08:32:21Z",
+    "label": "bug",
+    "reason": "The issue reports that transformation parameters containing a double quote are not escaped, producing an invalid URL, which is behavior not working as expected."
+  },
+  "2280355698": {
+    "updatedAt": "2026-09-24T08:25:36Z",
+    "label": "bug",
+    "reason": "The reporter describes a visual defect where alt text briefly flashes before the image loads with the lazyload plugin, which is broken behavior rather than a request for new capability or a how-to question."
+  },
+  "2299622343": {
+    "updatedAt": "2024-05-16T09:57:53Z",
+    "label": "bug",
+    "reason": "The reporter says the documented `cloudinary.uploader()` call does not resolve in the Kotlin SDK, so the SDK behaves differently from its documentation."
+  },
+  "2312949768": {
+    "updatedAt": "2025-10-24T11:58:37Z",
+    "label": "bug",
+    "reason": "The reporter describes npm install reporting 18 dependency vulnerabilities, which is a defect in the package's dependency set rather than a request for a new capability or a usage question."
+  },
+  "2315913591": {
+    "updatedAt": "2024-05-24T17:51:02Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for the SDK to accept and forward URL parameters from GET resources methods, which is a new capability rather than a defect or a usage question."
+  },
+  "2320141716": {
+    "updatedAt": "2026-02-10T12:54:36Z",
+    "label": "feature_request",
+    "reason": "The issue asks for an upgrade of the bundled jQuery UI widget dependency to a newer version to address vulnerabilities, which is a change request rather than a defect in current behavior or a usage question."
+  },
+  "2350234666": {
+    "updatedAt": "2025-11-08T21:53:24Z",
+    "label": "question",
+    "reason": "The reporter is asking for help with a 'Must supply api_key' error caused by their own Java configuration, where the config map is built but never passed to the Cloudinary constructor, and they are not reporting an SDK defect or requesting a change."
+  },
+  "2413679593": {
+    "updatedAt": "2024-07-21T09:23:06Z",
+    "label": "bug",
+    "reason": "The reporter describes an uncaught TypeError and an undefined upload response when calling the SDK upload, indicating behavior that is broken rather than a request or a how-to question."
+  },
+  "2442301813": {
+    "updatedAt": "2024-09-19T15:49:44Z",
+    "label": "question",
+    "reason": "The user asks whether and how the SDK can be used in a Kotlin Multiplatform project and requests help getting the dependency to resolve, without explicitly asking for a code change."
+  },
+  "2449448755": {
+    "updatedAt": "2025-05-05T13:10:08Z",
+    "label": "bug",
+    "reason": "The reporter describes a build failure ('A problem occurred evaluating project ':expo-application'') that occurs when using the SDK in an Expo development build, which is broken behavior rather than a feature request or usage question."
+  },
+  "2486135603": {
+    "updatedAt": "2024-08-26T11:52:54Z",
+    "label": "bug",
+    "reason": "The user reports the SDK's search call returning a 'General Error' with HTTP 500 and says the behavior is unexpected, which is a defect report rather than a request or a how-to question."
+  },
+  "2493607934": {
+    "updatedAt": "2024-09-25T15:50:58Z",
+    "label": "bug",
+    "reason": "The issue reports that the Cloudinary download SDK pulls in a Fresco version with an outdated SoLoader dependency that causes Google Play rejection, which is a defect in the SDK's dependency set rather than a new capability or a usage question."
+  },
+  "2504190672": {
+    "updatedAt": "2024-09-04T10:58:07Z",
+    "label": "question",
+    "reason": "The user is asking why the file extension is missing from generated URLs and how the behavior differs from the Node.js API, seeking an explanation rather than requesting a change or reporting a defect."
+  },
+  "2526742410": {
+    "updatedAt": "2025-07-10T15:08:42Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK throws a 'Cannot find native module ExponentAV' error even though expo-av is installed, which is broken behavior rather than a request or question."
+  },
+  "2554718298": {
+    "updatedAt": "2025-10-10T11:05:10Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new sample app demonstrating SDK capabilities, which is a new capability the repository lacks rather than a defect or a usage question."
+  },
+  "2554718705": {
+    "updatedAt": "2025-10-20T02:03:53Z",
+    "label": "feature_request",
+    "reason": "The issue explicitly asks for an improved sample app demonstrating SDK capabilities, which is a new capability rather than a defect or a usage question."
+  },
+  "2554719005": {
+    "updatedAt": "2024-10-14T17:17:57Z",
+    "label": "feature_request",
+    "reason": "The issue explicitly labels itself a feature request and asks for a new sample app demonstrating SDK capabilities, which is a new capability rather than a defect or a question."
+  },
+  "2554719263": {
+    "updatedAt": "2024-09-29T05:42:53Z",
+    "label": "feature_request",
+    "reason": "The issue explicitly asks for a new improved sample app to be built, which is a request for new capability rather than a defect or a usage question."
+  },
+  "2557544075": {
+    "updatedAt": "2024-10-16T14:47:57Z",
+    "label": "bug",
+    "reason": "The user reports that the Cloudinary gem raises \"Must supply cloud_name\" and Cloudinary.config.cloud_name returns false even though the config shows the correct cloud name, which is behavior that differs from what the documented configuration should produce."
+  },
+  "2559514329": {
+    "updatedAt": "2024-10-06T10:54:03Z",
+    "label": "other",
+    "reason": "The issue is a general call for contributions to update the sample project's dependencies, comments, and examples, which is a maintenance chore rather than a new SDK capability, a defect, or a how-to question."
+  },
+  "2559515904": {
+    "updatedAt": "2024-10-20T13:31:48Z",
+    "label": "other",
+    "reason": "The issue is a call for contributions to create a new sample project, which is a maintenance or chore task rather than a request for a new SDK capability, a defect report, or a how-to question."
+  },
+  "2559580055": {
+    "updatedAt": "2024-10-31T10:39:52Z",
+    "label": "other",
+    "reason": "The issue is a general call for contributions to refresh the sample project (dependency updates, optimization, documentation), which is a maintenance chore rather than a new SDK capability, a defect, or a question."
+  },
+  "2559581885": {
+    "updatedAt": "2024-10-03T20:18:24Z",
+    "label": "other",
+    "reason": "The issue is a call for contributors to create a new sample project, which is documentation or chore work rather than a new SDK capability, a defect, or a how-to question."
+  },
+  "2559582437": {
+    "updatedAt": "2024-10-09T15:23:30Z",
+    "label": "other",
+    "reason": "The issue is a promotional announcement inviting contributions to Hacktoberfest rather than requesting a feature, reporting a defect, or asking a question."
+  },
+  "2559698735": {
+    "updatedAt": "2024-10-01T16:21:43Z",
+    "label": "other",
+    "reason": "This is a promotional announcement inviting contributions to Hacktoberfest, not a specific feature request, bug report, or question about the SDK."
+  },
+  "2559698813": {
+    "updatedAt": "2024-10-01T16:21:46Z",
+    "label": "other",
+    "reason": "The issue is a promotional announcement for Hacktoberfest participation rather than a request for a new capability, a defect report, or a question."
+  },
+  "2559698882": {
+    "updatedAt": "2025-11-02T18:01:33Z",
+    "label": "other",
+    "reason": "This is a promotional announcement inviting contributions to Hacktoberfest rather than a specific feature request, bug report, or question about the SDK."
+  },
+  "2559698936": {
+    "updatedAt": "2024-10-01T16:21:49Z",
+    "label": "other",
+    "reason": "This is a promotional announcement about Hacktoberfest participation rather than a feature request, bug report, or question about the SDK."
+  },
+  "2559698990": {
+    "updatedAt": "2024-11-10T17:37:58Z",
+    "label": "other",
+    "reason": "This is a promotional announcement about Hacktoberfest participation rather than a feature request, bug report, or question about the SDK."
+  },
+  "2559699069": {
+    "updatedAt": "2024-10-01T16:21:54Z",
+    "label": "other",
+    "reason": "The issue is a Hacktoberfest promotional announcement inviting contributions rather than requesting a feature, reporting a bug, or asking a question."
+  },
+  "2562351097": {
+    "updatedAt": "2024-10-07T09:46:44Z",
+    "label": "bug",
+    "reason": "The issue reports a broken link in the README that points to a file that no longer exists at the referenced commit, which is something broken."
+  },
+  "2564973443": {
+    "updatedAt": "2025-01-16T08:30:05Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability: configuring the HTTP client strategy by class and accepting a typed Configuration builder instead of a Map, which is not a defect."
+  },
+  "2589877335": {
+    "updatedAt": "2024-11-02T19:01:39Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, offline download and caching of videos for playback, which the SDK does not currently provide."
+  },
+  "2598156134": {
+    "updatedAt": "2025-01-15T01:01:11Z",
+    "label": "bug",
+    "reason": "The issue reports a regression where cloudinary-http5 2.0.0 ignores the http.proxyHost and http.proxyPort system properties that the 1.39.0 cloudinary-http45 version honored, because useSystemProperties is no longer called on the builder."
+  },
+  "2600940917": {
+    "updatedAt": "2024-10-21T20:29:05Z",
+    "label": "bug",
+    "reason": "The README's Maven dependency version (2.0.0 for cloudinary-http45) does not match the versions published on Maven Central, so the documentation is inconsistent with the actual artifacts."
+  },
+  "2631500100": {
+    "updatedAt": "2024-11-04T15:17:44Z",
+    "label": "feature_request",
+    "reason": "The issue proposes new behavior for the SDK, namely dev-only warnings for lazy-loaded LCP images and oversized images, plus documentation changes, rather than reporting a defect or asking how to use the SDK."
+  },
+  "2679832905": {
+    "updatedAt": "2024-11-22T14:08:45Z",
+    "label": "bug",
+    "reason": "The reporter describes an upload failing with a 500 error for files over the default chunk size, and notes that the documented chunked upload behavior does not work as expected."
+  },
+  "2697931575": {
+    "updatedAt": "2024-12-01T10:35:22Z",
+    "label": "bug",
+    "reason": "The reporter describes memory leaks and retain cycles when using signedUploadLarge, which is broken behavior in the SDK rather than a new feature, question, or other chore."
+  },
+  "2698894825": {
+    "updatedAt": "2025-02-06T06:10:13Z",
+    "label": "bug",
+    "reason": "The reporter shows that resourceByAssetID silently drops documented options such as image_metadata, so the SDK behaves differently from its documentation."
+  },
+  "2732213648": {
+    "updatedAt": "2024-12-11T14:37:55Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new minimal sample project to be added to the SDK repository, which is a request for new content rather than a defect or a usage question."
+  },
+  "2757546532": {
+    "updatedAt": "2024-12-24T13:35:10Z",
+    "label": "bug",
+    "reason": "The reporter describes ANRs caused by MediaManager.init blocking the main thread during Application.onCreate, which is a defect in SDK behavior rather than a feature request or question."
+  },
+  "2802542528": {
+    "updatedAt": "2025-01-24T15:33:15Z",
+    "label": "bug",
+    "reason": "The reporter says the generated URL with auth_token and sign_url set is missing the signature and returns a 401 under strict transformations, which is behavior that differs from what is expected, so it is a defect rather than a feature request or question."
+  },
+  "2855920353": {
+    "updatedAt": "2025-02-16T06:45:36Z",
+    "label": "bug",
+    "reason": "The reporter says UploadResult parses the wrong value for the 'bytes' filesize field, which is behavior differing from what is expected, so it is a defect report."
+  },
+  "2863825799": {
+    "updatedAt": "2025-03-03T17:44:17Z",
+    "label": "bug",
+    "reason": "The issue reports that commas in video text overlays render as %2C escape sequences, which is behavior that differs from what the SDK should produce for text overlays, so it is a defect rather than a feature request or question."
+  },
+  "2883065456": {
+    "updatedAt": "2025-04-08T10:45:53Z",
+    "label": "bug",
+    "reason": "The issue reports that the @cloudinary/html package incorrectly pulls in TypeScript as a runtime dependency even though it should only be a dev dependency, which is broken behavior rather than a request for a new capability or a how-to question."
+  },
+  "2909387027": {
+    "updatedAt": "2025-03-11T07:14:55Z",
+    "label": "other",
+    "reason": "The issue is an unfilled bug-report template with placeholder text and no description of any actual defect, behavior, or request."
+  },
+  "3066454348": {
+    "updatedAt": "2025-05-29T16:04:42Z",
+    "label": "bug",
+    "reason": "The issue reports that the Cloudinary ActiveStorage service's BlobKey wrapper causes Sidekiq 8 strict args to raise errors, so the SDK behaves differently from what is expected and is broken in this integration."
+  },
+  "3210491208": {
+    "updatedAt": "2025-07-10T15:15:37Z",
+    "label": "bug",
+    "reason": "The issue reports that the SDK's UploadApiErrorResponse type does not match the actual API error response shape, so the SDK behaves differently from what it declares, which is a defect rather than a feature request or question."
+  },
+  "3218250838": {
+    "updatedAt": "2025-07-10T07:45:24Z",
+    "label": "question",
+    "reason": "The issue asks whether it is safe to expose an API key to app users and how to handle it, seeking guidance rather than requesting a change or reporting a defect."
+  },
+  "3239691674": {
+    "updatedAt": "2025-07-24T10:06:29Z",
+    "label": "bug",
+    "reason": "The issue reports that Uploader.uploadLarge mutates the caller's options map, causing an error with immutable maps, which is behavior that does not match expected correct behavior."
+  },
+  "3389127796": {
+    "updatedAt": "2025-09-06T09:06:42Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for a missing UploadPreset field on RawUploadParams so unsigned raw uploads can be sent, which is a new capability the SDK lacks rather than a defect in existing behavior."
+  },
+  "3432250496": {
+    "updatedAt": "2025-09-19T09:53:26Z",
+    "label": "bug",
+    "reason": "The issue reports a misspelled interface name (\"Transforamtion\") in the SDK, which is a defect in naming relative to the intended spelling rather than a new capability or a usage question."
+  },
+  "3452919675": {
+    "updatedAt": "2025-09-28T05:54:34Z",
+    "label": "feature_request",
+    "reason": "The issue asks for new capabilities in the bootstrap script, namely npm fallback, a --use-npm flag, and package.json validation, rather than reporting a defect or asking how to do something."
+  },
+  "3478208531": {
+    "updatedAt": "2026-02-03T17:04:00Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for the SDK to add support for Expo 54, since its peer dependency range only covers Expo 50 through 53, which is a new capability rather than a defect in existing behavior."
+  },
+  "3484310969": {
+    "updatedAt": "2025-10-15T14:35:25Z",
+    "label": "other",
+    "reason": "The issue proposes adding a CODE_OF_CONDUCT.md file, which is a documentation chore rather than a new SDK capability, a defect, or a usage question."
+  },
+  "3500660790": {
+    "updatedAt": "2025-11-01T06:05:07Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a behavior change, clearer error messages with install guidance and a new getAvailabilityInfo() method, rather than reporting a defect where the SDK malfunctions or contradicts its documentation."
+  },
+  "3503295549": {
+    "updatedAt": "2025-10-10T20:00:34Z",
+    "label": "bug",
+    "reason": "The reporter describes intermittent HTTP 404 errors when fetching .eml files that exist in Cloudinary, which is behavior not working as documented or expected."
+  },
+  "3504358463": {
+    "updatedAt": "2025-10-13T09:14:50Z",
+    "label": "other",
+    "reason": "The issue asks for an internal refactor to replace deprecated CloudinaryContext usage with CloudinaryObject, which is a maintenance chore rather than a broken behavior, a new capability, or a usage question."
+  },
+  "3596866812": {
+    "updatedAt": "2025-11-06T17:48:14Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a change in behavior (restricting date parsing to YYYY-MM-DD by default and optionally allowing custom formats) rather than reporting a defect or asking a question, and it is labeled enhancement."
+  },
+  "3605467267": {
+    "updatedAt": "2025-11-26T14:22:39Z",
+    "label": "bug",
+    "reason": "The issue reports that uploader param classes such as DestroyParams are not exported from the package, so users cannot construct them as the SDK's usage example expects. This is a broken export, which is a defect rather than a new capability."
+  },
+  "3686948219": {
+    "updatedAt": "2025-12-02T23:23:25Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new opt-in capability, letting the Cloudinary Active Storage service reuse a preloaded blob passed via options instead of querying the database, rather than reporting broken behavior."
+  },
+  "3782459272": {
+    "updatedAt": "2026-01-20T16:21:09Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for a new capability, support for additional custom query parameters such as `client`, which the node lacks, and offers to contribute a PR for it."
+  },
+  "3795700927": {
+    "updatedAt": "2026-01-18T10:27:56Z",
+    "label": "bug",
+    "reason": "The node reports that it needs an update and fails to load even though the installed version is already current, which is broken behavior rather than a feature request or usage question."
+  },
+  "3819568778": {
+    "updatedAt": "2026-01-20T22:52:23Z",
+    "label": "bug",
+    "reason": "The reporter describes the SDK producing an invalid signature during upload and a Metadata parameter that behaves differently from the documentation, both of which are broken behavior."
+  },
+  "3830681490": {
+    "updatedAt": "2026-02-04T16:23:28Z",
+    "label": "bug",
+    "reason": "The reporter built the tool with libjxl support, which should let it read JPEG XL files, but it fails with \"Could not load distorted image\", so the tool is behaving differently from its intended capability, even though they also ask for debugging help."
+  },
+  "3860957563": {
+    "updatedAt": "2026-01-27T19:04:36Z",
+    "label": "feature_request",
+    "reason": "The reporter asks for a change to the public API surface (making the SystemExtension methods internal), which is a behavior change request rather than a defect, question, or other chore."
+  },
+  "3986237379": {
+    "updatedAt": "2026-02-26T10:21:55Z",
+    "label": "bug",
+    "reason": "The issue reports that raw CSV uploads through the ActiveStorage integration fail with a rejection error, which is broken behavior compared with the 1.x series, so it is a defect rather than a feature request or question."
+  },
+  "4033424412": {
+    "updatedAt": "2026-08-04T00:29:04Z",
+    "label": "feature_request",
+    "reason": "The issue asks for the withheld full-set CID22 annotations (MCOS/RMOS/Elo scores for all 250 references) to be published, which is a request for new data rather than a defect in the SDK's behavior."
+  },
+  "6397248858": {
+    "updatedAt": "2026-11-15T09:29:40Z",
+    "label": "bug",
+    "reason": "The issue reports that toURL() leaves '#' unencoded in overlay text and public IDs, so the generated URLs are truncated at the fragment and return 404 errors, contrary to the documented behavior of escaping special characters."
+  },
+  "5889686564": {
+    "updatedAt": "2026-10-16T19:03:35Z",
+    "label": "question",
+    "reason": "The issue asks which additional datasets were used for retuning SSIMULACRA 2.1 weights, seeking information rather than requesting a change or reporting a defect."
+  },
+  "5850405943": {
+    "updatedAt": "2026-10-14T15:48:02Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a change in the SDK's behavior, adding a pointer to Claimable Cloud in the invalid-API-key error, which is a request for new behavior rather than a defect."
+  },
+  "5475234562": {
+    "updatedAt": "2026-09-16T13:33:07Z",
+    "label": "other",
+    "reason": "The issue asks maintainers to enable Private Vulnerability Reporting so the reporter can privately disclose a security issue, which is a security-process request rather than a feature, defect report, or how-to question."
+  },
+  "5475234160": {
+    "updatedAt": "2026-09-16T13:37:52Z",
+    "label": "other",
+    "reason": "The issue asks maintainers to enable Private Vulnerability Reporting so the reporter can privately disclose a security issue, which is neither a feature request, a defect report, nor a usage question."
+  },
+  "5475233944": {
+    "updatedAt": "2026-09-16T13:33:04Z",
+    "label": "other",
+    "reason": "The issue requests enabling GitHub's Private Vulnerability Reporting or a security contact so the reporter can disclose a vulnerability privately, which is neither a feature request, a defect report, nor a usage question."
+  },
+  "5425649126": {
+    "updatedAt": "2026-09-12T02:50:19Z",
+    "label": "bug",
+    "reason": "The reporter describes Cloudinary returning URLs with the wrong format extension, causing ActiveStorage::IntegrityError, which is behavior that differs from expected correct functionality, so it is a defect rather than a feature request or question."
+  },
+  "5398207764": {
+    "updatedAt": "2026-09-09T11:28:06Z",
+    "label": "other",
+    "reason": "The issue asks maintainers to enable Private Vulnerability Reporting or name a private disclosure channel, which is neither a new SDK capability, a defect report, nor a usage question, so it falls under other."
+  },
+  "5275601867": {
+    "updatedAt": "2026-08-28T10:19:12Z",
+    "label": "bug",
+    "reason": "The reporter says the player throws a MEDIA_ERR_DECODE error when playing their videos, which means the SDK is behaving differently from what is expected for working playback."
+  },
+  "4759829541": {
+    "updatedAt": "2026-06-27T20:28:08Z",
+    "label": "feature_request",
+    "reason": "The issue asks for a new capability, an official Dart server-side SDK for Cloudinary, which the company does not currently provide, rather than reporting a defect or asking how to do something."
+  },
+  "4712840236": {
+    "updatedAt": "2026-06-26T12:19:57Z",
+    "label": "bug",
+    "reason": "The issue reports a runtime TypeError crash in AdvancedImage/AdvancedVideo lifecycle hooks when unmounted before onMounted, which is broken behavior rather than a request for a new capability or a question."
+  },
+  "4621537533": {
+    "updatedAt": "2026-06-09T13:04:25Z",
+    "label": "other",
+    "reason": "The issue is a private security disclosure request asking maintainers to enable Private Vulnerability Reporting or provide a contact address, which is neither a product feature, a defect, nor a usage question."
+  },
+  "4537748306": {
+    "updatedAt": "2026-05-28T04:32:36Z",
+    "label": "other",
+    "reason": "The issue title and body contain only meaningless placeholder text ('Fff' and 'Ff') with no request, defect report, or question, so it cannot be classified as any actionable category."
+  },
+  "4302761480": {
+    "updatedAt": "2026-04-21T13:02:38Z",
+    "label": "other",
+    "reason": "The issue reports a vulnerable transitive lodash dependency flagged by audit tools and asks for a dependency bump, which falls under the dependency-bump category rather than a functional bug, feature request, or usage question."
+  }
+}
