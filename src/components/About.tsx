@@ -3,10 +3,12 @@ export function About({ company }: { company: string }) {
     <section className="about" aria-labelledby="about-title">
       <h2 id="about-title">About this demo</h2>
       <h3 id="how-it-works">How it works</h3>
+      <h4>1. Collect and sort</h4>
       <p>
         A script pulls every open issue from a GitHub org's public repos; this demo uses {company}. An AI model (Claude
         Haiku in this demo) sorts them into feature requests, bugs, questions and other.
       </p>
+      <h4>2. Score</h4>
       <p>
         Next, the model rewrites each feature request as the problem behind it, so it is judged on the need rather than on
         the fix the requester suggested. It then scores the request from 1 to 5 on five dimensions, each with a one-line
@@ -33,12 +35,17 @@ export function About({ company }: { company: string }) {
         </li>
       </ul>
       <p>
-        The model also says how confident it is in each request's scores, so you know which ones to check first. Because each
-        request is scored on its own, scores tend to bunch in the middle; a final pass compares all the requests side by
-        side and spreads out Reach, Business Impact and Urgency so the ranking can tell them apart.
+        The model also says how confident it is in each request's scores, so you know which ones to check first.
       </p>
+      <h4>3. Compare side by side</h4>
       <p>
-        The model also reads the latest comments in each thread and flags requests that may not need ranking at all:
+        Because each request is scored on its own, scores tend to bunch in the middle. A final pass compares all the
+        requests side by side and spreads out Reach, Business Impact and Urgency so the ranking can tell them apart.
+      </p>
+      <h4>4. Flag for cleanup</h4>
+      <p>
+        The model also reads the latest comments in each thread and flags requests whose rank alone could mislead, so a
+        product manager can check them first:
       </p>
       <ul className="rubric">
         <li>
@@ -53,12 +60,11 @@ export function About({ company }: { company: string }) {
           building from scratch.
         </li>
       </ul>
-      <p>This way a product manager can clear out dead weight instead of ranking it.</p>
+      <h4>5. Show</h4>
       <p>
         The results are saved to a file. This page only does the arithmetic for the weights, so no AI runs while you
         browse.
       </p>
-      <p>Pointing the tool at another organization takes a new strategy summary and one run.</p>
       <h3>Limits</h3>
       <p>
         These are public GitHub issues, not {company}'s full product wishlist; a real deployment would also pull from
