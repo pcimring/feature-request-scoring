@@ -5,13 +5,21 @@ export function About({ company }: { company: string }) {
       <h3>How it works</h3>
       <p>
         A script pulls every open issue from a GitHub organization's public repos; this demo uses {company}'s. Claude
-        Haiku sorts them into feature requests, bugs, questions and other, then restates each feature request as the
-        underlying problem, separate from the solution the requester proposed, scores it on five dimensions with a reason
-        for each, and says how confident it is. A final pass looks at all the requests side by side and adjusts Reach,
-        Business Impact and Urgency relative to each other. It also reads the latest comments and flags threads that
-        drifted into several requests, requests that may already be solved (possibly resolved), and requests with a pull
-        request waiting, so a product manager can clear out dead weight instead of ranking it. The results are saved to a
-        file. This page only does the arithmetic for the weights, so no AI runs while you browse.
+        Haiku sorts them into feature requests, bugs, questions and other.
+      </p>
+      <p>
+        It then restates each feature request as the underlying problem, separate from the solution the requester
+        proposed, scores it on five dimensions with a reason for each, and says how confident it is. A final pass looks at
+        all the requests side by side and adjusts Reach, Business Impact and Urgency relative to each other.
+      </p>
+      <p>
+        It also reads the latest comments and flags threads that drifted into several requests, requests that may already
+        be solved (possibly resolved), and requests with a pull request waiting, so a product manager can clear out dead
+        weight instead of ranking it.
+      </p>
+      <p>
+        The results are saved to a file. This page only does the arithmetic for the weights, so no AI runs while you
+        browse.
       </p>
       <p>
         Strategic Fit is scored against a short summary of {company}'s public announcements. Pointing the tool at another
