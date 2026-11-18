@@ -128,3 +128,4 @@ html { scroll-behavior: smooth; }
 #how-it-works { scroll-margin-top: 16px; }
 .rubric { margin: 6px 0 10px; padding-left: 20px; max-width: 760px; }
 .rubric li + li { margin-top: 4px; }
+.lead-more { margin: 0 0 12px; font-size: 16px; }

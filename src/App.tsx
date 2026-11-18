@@ -47,11 +47,12 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
           product manager should review.
           {dataset && ` This demo runs it on ${dataset.company}'s public repos.`}
         </p>
+        <p className="lead-more">
+          Curious how the scores are made? See <a href="#how-it-works">How it works</a> below.
+        </p>
         {dataset && (
           <p className="source">
             Data source: <a href={`https://github.com/${dataset.org}`}>{`github.com/${dataset.org}`}</a>
-            <span className="sep">·</span>
-            <a href="#how-it-works">How it works</a>
           </p>
         )}
       </header>
