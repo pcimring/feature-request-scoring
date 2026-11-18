@@ -67,4 +67,4 @@ export interface Dataset {
 
 export type Weights = Record<Dimension, number>;
 
-export const DEFAULT_WEIGHTS: Weights = { reach: 1, impact: 1, urgency: 1, fit: 1, feasibility: 1 };
+export const DEFAULT_WEIGHTS: Weights = { reach: 5, impact: 5, urgency: 5, fit: 5, feasibility: 5 };

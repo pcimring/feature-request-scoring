@@ -50,7 +50,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
             <WeightSliders weights={weights} onChange={setWeights} />
             <label className="toggle">
               <input type="checkbox" checked={reviewOnly} onChange={(e) => setReviewOnly(e.target.checked)} />
-              Needs review only
+              Only show requests that need review
             </label>
           </section>
           <RequestList requests={ranked} />

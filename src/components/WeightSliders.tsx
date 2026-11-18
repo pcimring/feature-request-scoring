@@ -18,7 +18,7 @@ export function WeightSliders({ weights, onChange }: { weights: Weights; onChang
           <input
             type="range"
             min={0}
-            max={5}
+            max={10}
             step={1}
             value={weights[d]}
             aria-label={`${DIMENSION_LABELS[d]} weight`}

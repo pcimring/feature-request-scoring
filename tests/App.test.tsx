@@ -28,13 +28,13 @@ describe("App", () => {
   it("ranks rows and re-ranks when a weight changes", () => {
     render(<App dataset={fixtureDataset()} />);
     expect(problems()).toEqual(["Reachy problem", "Impacty problem", "Vague problem"]);
-    fireEvent.change(screen.getByLabelText("Business Impact weight"), { target: { value: "5" } });
+    fireEvent.change(screen.getByLabelText("Business Impact weight"), { target: { value: "10" } });
     expect(problems()[0]).toBe("Impacty problem");
   });
 
   it("filters to requests that need review", () => {
     render(<App dataset={fixtureDataset()} />);
-    fireEvent.click(screen.getByLabelText(/Needs review only/));
+    fireEvent.click(screen.getByLabelText(/Only show requests that need review/));
     expect(problems()).toEqual(["Vague problem"]);
   });
 
@@ -67,5 +67,15 @@ describe("App", () => {
   it("shows an empty state when there are no requests", () => {
     render(<App dataset={{ ...fixtureDataset(), requests: [] }} />);
     expect(screen.getByText(/No feature requests to show/)).toBeInTheDocument();
+  });
+});
+
+describe("weight sliders", () => {
+  it("start in the middle of a 0 to 10 range", () => {
+    render(<App dataset={fixtureDataset()} />);
+    const slider = screen.getByLabelText("Reach weight");
+    expect(slider).toHaveAttribute("min", "0");
+    expect(slider).toHaveAttribute("max", "10");
+    expect(slider).toHaveValue("5");
   });
 });
