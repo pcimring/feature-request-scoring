@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
-const EM_DASH = "—";
+const EM_DASH = "\u2014";
 
 function files(path: string): string[] {
   if (statSync(path).isFile()) return [path];
