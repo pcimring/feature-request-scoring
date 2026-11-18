@@ -11,8 +11,8 @@ const SYSTEM = `You help a product manager prioritize feature requests. Each req
 
 1. problem: one sentence of at most 25 words naming the underlying problem, separated from the solution the requester proposed. Example: "add a Dart SDK" becomes "Dart and Flutter backend developers have no server-side SDK." Write it from the user's point of view.
 
-2. scores: five scores from 1 to 5, each with a reason of at most 20 words that a PM can check against the issue.
-- reach: how many users ask for this or would be affected. Use the reactions and comments, and how widely used the SDK or platform is. 5 = broad, 1 = one user's edge case.
+2. scores: five scores from 1 to 5, each with a reason of at most 20 words that a PM can check against the issue. Score each dimension relative to the other requests in this set (described in <the_whole_set>), not against an absolute ideal, and use the full 1 to 5 range: roughly the strongest fifth of the set on a dimension should get 4 or 5, and the weakest fifth should get 1.
+- reach: how many users ask for this or would be affected. Use the reactions and comments, the repository's stars and forks (the size of that SDK's audience), and how widely used the platform is. 5 = among the broadest in this set, 1 = one user's edge case.
 - impact: likely effect on revenue, retention or expansion. This is an educated guess from public text; say what in the text suggests it. 5 = clear commercial stakes (paying teams, production use, churn risk), 1 = cosmetic.
 - urgency: blocker or time-sensitive language ("blocking our production rollout", a deadline, a deprecated dependency). 5 = blocking now, 1 = nice to have someday.
 - fit: alignment with Cloudinary's stated direction, using only the strategy summary provided. 5 = directly serves a stated priority, 1 = unrelated or against it.
@@ -40,6 +40,7 @@ export async function scoreRequest(
   issue: RawIssue,
   strategy: string,
   meter: CostMeter,
+  set = "",
 ): Promise<Score> {
   const response = await client.beta.messages.parse({
     model: SCORE_MODEL,
@@ -50,7 +51,7 @@ export async function scoreRequest(
     messages: [
       {
         role: "user",
-        content: `<strategy_summary>\n${strategy}\n</strategy_summary>\n\n<feature_request>\n${issueText(issue)}\n</feature_request>\n\nScore this feature request.`,
+        content: `<strategy_summary>\n${strategy}\n</strategy_summary>\n\n<the_whole_set>\n${set}\n</the_whole_set>\n\n<feature_request>\n${issueText(issue)}\n</feature_request>\n\nScore this feature request.`,
       },
     ],
     output_config: { effort: "low", format: betaZodOutputFormat(ScoreSchema) },

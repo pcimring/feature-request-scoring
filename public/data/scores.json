@@ -1,51 +1,13 @@
 {
-  "generatedAt": "2026-11-18T14:17:32.239Z",
+  "generatedAt": "2026-11-18T15:28:40.301Z",
   "org": "cloudinary",
   "counts": {
     "openIssues": 215,
     "featureRequests": 62,
-    "needsReview": 16,
+    "needsReview": 9,
     "failed": 0
   },
   "requests": [
-    {
-      "id": 4759829541,
-      "number": 739,
-      "repo": "cloudinary_npm",
-      "title": "Feature request: official Dart server-side SDK",
-      "url": "https://github.com/cloudinary/cloudinary_npm/issues/739",
-      "createdAt": "2026-06-27T20:28:08Z",
-      "updatedAt": "2026-06-27T20:28:08Z",
-      "reactions": 0,
-      "comments": 0,
-      "problem": "Teams running server-side Dart backends must hand-roll and maintain REST clients to call Cloudinary, with no typed models or helpers.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions or comments; one team asking. Server-side Dart is a niche though growing runtime."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Mentions a production backend, but a workaround exists and no spend or churn risk is stated."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "No blocker or deadline; current hand-rolled REST client works, just costly to maintain."
-        },
-        "fit": {
-          "score": 3,
-          "reason": "Developers and SDKs are stated priorities, but a new Dart server SDK is not tied to agent work."
-        },
-        "feasibility": {
-          "score": 1,
-          "reason": "Requires a whole new SDK matching Node.js scope, plus ongoing maintenance and pub.dev publishing."
-        }
-      },
-      "confidence": {
-        "level": "medium",
-        "reason": "Issue is clear and detailed, but demand signals are absent, so reach rests on one requester."
-      }
-    },
     {
       "id": 5850405943,
       "number": 746,
@@ -56,70 +18,34 @@
       "updatedAt": "2026-10-14T15:48:02Z",
       "reactions": 0,
       "comments": 1,
+      "repoStars": 673,
+      "repoForks": 318,
       "problem": "AI coding agents hitting an invalid API key error in the Node SDK get no pointer to the no-signup Claimable Cloud option and may stop.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions, one comment, single researcher; but Node SDK is widely used and every agent setup could hit this."
+          "score": 3,
+          "reason": "Largest repo in set (673 stars) but zero reactions and one comment; only affects invalid-key onboarding path."
         },
         "impact": {
-          "score": 2,
-          "reason": "Could improve agent-led onboarding conversion; no paying team, production use or churn mentioned."
+          "score": 3,
+          "reason": "Could improve agent-driven onboarding and signups; no paying team or production stakes mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "Framed as a suggestion; no blocker, deadline or deprecated dependency mentioned."
+          "reason": "Phrased as a suggestion; no blocker, deadline or production issue stated."
         },
         "fit": {
           "score": 5,
-          "reason": "Directly serves the stated agent experience push so AI coding agents can build on Cloudinary directly."
+          "reason": "Directly serves stated agent experience push so AI coding agents can build on Cloudinary directly."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Error text change, though the 401 message appears to come from the API, not only the SDK."
+          "reason": "Error message text change, though 401 text may come from the API rather than the SDK."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear and specific, but reach and impact rest on guesses about agent onboarding volume."
-      }
-    },
-    {
-      "id": 4033424412,
-      "number": 17,
-      "repo": "ssimulacra2",
-      "title": "CID22: full dataset annotations not included in download",
-      "url": "https://github.com/cloudinary/ssimulacra2/issues/17",
-      "createdAt": "2026-03-06T10:23:42Z",
-      "updatedAt": "2026-08-04T00:29:04Z",
-      "reactions": 0,
-      "comments": 4,
-      "problem": "Image quality metric researchers cannot benchmark on full CID22 because only validation-subset human scores are published, despite advertised 22,000 scores.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Niche research audience; 0 reactions, 4 comments on the ssimulacra2 repo, not a mainstream SDK."
-        },
-        "impact": {
-          "score": 1,
-          "reason": "Academic benchmarking use; no paying team, production or churn language in the issue."
-        },
-        "urgency": {
-          "score": 2,
-          "reason": "No blocker or deadline; notes a mismatch with the labs page description, a mild credibility concern."
-        },
-        "fit": {
-          "score": 1,
-          "reason": "Research dataset publishing is unrelated to stated AI agents, SDK, AI media or DAM priorities."
-        },
-        "feasibility": {
-          "score": 3,
-          "reason": "Technically just publishing files, but annotations may be deliberately withheld as a held-out test set."
-        }
-      },
-      "confidence": {
-        "level": "medium",
-        "reason": "Request is clear, but whether withholding is intentional, for example a held-out test set, is unknown."
+        "reason": "Clear, specific request with reproduction; impact and reach rest on guesses about agent onboarding volume."
       }
     },
     {
@@ -132,70 +58,114 @@
       "updatedAt": "2026-01-27T19:04:36Z",
       "reactions": 0,
       "comments": 1,
-      "problem": ".NET developers using the SDK get misleading public Clone and CopyPropertiesTo extension methods on every object, polluting their codebase and inviting misuse.",
+      "repoStars": 105,
+      "repoForks": 72,
+      "problem": ".NET developers see Cloudinary's Clone and CopyPropertiesTo extension methods on every object, polluting their codebase and inviting misuse.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, one comment; affects all .NET SDK users' IntelliSense, but only one person has asked."
+          "reason": "No reactions, one comment; mid-sized repo with 105 stars, but affects all .NET SDK users' IntelliSense."
         },
         "impact": {
-          "score": 2,
-          "reason": "API hygiene concern; no production breakage, paying team, or churn risk mentioned in the issue."
+          "score": 1,
+          "reason": "API hygiene concern; no production breakage, paying team or churn risk mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; requester describes a design preference with a workaround of simply not calling them."
+          "reason": "No blocker or deadline language; framed as a cleanup request."
         },
         "fit": {
           "score": 2,
-          "reason": "General SDK quality for developers; not tied to AI agents, MCP, media AI, or DAM priorities."
+          "reason": "General SDK quality; no direct link to agent, AI media or DAM priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Changing modifiers to internal is small in one SDK, but is a breaking public API change."
+          "reason": "Changing one class to internal is small, but it is a breaking public API change."
         }
       },
       "confidence": {
         "level": "high",
-        "reason": "Issue is specific, includes code and a clear proposed fix; low signals make scoring straightforward."
+        "reason": "Issue is specific, includes code and a clear proposed fix."
       }
     },
     {
-      "id": 3686948219,
-      "number": 582,
-      "repo": "cloudinary_gem",
-      "title": "Allow Cloudinary Active Storage service to reuse preloaded blobs via options (avoid extra DB queries)",
-      "url": "https://github.com/cloudinary/cloudinary_gem/issues/582",
-      "createdAt": "2025-12-02T17:57:46Z",
-      "updatedAt": "2025-12-02T23:23:25Z",
+      "id": 4759829541,
+      "number": 739,
+      "repo": "cloudinary_npm",
+      "title": "Feature request: official Dart server-side SDK",
+      "url": "https://github.com/cloudinary/cloudinary_npm/issues/739",
+      "createdAt": "2026-06-27T20:28:08Z",
+      "updatedAt": "2026-06-27T20:28:08Z",
       "reactions": 0,
-      "comments": 1,
-      "problem": "Rails developers using Cloudinary Active Storage get redundant database queries and N+1 patterns when generating URLs for already-loaded blobs.",
+      "comments": 0,
+      "repoStars": 673,
+      "repoForks": 318,
+      "problem": "Teams running production Dart backends must hand-roll and maintain REST clients to call Cloudinary, lacking typed models, auth, retry and pagination helpers.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions and one comment; affects Rails Active Storage users with attachment-heavy views."
+          "reason": "Zero reactions or comments; filed on the largest repo (673 stars), but server-side Dart is a niche audience."
         },
         "impact": {
-          "score": 2,
-          "reason": "Performance optimization for one user's Rails app; no paying team or churn language mentioned."
+          "score": 3,
+          "reason": "Mentions a production backend and maintenance cost, but there is no stated churn risk or paying-team signal."
         },
         "urgency": {
           "score": 1,
-          "reason": "Framed as opt-in optimization; no blocker, deadline or production rollout language."
+          "reason": "A workaround exists (hand-written client); no blocker or deadline language."
         },
         "fit": {
-          "score": 2,
-          "reason": "General developer experience improvement; not tied to AI agents, MCP, AI media or DAM priorities."
+          "score": 3,
+          "reason": "SDKs and developers are central to the strategy, but Dart server-side is not a stated priority."
         },
         "feasibility": {
-          "score": 5,
-          "reason": "Small, backwards compatible change to one private helper and #url in the Ruby gem; code provided."
+          "score": 1,
+          "reason": "Requires an entirely new SDK equivalent in scope to Node.js, plus ongoing maintenance."
         }
       },
       "confidence": {
-        "level": "high",
-        "reason": "Issue is detailed with clear scope, proposed code, and explicit low-signal engagement metrics."
+        "level": "medium",
+        "reason": "The issue is clear and detailed, but demand signals are absent and impact rests on one team's description."
+      }
+    },
+    {
+      "id": 4033424412,
+      "number": 17,
+      "repo": "ssimulacra2",
+      "title": "CID22: full dataset annotations not included in download",
+      "url": "https://github.com/cloudinary/ssimulacra2/issues/17",
+      "createdAt": "2026-03-06T10:23:42Z",
+      "updatedAt": "2026-08-04T00:29:04Z",
+      "reactions": 0,
+      "comments": 4,
+      "repoStars": 325,
+      "repoForks": 12,
+      "problem": "Researchers using CID22 cannot benchmark image quality metrics on the full dataset because only validation subset human scores are published.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "No reactions, 4 comments; 325 stars but niche research audience of metric developers."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Research benchmark usefulness; no paying-team or production stakes mentioned in the issue."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "No blocker or deadline language; framed as making the dataset more useful."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Image quality research is not among stated priorities like agents, AI media, or DAM governance."
+        },
+        "feasibility": {
+          "score": 3,
+          "reason": "Data likely exists, but publishing withheld annotations may involve policy decisions beyond code."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Issue is clear, but whether annotations were withheld intentionally is unknown from the text."
       }
     },
     {
@@ -208,70 +178,74 @@
       "updatedAt": "2026-01-20T16:21:09Z",
       "reactions": 6,
       "comments": 7,
-      "problem": "Teams whose Cloudinary setup requires mandatory metadata fields cannot upload assets through the n8n node, because it rejects custom parameters.",
+      "repoStars": 4,
+      "repoForks": 2,
+      "problem": "n8n users whose Cloudinary setup requires mandatory metadata fields cannot upload assets because the node lacks custom parameter support.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "6 reactions and 7 comments on a niche n8n integration; affects accounts with mandatory metadata rules."
+          "score": 4,
+          "reason": "6 reactions and 7 comments rank high in set, though repo has only 4 stars."
         },
         "impact": {
           "score": 3,
-          "reason": "Uploads fail outright for configured instances, which points to real workflow use, though production stakes are not stated."
+          "reason": "Uploads fail outright for configured instances; suggests real workflow use but no explicit commercial stakes."
         },
         "urgency": {
-          "score": 3,
-          "reason": "Uploads fail with an error, but no deadline or production blocker language is used."
+          "score": 4,
+          "reason": "Validation error blocks uploads entirely for affected users; no deadline stated."
         },
         "fit": {
           "score": 3,
-          "reason": "n8n workflow automation sits loosely near the agent and governance themes; mandatory metadata relates to DAM governance."
+          "reason": "Workflow automation integration loosely supports developer and DAM governance metadata, not agents directly."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Adding optional custom parameters to one node is small, and the requester offers a PR."
-        }
-      },
-      "confidence": {
-        "level": "medium",
-        "reason": "The issue is clear and specific, but reach and commercial impact are inferred from limited signals."
-      }
-    },
-    {
-      "id": 3500660790,
-      "number": 55,
-      "repo": "cloudinary-react-native",
-      "title": "Fix ExpoAVVideoAdapter error handling - provide clear guidance when expo-av missing",
-      "url": "https://github.com/cloudinary/cloudinary-react-native/issues/55",
-      "createdAt": "2025-10-09T21:19:18Z",
-      "updatedAt": "2025-11-01T06:05:07Z",
-      "reactions": 0,
-      "comments": 3,
-      "problem": "React Native developers setting up Cloudinary video get vague errors when expo-av is missing, with no guidance on how to fix it.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions, three comments; affects only React Native Expo users who skip a dependency during setup."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Developer experience polish during setup; issue cites wasted time and support load, no production or paying-team stakes."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "No blocker or deadline language; a workaround exists by installing expo-av."
-        },
-        "fit": {
-          "score": 3,
-          "reason": "Clearer, actionable errors support developer focus and could help AI coding agents self-correct, but indirectly."
-        },
-        "feasibility": {
-          "score": 5,
-          "reason": "Small change to error messages in one adapter within one SDK; contributor volunteered via hacktoberfest."
+          "reason": "Small change in one node; requester offers to contribute a PR."
         }
       },
       "confidence": {
         "level": "high",
-        "reason": "Issue is specific and clear about scope, cause and fix; signals are low and unambiguous."
+        "reason": "Issue is specific with clear error, cause and proposed fix."
+      }
+    },
+    {
+      "id": 3686948219,
+      "number": 582,
+      "repo": "cloudinary_gem",
+      "title": "Allow Cloudinary Active Storage service to reuse preloaded blobs via options (avoid extra DB queries)",
+      "url": "https://github.com/cloudinary/cloudinary_gem/issues/582",
+      "createdAt": "2025-12-02T17:57:46Z",
+      "updatedAt": "2025-12-02T23:23:25Z",
+      "reactions": 0,
+      "comments": 1,
+      "repoStars": 421,
+      "repoForks": 281,
+      "problem": "Rails developers using Cloudinary Active Storage get extra database queries and N+1 patterns when generating URLs for already-loaded blobs.",
+      "scores": {
+        "reach": {
+          "score": 3,
+          "reason": "Ruby gem has 421 stars, above median; Active Storage is common, but zero reactions and one comment."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Performance optimization for attachment-heavy views; no mention of production blocker, paying team, or churn."
+        },
+        "urgency": {
+          "score": 2,
+          "reason": "Framed as an opt-in optimization; no blocker or deadline language."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "General SDK quality improvement; not tied to agents, AI media, or DAM governance priorities."
+        },
+        "feasibility": {
+          "score": 5,
+          "reason": "Small, backwards compatible change to one private helper and url method in one SDK; code sketched."
+        }
+      },
+      "confidence": {
+        "level": "high",
+        "reason": "Issue is detailed and specific, with clear scope and a proposed implementation."
       }
     },
     {
@@ -284,32 +258,74 @@
       "updatedAt": "2025-11-06T17:48:14Z",
       "reactions": 0,
       "comments": 1,
-      "problem": "Users migrating assets in bulk risk silently corrupted date metadata because ambiguous locale-specific date formats are guessed rather than parsed explicitly.",
+      "repoStars": 2,
+      "repoForks": 4,
+      "problem": "Users migrating assets in bulk risk silently corrupted date metadata because ambiguous locale date formats are guessed rather than explicitly parsed.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions, one comment; niche migration tool, though anyone outside US date conventions could be affected."
+          "score": 1,
+          "reason": "Repo has 2 stars, 4 forks, no reactions, one comment; internal review follow-up."
         },
         "impact": {
           "score": 3,
-          "reason": "Silent data corruption during migration could damage trust for teams onboarding assets; no paying customer cited."
+          "reason": "Silent data corruption during migrations could harm customer trust in onboarding, though no paying users cited."
         },
         "urgency": {
-          "score": 3,
-          "reason": "Data corruption risk without errors is serious, but no deadline or active blocker is described."
+          "score": 2,
+          "reason": "No blocker or deadline; raised as a code review follow-up to a PR."
         },
         "fit": {
           "score": 2,
-          "reason": "Loosely supports DAM data governance; not tied to AI agents or other stated priorities."
+          "reason": "Migration data integrity loosely supports DAM governance; no link to agent or AI priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Small change in one tool: default to YYYY-MM-DD and add optional format setting."
+          "reason": "Small parsing change in one tool: restrict to YYYY-MM-DD, optionally accept custom format."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is clear and specific, but reach and impact rest on guesses given minimal engagement signals."
+        "reason": "Issue is clear and specific, but impact rests on inference about migration users."
+      }
+    },
+    {
+      "id": 3500660790,
+      "number": 55,
+      "repo": "cloudinary-react-native",
+      "title": "Fix ExpoAVVideoAdapter error handling - provide clear guidance when expo-av missing",
+      "url": "https://github.com/cloudinary/cloudinary-react-native/issues/55",
+      "createdAt": "2025-10-09T21:19:18Z",
+      "updatedAt": "2025-11-01T06:05:07Z",
+      "reactions": 0,
+      "comments": 3,
+      "repoStars": 28,
+      "repoForks": 21,
+      "problem": "React Native developers setting up Cloudinary video get vague errors when expo-av or expo-video is missing, with no guidance on how to fix it.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "Small repo (28 stars), no reactions, 3 comments; affects only devs missing a dependency during setup."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Setup friction and support load mentioned; no production, paying team, or churn signals."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "No blocker or deadline language; a developer experience improvement filed for hacktoberfest."
+        },
+        "fit": {
+          "score": 3,
+          "reason": "Improves SDK developer experience, which the strategy calls central, but is not tied to AI or agent priorities."
+        },
+        "feasibility": {
+          "score": 5,
+          "reason": "Small error message change in one SDK adapter; contributor volunteered to implement it."
+        }
+      },
+      "confidence": {
+        "level": "high",
+        "reason": "Issue is clear and specific, with a well-scoped proposed change and low ambiguity."
       }
     },
     {
@@ -322,23 +338,25 @@
       "updatedAt": "2026-02-03T17:04:00Z",
       "reactions": 0,
       "comments": 8,
-      "problem": "React Native developers on Expo 54 cannot install the Cloudinary SDK because its peer dependency range excludes Expo 54.",
+      "repoStars": 28,
+      "repoForks": 21,
+      "problem": "React Native developers upgrading to Expo 54 cannot install the Cloudinary SDK because its peer dependency range excludes Expo 54.",
       "scores": {
         "reach": {
-          "score": 4,
-          "reason": "8 comments; every Expo user upgrading to 54 hits this install failure, Expo is widely used."
+          "score": 3,
+          "reason": "8 comments but no reactions; small repo (28 stars), though Expo is a widely used platform."
         },
         "impact": {
           "score": 3,
-          "reason": "Install failure blocks adoption for upgrading apps; no explicit paying or production stakes mentioned."
+          "reason": "Install failure blocks Expo upgrades; users may drop the SDK, but no stated production or paying context."
         },
         "urgency": {
           "score": 4,
-          "reason": "npm ERESOLVE error blocks install now; workaround only via --force or --legacy-peer-deps."
+          "reason": "npm ERESOLVE error blocks installation now on the current Expo release; workaround needs --legacy-peer-deps."
         },
         "fit": {
           "score": 3,
-          "reason": "Keeps SDKs current for developers, a stated focus, but unrelated to AI or DAM priorities."
+          "reason": "Keeps a developer SDK current; supports developer focus but not AI or agent priorities directly."
         },
         "feasibility": {
           "score": 5,
@@ -347,45 +365,7 @@
       },
       "confidence": {
         "level": "high",
-        "reason": "Clear error log shows exact peer range conflict; problem and fix scope are well defined."
-      }
-    },
-    {
-      "id": 3452919675,
-      "number": 50,
-      "repo": "cloudinary-react-native",
-      "title": "Issue: Improve `bootstrap.js` to support both Yarn and NPM with clearer errors",
-      "url": "https://github.com/cloudinary/cloudinary-react-native/issues/50",
-      "createdAt": "2025-09-25T10:05:13Z",
-      "updatedAt": "2025-09-28T05:54:34Z",
-      "reactions": 0,
-      "comments": 3,
-      "problem": "Contributors to the React Native SDK repo who use npm hit an unexplained bootstrap failure when Yarn is missing, slowing onboarding.",
-      "scores": {
-        "reach": {
-          "score": 1,
-          "reason": "Affects only repo contributors, not SDK users; zero reactions and three comments."
-        },
-        "impact": {
-          "score": 1,
-          "reason": "Contributor tooling only; no production use, paying customers or churn risk mentioned."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "No blocker or deadline language; framed as reducing friction for new contributors."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "Loosely touches developer community; unrelated to agents, AI media features or DAM governance."
-        },
-        "feasibility": {
-          "score": 5,
-          "reason": "Small change to one script in one repo; requester already outlined the fix."
-        }
-      },
-      "confidence": {
-        "level": "high",
-        "reason": "Issue is specific and clearly scoped to contributor tooling with explicit, low signals."
+        "reason": "Clear error log shows exact peer range conflict and cause."
       }
     },
     {
@@ -398,32 +378,74 @@
       "updatedAt": "2025-09-06T09:06:42Z",
       "reactions": 0,
       "comments": 1,
-      "problem": ".NET developers cannot upload raw files using unsigned upload presets because RawUploadParams lacks an UploadPreset field.",
+      "repoStars": 105,
+      "repoForks": 72,
+      "problem": ".NET developers cannot upload raw files through unsigned upload presets because RawUploadParams lacks an UploadPreset field.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, one comment; affects .NET users doing unsigned raw file uploads, a narrow case."
+          "reason": "No reactions, one comment; median-sized .NET repo with 105 stars. Affects only raw unsigned uploads."
         },
         "impact": {
           "score": 2,
-          "reason": "Functional gap but no mention of production use, paying team, or churn risk."
+          "reason": "Functional gap in a core upload path, but no production or commercial stakes mentioned."
         },
         "urgency": {
-          "score": 3,
-          "reason": "Described as 'impossible' via SDK, a hard gap, but no deadline or blocker language."
+          "score": 2,
+          "reason": "Described as impossible via SDK, but no blocker, deadline or production language."
         },
         "fit": {
           "score": 2,
-          "reason": "General SDK parity; not tied to AI agents, MCP, or DAM governance priorities."
+          "reason": "General SDK parity fix; not tied to agents, AI media or DAM governance priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Adding one parameter to an existing class in a single SDK, mirroring Image and Video params."
+          "reason": "Adding one field to one params class in a single SDK, mirroring existing classes."
         }
       },
       "confidence": {
-        "level": "medium",
-        "reason": "Issue is specific and clear, but demand and commercial signals are minimal."
+        "level": "high",
+        "reason": "Issue is specific and clear; gap and fix are well defined."
+      }
+    },
+    {
+      "id": 3452919675,
+      "number": 50,
+      "repo": "cloudinary-react-native",
+      "title": "Issue: Improve `bootstrap.js` to support both Yarn and NPM with clearer errors",
+      "url": "https://github.com/cloudinary/cloudinary-react-native/issues/50",
+      "createdAt": "2025-09-25T10:05:13Z",
+      "updatedAt": "2025-09-28T05:54:34Z",
+      "reactions": 0,
+      "comments": 3,
+      "repoStars": 28,
+      "repoForks": 21,
+      "problem": "Contributors to the React Native SDK repo who use npm hit an unexplained failure because the bootstrap script assumes Yarn is installed.",
+      "scores": {
+        "reach": {
+          "score": 1,
+          "reason": "Zero reactions, 28-star repo, affects only repository contributors, not SDK end users."
+        },
+        "impact": {
+          "score": 1,
+          "reason": "Contributor tooling only; no production, paying customer, or end-user effect mentioned."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "Described as onboarding friction; no blocker, deadline, or deprecation language."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Loosely touches developer community, but not agents, AI media, or DAM priorities."
+        },
+        "feasibility": {
+          "score": 5,
+          "reason": "Small script change in one repo with a clear proposed solution."
+        }
+      },
+      "confidence": {
+        "level": "high",
+        "reason": "Issue is specific and clearly scoped to contributor tooling with no ambiguous signals."
       }
     },
     {
@@ -436,70 +458,34 @@
       "updatedAt": "2024-12-11T14:37:55Z",
       "reactions": 0,
       "comments": 1,
+      "repoStars": 69,
+      "repoForks": 60,
       "problem": "Android developers lack a minimal, up-to-date sample project that works with the newest Android Studio to get started with the SDK.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, one comment; Android SDK is mainstream but only one requester shown."
+          "reason": "No reactions, one comment; Android repo has 69 stars, below set median of 103."
         },
         "impact": {
           "score": 2,
-          "reason": "Onboarding aid only; no production use, paying team, or churn language in the issue."
+          "reason": "Onboarding aid only; no production, paying team or churn language in the issue."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline; framed as wanting to add a sample."
+          "reason": "No blocker or deadline language; framed as a nice-to-have sample addition."
         },
         "fit": {
-          "score": 3,
-          "reason": "Supports developer-centric onboarding; not tied to AI agents, media AI, or DAM priorities."
+          "score": 2,
+          "reason": "Loosely supports developer experience; unrelated to AI agents, MCP or DAM priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Small sample app in one repo; requester already links example projects."
+          "reason": "Small sample project in one repo; requester already links example projects."
         }
       },
       "confidence": {
         "level": "low",
-        "reason": "Issue body is very thin; Android Studio compatibility problem is not explained."
-      }
-    },
-    {
-      "id": 2554719263,
-      "number": 336,
-      "repo": "cloudinary_java",
-      "title": "Improved Sample app",
-      "url": "https://github.com/cloudinary/cloudinary_java/issues/336",
-      "createdAt": "2024-09-29T05:42:53Z",
-      "updatedAt": "2024-09-29T05:42:53Z",
-      "reactions": 0,
-      "comments": 0,
-      "problem": "Java developers learning the Cloudinary SDK only have an outdated sample app, making it harder to understand current SDK usage.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions or comments; Java SDK is widely used but no one else asked for this."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Onboarding aid only; issue mentions no production use, paying teams or churn risk."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "No blocker or deadline language; framed as a general improvement."
-        },
-        "fit": {
-          "score": 3,
-          "reason": "Supports developer-centric direction loosely; samples could aid AI coding agents, but issue does not mention that."
-        },
-        "feasibility": {
-          "score": 4,
-          "reason": "Self-contained sample app in one SDK repo, no core SDK changes required."
-        }
-      },
-      "confidence": {
-        "level": "low",
-        "reason": "Issue is very thin, lacks specifics on what is outdated or desired, and has no engagement signals."
+        "reason": "Issue is very brief; Android Studio compatibility problem is not described in detail."
       }
     },
     {
@@ -512,32 +498,34 @@
       "updatedAt": "2024-11-04T15:17:44Z",
       "reactions": 1,
       "comments": 1,
-      "problem": "React developers using Cloudinary unknowingly hurt Core Web Vitals through JS-only lazy loading, lazy-loaded LCP images, and oversized images.",
+      "repoStars": 49,
+      "repoForks": 17,
+      "problem": "React developers using Cloudinary images unknowingly hurt Core Web Vitals through JS-based lazy loading, lazy-loaded LCP images and oversized images.",
       "scores": {
         "reach": {
           "score": 3,
-          "reason": "Only 1 reaction and 1 comment, but affects many React SDK users' page performance."
+          "reason": "One reaction, one comment, 49-star repo, but React is a very widely used platform."
         },
         "impact": {
           "score": 3,
-          "reason": "Core Web Vitals affect production app performance; no paying customer or churn language in the issue."
+          "reason": "Core Web Vitals affect customer site performance and SEO; no paying team or churn language."
         },
         "urgency": {
           "score": 2,
-          "reason": "Framed as recommendations from Chrome Aurora; no blocker, deadline, or deprecation mentioned."
+          "reason": "Recommendations from Chrome Aurora team; no blocker or deadline stated."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer experience fits loosely; performance warnings are not a stated AI, agent, or DAM priority."
+          "reason": "Developer experience improvement, but unrelated to AI agents, MCP or DAM priorities."
         },
         "feasibility": {
-          "score": 4,
-          "reason": "PR #239 already implements dev-only warnings; the remaining item is a documentation change."
+          "score": 5,
+          "reason": "PR #239 already implements dev warnings; rest is a documentation change."
         }
       },
       "confidence": {
-        "level": "medium",
-        "reason": "Issue is detailed with a ready PR, but demand signals are thin and impact is inferred."
+        "level": "high",
+        "reason": "Detailed, specific proposal with an accompanying PR and clear scope."
       }
     },
     {
@@ -550,32 +538,74 @@
       "updatedAt": "2024-11-02T19:01:39Z",
       "reactions": 0,
       "comments": 1,
-      "problem": "Flutter app users lose access to Cloudinary-hosted videos when connectivity drops, because playback requires continuous streaming with no offline cache.",
+      "repoStars": 10,
+      "repoForks": 9,
+      "problem": "Flutter app users lose video playback when connectivity drops, because Cloudinary-hosted videos can only be streamed, not cached for offline viewing.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, one comment; single app's request, though low-connectivity mobile use is a common scenario."
+          "reason": "No reactions, one comment, small repo (10 stars), though offline video is a common mobile need."
         },
         "impact": {
           "score": 2,
-          "reason": "Mentions poor user experience in their app; no stated paying team, production blocker or churn risk."
+          "reason": "Mentions 'our Flutter app' and poor user experience, but no paying team, production, or churn signals."
         },
         "urgency": {
           "score": 2,
-          "reason": "No deadline or blocker language; framed as an improvement for smoother viewing."
+          "reason": "Describes a recurring pain but no blocker, deadline, or deprecation language."
         },
         "fit": {
           "score": 2,
-          "reason": "Offline video caching is not tied to stated AI agent, AI media, or DAM governance priorities."
+          "reason": "Video delivery is core, but offline caching does not serve stated agent, AI media, or DAM priorities."
         },
         "feasibility": {
           "score": 2,
-          "reason": "Requires new download, cache storage and management layer in the Flutter SDK, plus player integration."
+          "reason": "Needs a new download, cache management and offline player component in the Flutter SDK."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Use case is clearly described, but demand signals are minimal and commercial stakes are inferred."
+        "reason": "Issue is clear and specific, but has a single requester and weak demand signals."
+      }
+    },
+    {
+      "id": 2554719263,
+      "number": 336,
+      "repo": "cloudinary_java",
+      "title": "Improved Sample app",
+      "url": "https://github.com/cloudinary/cloudinary_java/issues/336",
+      "createdAt": "2024-09-29T05:42:53Z",
+      "updatedAt": "2024-09-29T05:42:53Z",
+      "reactions": 0,
+      "comments": 0,
+      "repoStars": 176,
+      "repoForks": 114,
+      "problem": "Java developers learning the SDK rely on an outdated sample app, making it harder to understand current SDK usage.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "No reactions or comments; Java repo has above-median stars (176), so audience is moderate."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Onboarding aid only; no mention of production use, paying teams or churn risk."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "No blocker or deadline language; framed as a general improvement."
+        },
+        "fit": {
+          "score": 3,
+          "reason": "Supports developer-centric direction loosely; no tie to agents, AI media or DAM priorities."
+        },
+        "feasibility": {
+          "score": 4,
+          "reason": "Self-contained sample app in one repo, no SDK core changes required."
+        }
+      },
+      "confidence": {
+        "level": "low",
+        "reason": "Issue is very thin; no detail on what is outdated or what the new app should cover."
       }
     },
     {
@@ -588,32 +618,34 @@
       "updatedAt": "2025-01-16T08:30:05Z",
       "reactions": 0,
       "comments": 6,
+      "repoStars": 176,
+      "repoForks": 114,
       "problem": "Java developers cannot plug in their own HTTP client and are forced to depend on Apache HTTP; Map-based configuration is hard to discover.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions, six comments; Java SDK is widely used but request comes from one user's preference."
+          "score": 3,
+          "reason": "No reactions but 6 comments, above median; Java SDK has 176 stars, above set median."
         },
         "impact": {
           "score": 2,
-          "reason": "Developer ergonomics and dependency weight; no mention of production blocking, paying teams or churn."
+          "reason": "Developer ergonomics and dependency weight; no production blocker or paying team mentioned."
         },
         "urgency": {
           "score": 2,
-          "reason": "No deadline or blocker; workaround exists by adding Apache dependency. UnknownError noted as bad behavior."
+          "reason": "No deadline or blocker; UnknownError on missing class is annoying but workaround is adding Apache dependency."
         },
         "fit": {
           "score": 3,
-          "reason": "Typed config builder aids SDK usability, loosely supporting developer focus and AI-optimized SDKs; no direct agent tie."
+          "reason": "Improves SDK developer experience, which strategy names as central, but not agent or AI related."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Changes confined to Java SDK strategy loading and config; requester offers a PR."
+          "reason": "Confined to one SDK; strategy loading change is small, builder config is moderate; requester offers a PR."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is detailed and technical, but commercial impact and demand beyond one user are unclear."
+        "reason": "Issue is detailed and concrete, but commercial impact is inferred with no usage or customer signals."
       }
     },
     {
@@ -626,15 +658,17 @@
       "updatedAt": "2024-10-14T17:17:57Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Kotlin and Android developers lack a working sample showing how to use the Cloudinary Kotlin SDK, slowing their onboarding.",
+      "repoStars": 10,
+      "repoForks": 5,
+      "problem": "Kotlin developers lack a runnable example showing how to use the Cloudinary Kotlin SDK, making onboarding slower.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions or comments; Kotlin SDK has a moderate Android audience; affects new adopters generally."
+          "score": 1,
+          "reason": "No reactions or comments; repository has only 10 stars and 5 forks, well below set median."
         },
         "impact": {
           "score": 2,
-          "reason": "Onboarding aid only; no mention of paying teams, production use or churn risk."
+          "reason": "Onboarding aid only; no mention of paying teams, production use or churn."
         },
         "urgency": {
           "score": 1,
@@ -642,54 +676,16 @@
         },
         "fit": {
           "score": 3,
-          "reason": "Supports developer-centric direction and SDK experience, but no direct link to agents or AI features."
+          "reason": "Supports developer-centric SDK focus, though not tied to agents or AI media features."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Self-contained sample app in one repo; no SDK changes required, though building it takes moderate effort."
-        }
-      },
-      "confidence": {
-        "level": "low",
-        "reason": "Very thin issue with no engagement signals; scores rest mostly on assumptions."
-      }
-    },
-    {
-      "id": 2554718298,
-      "number": 30,
-      "repo": "cloudinary_flutter",
-      "title": "Sample app",
-      "url": "https://github.com/cloudinary/cloudinary_flutter/issues/30",
-      "createdAt": "2024-09-29T05:39:33Z",
-      "updatedAt": "2025-10-10T11:05:10Z",
-      "reactions": 0,
-      "comments": 4,
-      "problem": "Flutter developers lack a working example showing how to use the Cloudinary Flutter SDK, making it harder to learn and adopt.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions and four comments; Flutter SDK has a moderate user base relative to web SDKs."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Onboarding aid only; issue cites no paying teams, production use or churn risk."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "No blocker or deadline language; framed as a general improvement opened in 2024."
-        },
-        "fit": {
-          "score": 3,
-          "reason": "Supports developer-centric direction; samples could aid AI coding agents, but not a stated priority."
-        },
-        "feasibility": {
-          "score": 4,
-          "reason": "Self-contained sample app in one repo; no SDK changes required."
+          "reason": "Self-contained sample app in one SDK repo, no changes to SDK internals."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear but thin; reach and impact rest on limited engagement signals."
+        "reason": "Issue is brief but clear in scope; low engagement signals are unambiguous."
       }
     },
     {
@@ -702,15 +698,17 @@
       "updatedAt": "2025-10-20T02:03:53Z",
       "reactions": 0,
       "comments": 3,
-      "problem": "React Native developers lack a clear sample app showing how to use the SDK's capabilities, making adoption and learning harder.",
+      "repoStars": 28,
+      "repoForks": 21,
+      "problem": "React Native developers lack a clear, comprehensive sample app showing how to use the SDK's capabilities.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, three comments; React Native SDK is a niche among Cloudinary SDKs."
+          "reason": "No reactions, 3 comments, small repo with 28 stars; React Native is widely used though."
         },
         "impact": {
           "score": 2,
-          "reason": "Onboarding aid only; no mention of paying teams, production use or churn."
+          "reason": "Onboarding aid only; no mention of production use, paying teams or churn risk."
         },
         "urgency": {
           "score": 1,
@@ -718,16 +716,56 @@
         },
         "fit": {
           "score": 3,
-          "reason": "Supports developer-centric direction loosely; samples could aid AI coding agents but not stated."
+          "reason": "Supports developer-centric strategy and SDK usability, but not tied to agents or AI media features."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Contained to one repo's sample app; no SDK API changes required."
+          "reason": "Self-contained sample app in one repo; scope undefined but no SDK changes required."
         }
       },
       "confidence": {
         "level": "low",
-        "reason": "Issue is very thin with no specifics on what is missing or who needs it."
+        "reason": "Issue is very thin; no specifics on what is missing or which capabilities to demonstrate."
+      }
+    },
+    {
+      "id": 2554718298,
+      "number": 30,
+      "repo": "cloudinary_flutter",
+      "title": "Sample app",
+      "url": "https://github.com/cloudinary/cloudinary_flutter/issues/30",
+      "createdAt": "2024-09-29T05:39:33Z",
+      "updatedAt": "2025-10-10T11:05:10Z",
+      "reactions": 0,
+      "comments": 4,
+      "repoStars": 10,
+      "repoForks": 9,
+      "problem": "Flutter developers lack a working example showing how to use the Cloudinary Flutter SDK, slowing onboarding and understanding of its capabilities.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "No reactions, 4 comments; Flutter repo has only 10 stars, well below set median of 103."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Onboarding aid only; no mention of production use, paying teams or churn risk."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "No blocker or deadline language; framed as a general improvement."
+        },
+        "fit": {
+          "score": 3,
+          "reason": "Supports developer experience and SDK focus; samples could help agents, but not an AI or DAM priority."
+        },
+        "feasibility": {
+          "score": 4,
+          "reason": "Self-contained sample app in one SDK repo; no core SDK changes required."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Issue is brief and generic, but scope is clear and signals are easy to read."
       }
     },
     {
@@ -740,70 +778,34 @@
       "updatedAt": "2026-02-10T12:54:36Z",
       "reactions": 0,
       "comments": 4,
-      "problem": "Developers using cloudinary_js ship a bundled, outdated jQuery UI widget with known security vulnerabilities flagged by scanners.",
+      "repoStars": 332,
+      "repoForks": 213,
+      "problem": "Developers using cloudinary_js inherit an outdated bundled jQuery UI widget with known security vulnerabilities flagged by scanners.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions, four comments; cloudinary_js is a legacy jQuery-based SDK with a shrinking user base."
+          "score": 3,
+          "reason": "No reactions but 4 comments; repo has 332 stars and 213 forks, above set median."
         },
         "impact": {
           "score": 3,
-          "reason": "Known vulnerabilities can fail security audits and block use in compliance-minded production apps."
+          "reason": "Known vulnerabilities in a dependency can fail security audits, a plausible risk for production users."
         },
         "urgency": {
           "score": 3,
-          "reason": "Cites Snyk-listed vulnerabilities in a 4-year-old dependency, but no blocking or deadline language."
+          "reason": "Cites Snyk-flagged vulnerabilities in a 4-year-old dependency, but no stated blocker or deadline."
         },
         "fit": {
-          "score": 1,
-          "reason": "Legacy jQuery maintenance does not serve the stated AI agent, MCP or DAM priorities."
+          "score": 2,
+          "reason": "Legacy jQuery SDK maintenance; not tied to agents, AI media, or DAM priorities in the strategy."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Upgrading one vendored file in one SDK, though API changes may need testing."
+          "reason": "Upgrading one bundled file in one SDK, though breaking changes in jQuery UI need testing."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is clear and specific, but vulnerability severity and actual exposure are not described."
-      }
-    },
-    {
-      "id": 2036852767,
-      "number": 587,
-      "repo": "js-url-gen",
-      "title": "Question / Feature Request",
-      "url": "https://github.com/cloudinary/js-url-gen/issues/587",
-      "createdAt": "2023-12-12T02:22:23Z",
-      "updatedAt": "2023-12-16T05:02:31Z",
-      "reactions": 0,
-      "comments": 4,
-      "problem": "Developers using the JS URL SDK cannot easily show image previews of stored documents like PDFs or DOCX files.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions and four comments; one user's question, though js-url-gen is a widely used SDK."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Framed as making the package 'more awesome'; no production, paying team or churn signals."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "Phrased as a question and hope; no blocker or deadline language."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "General media transformation; not tied to agents, AI media features or DAM governance priorities."
-        },
-        "feasibility": {
-          "score": 4,
-          "reason": "Likely a URL transformation helper in one SDK, assuming the platform already supports document previews."
-        }
-      },
-      "confidence": {
-        "level": "low",
-        "reason": "Issue is vague, may already be supported, and comment content is not shown."
+        "reason": "Clear, specific request, but impact and urgency rest on general security assumptions, not stated blockers."
       }
     },
     {
@@ -816,70 +818,74 @@
       "updatedAt": "2024-05-24T17:51:02Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Java SDK developers cannot pass optional documented query parameters like colors when fetching resources by asset ID via the Admin API.",
+      "repoStars": 176,
+      "repoForks": 114,
+      "problem": "Java SDK users cannot pass optional query parameters like colors to Admin API GET resource methods such as resourceByAssetID.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions or comments; affects Java SDK users needing optional GET parameters, a moderately used SDK."
+          "reason": "No reactions or comments; mid-sized Java repo with 176 stars, affects Admin API users needing optional params."
         },
         "impact": {
           "score": 2,
-          "reason": "Missing documented API options limits functionality, but no production, paying team or churn language appears."
+          "reason": "Blocks access to documented API options like colors, but no production or commercial stakes stated."
         },
         "urgency": {
           "score": 2,
-          "reason": "No blocker or deadline language; reporter describes a gap, apparently with no workaround mentioned."
+          "reason": "No blocker or deadline language; user describes missing capability without time pressure."
         },
         "fit": {
           "score": 2,
-          "reason": "General SDK correctness supports developers, but is not tied to agents, AI media, or DAM governance priorities."
+          "reason": "General SDK correctness fix; developer-focused but not tied to agents, AI media, or DAM priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Small change in one SDK: forward options as query parameters on GET resource methods."
+          "reason": "Small change in one SDK: forward options as query parameters in GET resource methods."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is clear and specific, but has no engagement signals to gauge demand or commercial stakes."
+        "reason": "Clear, reproducible request with code example, but no engagement signals to gauge demand."
       }
     },
     {
-      "id": 2158798755,
-      "number": 362,
-      "repo": "CloudinaryDotNet",
-      "title": "ListResourcesByPrefixParams - Mark ResourceType Enum as FLAG",
-      "url": "https://github.com/cloudinary/CloudinaryDotNet/issues/362",
-      "createdAt": "2024-02-28T12:00:19Z",
-      "updatedAt": "2024-02-28T12:47:08Z",
+      "id": 2036852767,
+      "number": 587,
+      "repo": "js-url-gen",
+      "title": "Question / Feature Request",
+      "url": "https://github.com/cloudinary/js-url-gen/issues/587",
+      "createdAt": "2023-12-12T02:22:23Z",
+      "updatedAt": "2023-12-16T05:02:31Z",
       "reactions": 0,
-      "comments": 1,
-      "problem": ".NET developers must make separate list calls per resource type to retrieve images and videos under one prefix, then merge results manually.",
+      "comments": 4,
+      "repoStars": 56,
+      "repoForks": 11,
+      "problem": "Developers using the JS URL generator cannot easily display preview thumbnails of stored documents like PDFs or DOCX files.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, one comment; affects .NET users listing mixed media by prefix, a niche convenience."
+          "reason": "No reactions, 4 comments, repo has 56 stars, below set median of 103."
         },
         "impact": {
-          "score": 1,
-          "reason": "Workaround of two calls and concat works; no production, paying team, or churn language."
+          "score": 2,
+          "reason": "Framed as nice-to-have ('even more awesome'); no production or paying-team signals mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; purely a convenience request."
+          "reason": "No blocker or deadline language; casual question asking if it exists."
         },
         "fit": {
           "score": 2,
-          "reason": "Minor SDK ergonomics; only loosely tied to developer focus, not agent or AI priorities."
+          "reason": "Generic media delivery feature; not tied to agents, AI media, or DAM governance priorities."
         },
         "feasibility": {
-          "score": 2,
-          "reason": "Flag enum seems small, but the Admin API lists one resource type per call, so the SDK would need to merge calls."
+          "score": 4,
+          "reason": "Likely documentation or a small URL helper for page/format transformations in one SDK."
         }
       },
       "confidence": {
-        "level": "medium",
-        "reason": "Issue is clear with code example, but backend API support for multi-type listing is uncertain."
+        "level": "low",
+        "reason": "Vague request phrased as a question; may already be possible, unclear what is actually missing."
       }
     },
     {
@@ -892,108 +898,74 @@
       "updatedAt": "2023-10-06T20:20:19Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "TypeScript developers passing raw transformation strings to methods like effect() get type errors even though the strings work at runtime.",
+      "repoStars": 2,
+      "repoForks": 3,
+      "problem": "TypeScript developers cannot pass raw transformation strings to Transformation methods without type errors, though the runtime already accepts them.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions or comments; affects TypeScript users of the JS transformation builder who prefer string syntax."
+          "score": 1,
+          "reason": "Zero reactions or comments; repository has 2 stars, among the smallest audiences in the set."
         },
         "impact": {
           "score": 2,
-          "reason": "Typing friction only; runtime already works. Raised while building cloudinary-util, a community wrapper, not a paying-team blocker."
+          "reason": "Developer ergonomics in typings only; runtime already works, raised by a community utility author."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; workaround of casting to any already works."
+          "reason": "No blocker language; workaround using any already works in the linked project."
         },
         "fit": {
           "score": 3,
-          "reason": "Improves SDK developer experience, which supports the stated developer and AI-optimized SDK focus, but only indirectly."
+          "reason": "Improves SDK developer experience, loosely supporting the developer and AI-optimized SDK focus."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Type signature widening in one SDK; addAction already accepts strings per the linked code."
+          "reason": "Type signature change in one SDK; addAction already accepts strings."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is specific with code links, but demand signals are absent and commercial impact is inferred."
+        "reason": "Issue is clear and technical, but commercial impact is inferred from a single requester."
       }
     },
     {
-      "id": 1865665325,
-      "number": 6,
-      "repo": "cld-migrate-assets-in-bulk",
-      "title": "Allow for configuration of the delimiter used in the CSV file  ",
-      "url": "https://github.com/cloudinary/cld-migrate-assets-in-bulk/issues/6",
-      "createdAt": "2023-08-24T18:21:28Z",
-      "updatedAt": "2023-08-24T18:21:44Z",
+      "id": 2158798755,
+      "number": 362,
+      "repo": "CloudinaryDotNet",
+      "title": "ListResourcesByPrefixParams - Mark ResourceType Enum as FLAG",
+      "url": "https://github.com/cloudinary/CloudinaryDotNet/issues/362",
+      "createdAt": "2024-02-28T12:00:19Z",
+      "updatedAt": "2024-02-28T12:47:08Z",
       "reactions": 0,
-      "comments": 0,
-      "problem": "Users whose CSV files use non-comma delimiters, such as semicolons from EU Excel defaults, cannot use their files for bulk asset migration.",
+      "comments": 1,
+      "repoStars": 105,
+      "repoForks": 72,
+      "problem": ".NET developers must make separate API calls per resource type and merge results to list images and videos under one prefix.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions or comments; niche migration tool, though EU Excel users plausibly hit this."
+          "reason": "No reactions, one comment; mid-sized .NET repo with 105 stars, near the set median."
         },
         "impact": {
-          "score": 2,
-          "reason": "Workaround exists by re-saving CSV; no production, paying team or churn language in issue."
+          "score": 1,
+          "reason": "Convenience only; documented workaround of two calls and concat already works, no production or commercial stakes."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; open since 2023 with no follow-up activity."
+          "reason": "No blocker or deadline language; framed as a nicer API shape."
         },
         "fit": {
           "score": 2,
-          "reason": "Loosely tied to developer tooling and DAM onboarding; no link to stated AI or agent priorities."
+          "reason": "Generic SDK ergonomics; not tied to agents, AI media, or DAM governance priorities."
         },
         "feasibility": {
-          "score": 5,
-          "reason": "Single config option passed to CSV parser in one small tool."
+          "score": 3,
+          "reason": "Enum change is small, but API lists per resource type, so SDK must merge calls and pagination."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear and simple, but demand signals are absent, so reach and impact are guesses."
-      }
-    },
-    {
-      "id": 1844825264,
-      "number": 4,
-      "repo": "cld-migrate-assets-in-bulk",
-      "title": "Support auto generation of the log folders",
-      "url": "https://github.com/cloudinary/cld-migrate-assets-in-bulk/issues/4",
-      "createdAt": "2023-08-10T09:46:05Z",
-      "updatedAt": "2023-08-10T09:46:05Z",
-      "reactions": 0,
-      "comments": 0,
-      "problem": "Users running bulk asset migrations must manually name a new log folder every run, which is tedious and yields meaningless names.",
-      "scores": {
-        "reach": {
-          "score": 1,
-          "reason": "Zero reactions or comments; niche migration tool used by a small subset of users."
-        },
-        "impact": {
-          "score": 1,
-          "reason": "Convenience improvement only; no production, paying team or churn language in the issue."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "No blocker; user has a workaround by numbering folders run1, run2, run3."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "Developer tooling convenience; not tied to agents, AI media features or DAM governance priorities."
-        },
-        "feasibility": {
-          "score": 5,
-          "reason": "Small change in one tool: default path built from cloud name, date and time."
-        }
-      },
-      "confidence": {
-        "level": "high",
-        "reason": "Issue is clear and specific; low signals and scope are easy to judge."
+        "reason": "Issue is clear with a code example, but engagement signals are minimal and API constraints are inferred."
       }
     },
     {
@@ -1006,32 +978,74 @@
       "updatedAt": "2023-07-22T14:18:45Z",
       "reactions": 0,
       "comments": 4,
+      "repoStars": 28,
+      "repoForks": 21,
       "problem": "React Native developers lack a ready-made Cloudinary video player that plays HLS streams on both Android and iOS.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions and four comments; React Native is popular but demand signal here is weak."
+          "reason": "No reactions, 4 comments, small repo (28 stars), though React Native is a widely used platform."
         },
         "impact": {
           "score": 2,
-          "reason": "No mention of production use, paying teams, or churn; body only says \"that will be amazing\"."
+          "reason": "No mention of production use, paying teams or churn; phrased as 'that will be amazing'."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; phrased as a nice-to-have wish, open since 2023."
+          "reason": "No blocker or deadline language; nice-to-have request opened in 2023."
         },
         "fit": {
           "score": 3,
-          "reason": "Supports developer SDKs and video features, but not tied to agents, AI media, or governance priorities."
+          "reason": "Video and SDKs matter to strategy, but not tied to agents, AI media or DAM priorities."
         },
         "feasibility": {
           "score": 2,
-          "reason": "A cross-platform video player component with HLS is a sizable new component in the SDK."
+          "reason": "A cross-platform HLS video player component is a sizable new build for both Android and iOS."
         }
       },
       "confidence": {
         "level": "low",
-        "reason": "Issue body is one line with no detail; comments' content unknown, so scores rest on guesses."
+        "reason": "Issue body is one vague sentence with no use case or details; scores rely on guesses."
+      }
+    },
+    {
+      "id": 1865665325,
+      "number": 6,
+      "repo": "cld-migrate-assets-in-bulk",
+      "title": "Allow for configuration of the delimiter used in the CSV file  ",
+      "url": "https://github.com/cloudinary/cld-migrate-assets-in-bulk/issues/6",
+      "createdAt": "2023-08-24T18:21:28Z",
+      "updatedAt": "2023-08-24T18:21:44Z",
+      "reactions": 0,
+      "comments": 0,
+      "repoStars": 2,
+      "repoForks": 4,
+      "problem": "Users whose CSV files use semicolons or other non-comma delimiters, common in EU Excel exports, cannot use the bulk migration tool directly.",
+      "scores": {
+        "reach": {
+          "score": 1,
+          "reason": "Repo has 2 stars, 4 forks; issue has no reactions or comments."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Migration tooling may aid onboarding, but text cites no paying teams or production stakes."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "No blocker or deadline language; users can convert delimiters manually."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Asset migration loosely relates to DAM, but not to stated AI agent or SDK priorities."
+        },
+        "feasibility": {
+          "score": 5,
+          "reason": "Small config option in one tool; CSV parsers typically support custom delimiters."
+        }
+      },
+      "confidence": {
+        "level": "high",
+        "reason": "Issue is clear and specific; low signals and small scope are unambiguous."
       }
     },
     {
@@ -1044,32 +1058,74 @@
       "updatedAt": "2023-07-15T07:54:33Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Flutter developers cannot precache Cloudinary images before CldImageWidget builds, so images load visibly late and the app feels less responsive.",
+      "repoStars": 10,
+      "repoForks": 9,
+      "problem": "Flutter developers cannot precache Cloudinary images before CldImageWidget builds, so images load late and the app feels less responsive.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions and comments; Flutter SDK is a smaller SDK, though precaching is a common Flutter pattern."
+          "score": 1,
+          "reason": "No reactions or comments; Flutter repo has only 10 stars and 9 forks, well below set median."
         },
         "impact": {
           "score": 2,
-          "reason": "Framed as responsiveness polish; no mention of production use, paying team, or churn risk."
+          "reason": "UX responsiveness improvement; no mention of production use, paying team or churn risk."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; opened 2023 with no follow-up activity."
+          "reason": "Framed as a nice-to-have; no blocker or deadline language."
         },
         "fit": {
           "score": 2,
-          "reason": "General SDK developer experience; not tied to agents, AI media, or DAM governance priorities."
+          "reason": "General SDK developer experience; not tied to agents, AI media or DAM priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Exposing a Cloudinary ImageProvider for Flutter's built-in precacheImage is a small change in one SDK."
+          "reason": "Exposing a Cloudinary ImageProvider for Flutter's precacheImage is a small change in one SDK."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear and specific, but there are no demand signals beyond one user."
+        "reason": "Request is clear and specific, but commercial impact is guessed from minimal signals."
+      }
+    },
+    {
+      "id": 1844825264,
+      "number": 4,
+      "repo": "cld-migrate-assets-in-bulk",
+      "title": "Support auto generation of the log folders",
+      "url": "https://github.com/cloudinary/cld-migrate-assets-in-bulk/issues/4",
+      "createdAt": "2023-08-10T09:46:05Z",
+      "updatedAt": "2023-08-10T09:46:05Z",
+      "reactions": 0,
+      "comments": 0,
+      "repoStars": 2,
+      "repoForks": 4,
+      "problem": "Users running repeated bulk migrations must manually name a new log folder each run, creating meaningless run1, run2 naming.",
+      "scores": {
+        "reach": {
+          "score": 1,
+          "reason": "Repo has 2 stars, 4 forks, zero reactions or comments; niche migration tool."
+        },
+        "impact": {
+          "score": 1,
+          "reason": "Convenience tweak to log paths; no production, revenue or churn signals in text."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "No blocker language; user has a working manual workaround with numbered folders."
+        },
+        "fit": {
+          "score": 1,
+          "reason": "Log folder naming does not relate to agents, AI media, or DAM governance priorities."
+        },
+        "feasibility": {
+          "score": 5,
+          "reason": "Small default-path change in one CLI tool, format already specified."
+        }
+      },
+      "confidence": {
+        "level": "high",
+        "reason": "Issue is clear and specific; low signals and simple scope make scoring straightforward."
       }
     },
     {
@@ -1082,32 +1138,34 @@
       "updatedAt": "2023-06-09T04:33:23Z",
       "reactions": 0,
       "comments": 1,
-      "problem": ".NET developers must call Secure() on every URL build to get https links, adding repetitive code and risk of insecure URLs.",
+      "repoStars": 105,
+      "repoForks": 72,
+      "problem": ".NET developers must call Secure() on every URL build to get HTTPS links, adding repetitive code and risk of insecure URLs.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions and one comment, though every .NET SDK user building URLs is potentially affected."
+          "reason": "No reactions, one comment; .NET SDK has median-level stars (105), but HTTPS default affects all its users."
         },
         "impact": {
           "score": 2,
-          "reason": "Developer convenience and security hygiene; no production, paying team or churn language in the issue."
+          "reason": "Convenience and security hygiene; no production blocker or commercial stakes mentioned in the issue."
         },
         "urgency": {
           "score": 1,
-          "reason": "Phrased as a casual question with no blocker or deadline; opened in 2023."
+          "reason": "Phrased as a casual question; no blocker or deadline language."
         },
         "fit": {
           "score": 2,
-          "reason": "Loosely supports developer experience in SDKs; not tied to agents, AI media or DAM priorities."
+          "reason": "Developer experience improvement, but not tied to agents, AI media, or DAM governance priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Small default change in one SDK, but flipping defaults may need a config flag or major version."
+          "reason": "Small default change in one SDK, though flipping defaults may need a breaking-change or config flag."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear and small, but thin signals make reach and impact partly guesswork."
+        "reason": "Request is clear but brief; impact and reach rest on limited signals."
       }
     },
     {
@@ -1120,70 +1178,34 @@
       "updatedAt": "2022-11-20T13:33:03Z",
       "reactions": 0,
       "comments": 1,
-      "problem": "iOS developers cannot send a Content-MD5 or custom headers with uploads, so integrity checks and Rails Active Storage flows that require MD5 fail.",
+      "repoStars": 169,
+      "repoForks": 107,
+      "problem": "iOS developers cannot send a Content-MD5 or custom headers on uploads, breaking integrity checks expected by Rails Active Storage backends.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions and one comment; affects iOS apps paired with Rails Active Storage backends."
+          "reason": "Zero reactions, one comment; iOS SDK has 169 stars, slightly above set median."
         },
         "impact": {
           "score": 2,
-          "reason": "Parity and integrity improvement; no production, paying team or churn language in the issue."
+          "reason": "Parity with Ruby gem Active Storage flow; no paying team or production stakes mentioned."
         },
         "urgency": {
-          "score": 2,
-          "reason": "No blocker or deadline stated; framed as important but open since 2022."
+          "score": 1,
+          "reason": "No blocker or deadline language; open since 2022 with no follow-up pressure."
         },
         "fit": {
           "score": 2,
-          "reason": "General SDK parity work; no tie to agents, AI media or DAM governance priorities."
+          "reason": "Generic SDK upload parity; not tied to agents, AI media, or DAM governance priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Small change: expose a header option on CLDUploadRequestParams in one SDK."
+          "reason": "Adding an optional header parameter to one iOS upload params class is a small change."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is specific and clear, but demand and commercial stakes are only weakly signaled."
-      }
-    },
-    {
-      "id": 1093255460,
-      "number": 242,
-      "repo": "cloudinary-react",
-      "title": "Support for token based authentication?",
-      "url": "https://github.com/cloudinary/cloudinary-react/issues/242",
-      "createdAt": "2022-01-04T11:19:38Z",
-      "updatedAt": "2022-01-11T18:04:13Z",
-      "reactions": 0,
-      "comments": 3,
-      "problem": "React developers delivering restricted images cannot pass a backend-issued access token through the SDK to authenticated delivery URLs.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions, three comments; one team asking, though React SDK is widely used."
-        },
-        "impact": {
-          "score": 3,
-          "reason": "Restricted folder access suggests a production app with access control, but no stated commercial stakes."
-        },
-        "urgency": {
-          "score": 2,
-          "reason": "Phrased as a question about how to integrate; no blocker or deadline language. Opened 2022."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "Loosely relates to governance and access control; not tied to agent or AI priorities in summary."
-        },
-        "feasibility": {
-          "score": 4,
-          "reason": "Appending a token param to URLs in one SDK's context is a small change."
-        }
-      },
-      "confidence": {
-        "level": "medium",
-        "reason": "Request is clear, but legacy cloudinary-react SDK status and the bug label make priority uncertain."
+        "reason": "Request is clear and specific, but commercial stakes and user count are unstated."
       }
     },
     {
@@ -1196,32 +1218,74 @@
       "updatedAt": "2021-09-19T11:36:09Z",
       "reactions": 0,
       "comments": 3,
-      "problem": "Vue developers using Cloudinary-hosted SVGs cannot style them with CSS (stroke, fill) because the component renders an img tag, not inline SVG.",
+      "repoStars": 96,
+      "repoForks": 10,
+      "problem": "Vue developers using CldImage get an img tag for SVGs, so they cannot style SVG fill and stroke with CSS.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions and three comments on a 2021 issue in the Vue SDK; niche use case."
+          "reason": "No reactions, 3 comments, repo has 96 stars, slightly below set median; niche SVG styling need."
         },
         "impact": {
-          "score": 2,
-          "reason": "Styling convenience for icons; no mention of production use, paying teams or churn risk."
+          "score": 1,
+          "reason": "Styling convenience; text mentions no production use, paying team, or churn risk."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; open since 2021 with little activity."
+          "reason": "No blocker or deadline language; issue open since 2021."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer-facing SDK improvement, but unrelated to AI agents, AI media features or DAM governance priorities."
+          "reason": "SDK developer experience, but unrelated to AI agents, AI media or DAM governance priorities."
         },
         "feasibility": {
-          "score": 4,
-          "reason": "Fetching and inlining SVG in one Vue component is contained, though sanitization and SSR add some work."
+          "score": 3,
+          "reason": "Fetching and inlining SVG in one Vue component is moderate; needs sanitization and SSR handling."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear but brief, with weak engagement signals and an old, possibly outdated SDK version."
+        "reason": "Request is clear but brief; impact and reach rest on few signals."
+      }
+    },
+    {
+      "id": 1093255460,
+      "number": 242,
+      "repo": "cloudinary-react",
+      "title": "Support for token based authentication?",
+      "url": "https://github.com/cloudinary/cloudinary-react/issues/242",
+      "createdAt": "2022-01-04T11:19:38Z",
+      "updatedAt": "2022-01-11T18:04:13Z",
+      "reactions": 0,
+      "comments": 3,
+      "repoStars": 499,
+      "repoForks": 211,
+      "problem": "React developers delivering restricted assets cannot pass a backend-issued access token to the SDK so it is appended to delivery URLs.",
+      "scores": {
+        "reach": {
+          "score": 3,
+          "reason": "Popular repo (499 stars, 211 forks) but zero reactions and only 3 comments."
+        },
+        "impact": {
+          "score": 3,
+          "reason": "Restricted asset delivery suggests production use with access control, but no stated commercial stakes."
+        },
+        "urgency": {
+          "score": 2,
+          "reason": "Exploratory question with no blocker or deadline language; opened 2022."
+        },
+        "fit": {
+          "score": 3,
+          "reason": "Access control loosely relates to governance priority but not agents or AI features."
+        },
+        "feasibility": {
+          "score": 4,
+          "reason": "Adding a token prop that appends a URL param is a small change in one SDK."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Request is clear, but impact and fit rest on inference; repo may be legacy React SDK."
       }
     },
     {
@@ -1234,32 +1298,34 @@
       "updatedAt": "2021-08-27T08:29:51Z",
       "reactions": 0,
       "comments": 11,
-      "problem": "Vue developers using cld-image cannot apply CSS classes directly to the rendered img element, making styling harder.",
+      "repoStars": 96,
+      "repoForks": 10,
+      "problem": "Vue developers using the cld-image component cannot apply CSS classes directly to the rendered img element, limiting styling control.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions but 11 comments; limited to cloudinary-vue cld-image users."
+          "score": 3,
+          "reason": "No reactions but 11 comments, well above median; repo has 96 stars, near set median."
         },
         "impact": {
-          "score": 1,
-          "reason": "Styling convenience only; no production, paying team or churn language in the issue."
+          "score": 2,
+          "reason": "Styling convenience; no mention of production use, paying teams or churn risk."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; issue open since 2021."
+          "reason": "No blocker or deadline language; opened 2021, a nice-to-have."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer experience fits loosely; unrelated to agents, AI media or DAM priorities."
+          "reason": "Generic SDK polish; developers are central but not tied to agents, AI media or DAM priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Adding one prop passed to img in a single Vue component."
+          "reason": "Single new prop passed to img element in one Vue SDK component."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear and simple, but comment content unknown and commercial stakes are guessed."
+        "reason": "Request is clear and small, but the brief body gives little evidence of commercial stakes."
       }
     },
     {
@@ -1272,32 +1338,34 @@
       "updatedAt": "2021-08-24T23:02:46Z",
       "reactions": 0,
       "comments": 4,
-      "problem": "Frontend developers using Cloudinary placeholders cannot tune placeholder strength or smooth the jarring blink when the final image loads.",
+      "repoStars": 56,
+      "repoForks": 11,
+      "problem": "Frontend developers using lazy-loaded images cannot tune placeholder strength or transitions, so images abruptly blink into place.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, four comments; placeholder plugin used by a subset of frontend js-url-gen users."
+          "reason": "No reactions, 4 comments, repo has 56 stars, below set median of 103."
         },
         "impact": {
           "score": 2,
-          "reason": "Visual polish request; no mention of paying teams, production blockers, or churn risk."
+          "reason": "UX polish request from a satisfied user; no production, paying team or churn signals."
         },
         "urgency": {
           "score": 1,
-          "reason": "Phrased as a wish ('I do wish'); no blocker or deadline language, opened 2021."
+          "reason": "Phrased as a wish; no blocker or deadline language."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer experience improvement, but unrelated to AI agents, MCP, AI media, or DAM governance priorities."
+          "reason": "Placeholder tuning does not map to agents, AI media features or DAM governance priorities."
         },
         "feasibility": {
           "score": 3,
-          "reason": "Placeholder params are small; transition control likely touches frontend framework SDK plugins, not just js-url-gen."
+          "reason": "Placeholder params seem small, but transition control likely touches frontend framework plugins, not just URL generation."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear, but reach and impact rest on weak signals from an older issue."
+        "reason": "Request is clear with examples, but impact rests on guesses and the 2021 issue may be stale."
       }
     },
     {
@@ -1310,32 +1378,34 @@
       "updatedAt": "2021-06-20T07:51:49Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Researchers comparing perceptual quality metrics lack benchmark results showing how SSIMULACRA performs on the CLIC 2021 perceptual challenge dataset.",
+      "repoStars": 101,
+      "repoForks": 14,
+      "problem": "Researchers comparing perceptual quality metrics lack published benchmark results showing how SSIMULACRA performs on the CLIC 2021 perceptual dataset.",
       "scores": {
         "reach": {
           "score": 1,
-          "reason": "Zero reactions and comments; niche research metric repository with a small academic audience."
+          "reason": "No reactions or comments; niche research audience on a 101-star metric repository."
         },
         "impact": {
           "score": 1,
-          "reason": "Benchmark publication for research community; no production use, paying teams or churn risk mentioned."
+          "reason": "Academic benchmarking request with no mention of paying users or production use."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker language; the 2021 challenge leaderboard is likely long past its relevance window."
+          "reason": "Phrased as \"would be great\"; the 2021 challenge deadline has long passed."
         },
         "fit": {
           "score": 1,
-          "reason": "Perceptual metric benchmarking does not map to agents, SDKs, AI media features or DAM priorities."
+          "reason": "Perceptual metric benchmarking does not map to agents, AI media features, or DAM priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Run existing tool on public test data, produce a CSV and email it; no product code changes."
+          "reason": "Run existing metric on public test data and produce a CSV; no new component."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear, but it is a research benchmarking task, not a product feature, so scoring fit is awkward."
+        "reason": "Request is clear, but impact and fit rest on limited signals and a stale context."
       }
     },
     {
@@ -1348,32 +1418,34 @@
       "updatedAt": "2023-05-28T13:42:36Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "JavaScript developers building Cloudinary URLs must chain imperative builder methods instead of passing simple configuration objects, which some find less convenient.",
+      "repoStars": 56,
+      "repoForks": 11,
+      "problem": "JavaScript developers building transformation URLs must chain imperative method calls and cannot pass options as declarative objects, which complicates some usage patterns.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions and comments; js-url-gen is widely used but only one referenced user mention in #382."
+          "reason": "No reactions or comments; repo has 56 stars, below set median. Request references one other user's mention."
         },
         "impact": {
           "score": 2,
-          "reason": "Developer ergonomics improvement; no production, paying team, or churn language in the issue."
+          "reason": "Developer experience improvement only; no mention of production use, paying teams, or churn."
         },
         "urgency": {
           "score": 1,
-          "reason": "Labeled discussion, opened 2021, no blocker or deadline language."
+          "reason": "Labeled discussion, open since 2021, no blocking or deadline language."
         },
         "fit": {
           "score": 3,
-          "reason": "Object-style APIs could ease AI-optimized SDK use by coding agents, but issue does not mention agents."
+          "reason": "Developer experience aligns with SDK focus; declarative objects may suit AI-optimized SDKs, but not stated."
         },
         "feasibility": {
           "score": 2,
-          "reason": "Issue requires consistency across all methods, implying broad API surface changes in the SDK."
+          "reason": "Issue requires consistency across all methods, implying a broad API surface change across the SDK."
         }
       },
       "confidence": {
-        "level": "low",
-        "reason": "Thin internal discussion issue with no user signals; design still undecided."
+        "level": "medium",
+        "reason": "Clear internal design discussion, but user demand signals are minimal and impact is speculative."
       }
     },
     {
@@ -1386,70 +1458,34 @@
       "updatedAt": "2023-05-28T13:44:00Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Teams syncing media folders across environments via the CLI lose manually set areas of interest (custom gravity/coordinates) on their images.",
+      "repoStars": 3,
+      "repoForks": 0,
+      "problem": "Teams syncing media between environment folders via the CLI lose the custom area of interest (custom coordinates) set on each image.",
       "scores": {
         "reach": {
           "score": 1,
-          "reason": "Single requester, zero reactions or comments, niche CLI sync workflow."
+          "reason": "Zero reactions, zero comments, repo has 3 stars and 0 forks; single user's request."
         },
         "impact": {
           "score": 2,
-          "reason": "Mentions multi-environment setup suggesting real use, but no production or commercial stakes stated."
+          "reason": "Multi-environment sync hints at production workflow, but no stated commercial stakes or churn risk."
         },
         "urgency": {
           "score": 1,
-          "reason": "Phrased as a question, no blocker or deadline; open since 2021 without follow-up."
+          "reason": "Phrased as a question with no blocker or deadline language; opened in 2021."
         },
         "fit": {
           "score": 2,
-          "reason": "Loosely touches developer tooling and DAM workflows; no link to agent or AI priorities."
+          "reason": "CLI asset sync is developer tooling but not tied to agents, AI media features or DAM governance."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Likely small CLI change: read and write custom coordinates during pull and push in one tool."
+          "reason": "Likely includes custom coordinates in existing CLI pull/push metadata handling within one tool."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear but brief; low engagement makes reach and impact easy to judge."
-      }
-    },
-    {
-      "id": 807997323,
-      "number": 327,
-      "repo": "cloudinary_ios",
-      "title": "Hook for receiving background URLSession events queued for app relaunch or by app extensions",
-      "url": "https://github.com/cloudinary/cloudinary_ios/issues/327",
-      "createdAt": "2021-02-14T16:46:49Z",
-      "updatedAt": "2021-02-22T18:59:24Z",
-      "reactions": 0,
-      "comments": 1,
-      "problem": "iOS developers cannot run post-upload logic for background uploads finishing after app relaunch or from Share Extensions, breaking background upload workflows.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions, one comment; affects iOS apps using background or Share Extension uploads, a niche subset."
-        },
-        "impact": {
-          "score": 3,
-          "reason": "Requester describes business logic (database writes, backend calls) blocked, suggesting production app use."
-        },
-        "urgency": {
-          "score": 3,
-          "reason": "Says it blocks functional background uploads, but issue dates from 2021 with no follow-up urgency."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "General SDK reliability; not tied to AI agents, MCP, AI media or DAM governance priorities."
-        },
-        "feasibility": {
-          "score": 4,
-          "reason": "Single iOS SDK; requester notes delegate handling exists, needs a callback exposing minimal task metadata."
-        }
-      },
-      "confidence": {
-        "level": "medium",
-        "reason": "Detailed, technically clear request, but demand signals are minimal and the issue is old."
+        "reason": "Issue is short but the use case is clear; impact and feasibility partly inferred."
       }
     },
     {
@@ -1462,32 +1498,34 @@
       "updatedAt": "2022-01-10T17:32:36Z",
       "reactions": 1,
       "comments": 5,
-      "problem": "Go developers using the SDK receive raw, low-level errors and cannot easily distinguish auth, server, retryable or fatal failures.",
+      "repoStars": 52,
+      "repoForks": 25,
+      "problem": "Go developers receive raw, low-level errors from the SDK and cannot easily distinguish auth, server, or retryable failures to handle them.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Only 1 reaction and 5 comments since 2021; Go SDK has a narrower audience than JS or Python."
+          "reason": "1 reaction, 5 comments; Go SDK has 52 stars, below set median of 103."
         },
         "impact": {
           "score": 2,
-          "reason": "Improves error handling ergonomics; no mention of production blockers, paying teams or churn risk."
+          "reason": "Developer ergonomics improvement; no production, churn or paying-team language in the issue."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; framed as a design improvement, open since 2021."
+          "reason": "No blocker or deadline language; open since 2021 as a design suggestion."
         },
         "fit": {
-          "score": 3,
-          "reason": "Typed, classifiable errors could help AI-optimized SDKs and agents, but the summary does not name error handling."
+          "score": 2,
+          "reason": "General SDK quality; only loosely tied to developer focus, not AI agents or DAM priorities."
         },
         "feasibility": {
           "score": 3,
-          "reason": "Contained to one SDK, but wrapping errors across all call paths may be a breaking API change."
+          "reason": "Single SDK, but wrapping errors throughout may touch many call sites and API compatibility."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is clear about the problem, but demand signals are thin and the commercial impact is inferred."
+        "reason": "Issue is clear, but impact and effort are inferred from a design proposal without user demand evidence."
       }
     },
     {
@@ -1500,32 +1538,74 @@
       "updatedAt": "2023-10-04T06:56:59Z",
       "reactions": 0,
       "comments": 2,
-      "problem": "Python developers using allowed_formats cannot distinguish wrong-file-type upload errors from other errors without parsing generic error messages.",
+      "repoStars": 262,
+      "repoForks": 133,
+      "problem": "Python developers cannot distinguish disallowed file format upload errors from other errors, making clean error handling difficult.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, two comments; Python SDK is widely used but few report this need."
+          "reason": "No reactions, two comments; pycloudinary has 262 stars, above set median but modest."
         },
         "impact": {
           "score": 1,
-          "reason": "Developer ergonomics improvement only; no production, paying team or churn language in the issue."
+          "reason": "Developer ergonomics only; workaround is parsing the error message, no production or commercial stakes mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; workaround of parsing the error message exists implicitly."
+          "reason": "No blocker or deadline language; opened 2021 as a cleanliness improvement."
         },
         "fit": {
           "score": 2,
-          "reason": "Loosely touches SDK developer experience but not agents, AI media or DAM priorities."
+          "reason": "Loosely touches SDK developer experience, but unrelated to agent, AI media or DAM priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Small exception subclass in one SDK, though it depends on server returning a distinguishable error."
+          "reason": "Small exception subclass in one SDK, though depends on reliably detecting server error type."
+        }
+      },
+      "confidence": {
+        "level": "high",
+        "reason": "Issue is clear and narrow; low signals make scoring straightforward."
+      }
+    },
+    {
+      "id": 807997323,
+      "number": 327,
+      "repo": "cloudinary_ios",
+      "title": "Hook for receiving background URLSession events queued for app relaunch or by app extensions",
+      "url": "https://github.com/cloudinary/cloudinary_ios/issues/327",
+      "createdAt": "2021-02-14T16:46:49Z",
+      "updatedAt": "2021-02-22T18:59:24Z",
+      "reactions": 0,
+      "comments": 1,
+      "repoStars": 169,
+      "repoForks": 107,
+      "problem": "iOS developers cannot run post-upload logic for background uploads finished after app relaunch or started from Share Extensions, breaking reliable background uploads.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "No reactions, one comment; iOS SDK has mid-range audience (169 stars), affects background upload and extension users."
+        },
+        "impact": {
+          "score": 3,
+          "reason": "Business logic like database writes and API calls depends on it; suggests production app, but single team."
+        },
+        "urgency": {
+          "score": 3,
+          "reason": "Says it 'blocks us from implementing functional background uploads', though issue dates from 2021."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Core upload reliability for developers; not tied to AI agents, MCP, or DAM priorities."
+        },
+        "feasibility": {
+          "score": 4,
+          "reason": "Requester notes SDK already uses delegates; a root-level completion callback in one SDK."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear and narrow, but feasibility depends on unknown server error structure."
+        "reason": "Detailed technical request, but demand signals are minimal and commercial stakes are inferred."
       }
     },
     {
@@ -1538,32 +1618,34 @@
       "updatedAt": "2021-10-14T13:34:56Z",
       "reactions": 0,
       "comments": 2,
-      "problem": "Angular developers using the Cloudinary background image directive cannot control image position without CSS !important hacks overriding the hardcoded center.",
+      "repoStars": 304,
+      "repoForks": 224,
+      "problem": "Angular developers using the Cloudinary background image directive cannot control background position without resorting to CSS !important overrides.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, two comments; affects only Angular SDK users of the background image directive."
+          "reason": "No reactions, two comments; Angular SDK has above-median stars (304), but the need is niche."
         },
         "impact": {
           "score": 1,
-          "reason": "Cosmetic styling control with a CSS workaround; no production, paying team or churn language."
+          "reason": "Cosmetic styling convenience; a CSS workaround exists and no production or commercial stakes are mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; open since 2020 with a workable !important workaround."
+          "reason": "No blocker or deadline language; the issue has been open since 2020."
         },
         "fit": {
-          "score": 2,
-          "reason": "Developer SDK ergonomics, but unrelated to AI agents, AI media features or DAM governance priorities."
+          "score": 1,
+          "reason": "Minor UI directive tweak, unrelated to the AI agents, AI media or DAM governance priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Requester supplied a one-input change to a single directive in one SDK."
+          "reason": "One new input parameter in a single directive; the requester supplied the code."
         }
       },
       "confidence": {
         "level": "high",
-        "reason": "Issue is clear, specific, includes a code proposal, and engagement signals are unambiguous."
+        "reason": "Clear, small, well-specified request with a concrete code proposal and minimal ambiguity."
       }
     },
     {
@@ -1576,32 +1658,34 @@
       "updatedAt": "2020-10-15T06:33:08Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Vue developers cannot render responsive <picture> elements with multiple sources through the Cloudinary Vue SDK, limiting image performance optimization.",
+      "repoStars": 96,
+      "repoForks": 10,
+      "problem": "Vue developers cannot render responsive, performance-optimized picture elements with multiple sources through the Cloudinary Vue SDK, only single img tags.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions or comments since 2020; Vue SDK has moderate usage, picture element useful to some."
+          "reason": "No reactions or comments; Vue SDK has 96 stars, slightly below set median."
         },
         "impact": {
           "score": 2,
-          "reason": "Performance benefit mentioned generically; no production use, paying team, or churn language in the issue."
+          "reason": "Performance benefit mentioned generically; no production use, paying team, or churn signal in text."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; framed as a general improvement, open since 2020."
+          "reason": "No blocker or deadline language; opened 2020 with no follow-up activity."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer SDK improvement, but unrelated to stated AI agent, AI media, or DAM governance priorities."
+          "reason": "General developer SDK improvement; unrelated to AI agents, MCP, AI media, or DAM governance priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "New component in one SDK, building on existing image URL generation; modest scope."
+          "reason": "New component in one SDK, reusing existing image URL generation for picture sources."
         }
       },
       "confidence": {
         "level": "low",
-        "reason": "Issue body is very thin, with no concrete use case, signals, or detail on desired behavior."
+        "reason": "Issue body is very thin, problem section only names the component; scores rely on assumptions."
       }
     },
     {
@@ -1614,32 +1698,34 @@
       "updatedAt": "2020-05-11T16:54:41Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Vue CLI developers adding Cloudinary may want a visual interface to configure the plugin instead of manual prompts or config files.",
+      "repoStars": 2,
+      "repoForks": 2,
+      "problem": "Vue CLI developers configuring the Cloudinary plugin apparently lack a graphical way to set it up, though the empty issue gives no details.",
       "scores": {
         "reach": {
           "score": 1,
-          "reason": "Zero reactions and comments since 2020; niche Vue CLI plugin with declining tooling relevance."
+          "reason": "Zero reactions or comments; repository has 2 stars and 2 forks, the smallest audience in the set."
         },
         "impact": {
           "score": 1,
-          "reason": "Empty body gives no sign of production use, paying teams or churn risk."
+          "reason": "Empty body with no mention of production use, paying teams or churn; appears to be a convenience improvement."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; issue open since 2020 with no activity."
+          "reason": "No blocker or deadline language; opened in 2020 with no follow-up activity."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer tooling loosely relates to developer focus but not agents, AI media or DAM priorities."
+          "reason": "Developer tooling loosely fits developer focus, but a Vue CLI GUI does not serve agent or AI priorities."
         },
         "feasibility": {
           "score": 3,
-          "reason": "Vue CLI UI plugin prompts are contained to one repo, but scope is undefined."
+          "reason": "Contained to one small plugin, but building a GUI on Vue CLI UI is moderate work."
         }
       },
       "confidence": {
         "level": "low",
-        "reason": "Issue body is empty; scores rest almost entirely on the title and guesses."
+        "reason": "Issue body is empty; problem and scope are inferred from the title alone."
       }
     },
     {
@@ -1652,70 +1738,34 @@
       "updatedAt": "2020-05-11T16:53:41Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "Vue CLI users setting up Cloudinary through the plugin cannot configure enough options during CLI setup, though specifics are unstated.",
+      "repoStars": 2,
+      "repoForks": 2,
+      "problem": "Vue CLI users setting up Cloudinary via the plugin cannot configure enough options during CLI setup, limiting initial configuration.",
       "scores": {
         "reach": {
           "score": 1,
-          "reason": "Zero reactions and comments; niche Vue CLI plugin; issue open since 2020 with no engagement."
+          "reason": "No reactions or comments; repository has only 2 stars, the smallest audience in the set."
         },
         "impact": {
           "score": 1,
-          "reason": "Empty body gives no sign of production use, paying teams, or churn risk."
+          "reason": "Empty body gives no sign of production use, paying teams or churn risk."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; title only, opened 2020."
+          "reason": "No blocker or deadline language; issue open since 2020 with no activity."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer tooling loosely relates to developer focus, but not to agent, AI media, or DAM priorities."
+          "reason": "Developer tooling loosely relates to developer focus, but Vue CLI plugin is not tied to agent or AI priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Likely small change in one plugin, though which options are wanted is unknown."
+          "reason": "Adding CLI prompt options to a small plugin is likely a contained change in one repo."
         }
       },
       "confidence": {
         "level": "low",
-        "reason": "Issue body is empty; requested options are unspecified, so scores rest mostly on guesses."
-      }
-    },
-    {
-      "id": 330322161,
-      "number": 22,
-      "repo": "pkg-cloudinary-core",
-      "title": "Blur is missing from transform options",
-      "url": "https://github.com/cloudinary/pkg-cloudinary-core/issues/22",
-      "createdAt": "2018-06-07T15:22:45Z",
-      "updatedAt": "2018-11-27T22:10:08Z",
-      "reactions": 1,
-      "comments": 6,
-      "problem": "Developers using the cloudinary-core JavaScript package cannot apply Cloudinary's blur transformation options through the SDK's transform API.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "One reaction and six comments on a 2018 issue; affects users of an older JS core package."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Missing transform option is a gap, but no production, paying team or churn language in text."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "Phrased as 'would be great'; no blocker or deadline, and issue open since 2018."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "General SDK completeness; not tied to agents, AI media features or DAM governance priorities."
-        },
-        "feasibility": {
-          "score": 5,
-          "reason": "Adding blur parameters to one SDK's transformation options is a small, contained change."
-        }
-      },
-      "confidence": {
-        "level": "low",
-        "reason": "Very brief issue, unclear which blur options are missing, and may be outdated since 2018."
+        "reason": "Issue body is empty; which options are wanted is unknown, so scores rest on guesses."
       }
     },
     {
@@ -1728,32 +1778,34 @@
       "updatedAt": "2023-07-20T20:55:12Z",
       "reactions": 1,
       "comments": 3,
-      "problem": "Ruby developers cannot distinguish HTTP client errors from other failures, forcing fragile error-message string matching to handle Cloudinary exceptions.",
+      "repoStars": 421,
+      "repoForks": 281,
+      "problem": "Ruby developers cannot distinguish HTTP client errors from other failures, forcing them to parse exception messages to handle errors.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Only 1 reaction and 3 comments since 2019, though the Ruby gem has a sizable user base."
+          "score": 3,
+          "reason": "One reaction, three comments, but Ruby gem has 421 stars, above set median audience."
         },
         "impact": {
           "score": 2,
-          "reason": "Improves error handling ergonomics; text implies production use but no churn or commercial stakes stated."
+          "reason": "Developer ergonomics improvement; no production blocker or commercial stakes mentioned in the text."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; workaround of matching messages exists; issue open since 2019."
+          "reason": "Workaround exists (message parsing); no blocker or deadline language; open since 2019."
         },
         "fit": {
-          "score": 3,
-          "reason": "Clearer typed errors support developer experience and agent-friendly SDKs, but not a stated priority directly."
+          "score": 2,
+          "reason": "General SDK quality; only loosely tied to developer focus, not agents or AI media priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Small change in one SDK: add subclass of CloudinaryException and raise it for 4xx responses."
+          "reason": "Small subclass addition in one SDK, as the requester outlines, backward compatible with CloudinaryException."
         }
       },
       "confidence": {
         "level": "high",
-        "reason": "Issue is specific, includes a concrete proposal, and signals are clear and low."
+        "reason": "Issue is clear and specific with a concrete proposed solution and visible signals."
       }
     },
     {
@@ -1766,32 +1818,74 @@
       "updatedAt": "2021-08-26T09:53:42Z",
       "reactions": 0,
       "comments": 4,
-      "problem": "Java SDK users who get upload signatures from a separate auth service must still supply api_secret, forcing custom uploader workarounds.",
+      "repoStars": 176,
+      "repoForks": 114,
+      "problem": "Java SDK users with signatures generated by a separate auth service must still supply api_secret, forcing them to maintain a custom uploader strategy.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, four comments; affects Java users with externally generated signatures, a niche setup."
+          "reason": "No reactions, 4 comments; Java SDK has a mid-sized audience (176 stars) and the setup is niche."
         },
         "impact": {
           "score": 2,
-          "reason": "Requester's team maintains a custom UploaderStrategy workaround; no explicit churn or revenue stakes stated."
+          "reason": "Requester has a working workaround via a custom UploaderStrategy; no stated revenue or churn risk."
         },
         "urgency": {
-          "score": 2,
-          "reason": "Workaround exists via forked UploaderStrategy; no blocker or deadline language; opened 2018."
+          "score": 1,
+          "reason": "Opened 2018, workaround in place, no blocker or deadline language."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer SDK quality fits developer focus loosely; unrelated to AI agents, MCP or DAM priorities."
+          "reason": "General SDK developer ergonomics; not tied to agents, AI media or DAM priorities."
         },
         "feasibility": {
           "score": 5,
-          "reason": "Android implementation already exists; refactor into AbstractUploaderStrategy within one SDK."
+          "reason": "Small change: port existing Android logic into the core AbstractUploaderStrategy in one SDK."
         }
       },
       "confidence": {
         "level": "high",
-        "reason": "Issue is specific, includes code and a clear fix; signals are clear though old."
+        "reason": "Issue is specific, includes code references and a clear proposed fix."
+      }
+    },
+    {
+      "id": 330322161,
+      "number": 22,
+      "repo": "pkg-cloudinary-core",
+      "title": "Blur is missing from transform options",
+      "url": "https://github.com/cloudinary/pkg-cloudinary-core/issues/22",
+      "createdAt": "2018-06-07T15:22:45Z",
+      "updatedAt": "2018-11-27T22:10:08Z",
+      "reactions": 1,
+      "comments": 6,
+      "repoStars": 54,
+      "repoForks": 27,
+      "problem": "Developers using the pkg-cloudinary-core JavaScript package cannot apply Cloudinary's blur transformation through the SDK's transform options.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "1 reaction, 6 comments; repo has 54 stars, below set median of 103."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Missing transformation parity is an inconvenience; no production or paying-team language in the issue."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "Phrased as 'would be great'; no blocker or deadline, opened in 2018."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Basic transformation parity; not tied to agents, AI media, or DAM governance priorities."
+        },
+        "feasibility": {
+          "score": 5,
+          "reason": "Adding one existing transformation parameter to a single SDK is a small change."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Issue body is short but the request is clear; comment contents not shown."
       }
     },
     {
@@ -1804,32 +1898,34 @@
       "updatedAt": "2019-02-21T09:26:03Z",
       "reactions": 0,
       "comments": 4,
-      "problem": ".NET developers behind corporate proxies cannot configure proxy settings and get confusing JSON parsing errors instead of clear proxy authentication errors.",
+      "repoStars": 105,
+      "repoForks": 72,
+      "problem": ".NET developers behind corporate proxies cannot reach Cloudinary and get a confusing JSON parsing error instead of a clear proxy failure.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, four comments; affects .NET users behind authenticated corporate proxies, a niche but real segment."
+          "reason": "No reactions, 4 comments, median-sized repo; affects only .NET users behind authenticating proxies."
         },
         "impact": {
           "score": 2,
-          "reason": "Blocks usage in proxied networks, but text gives no sign of paying teams or production stakes."
+          "reason": "Blocks usage in proxied corporate networks, but no production or paying-team stakes stated."
         },
         "urgency": {
           "score": 2,
-          "reason": "No blocker or deadline language; issue opened in 2018 with polite, low-pressure wording."
+          "reason": "Opened 2018, no blocker or deadline language; polite request for better error or proxy option."
         },
         "fit": {
           "score": 2,
-          "reason": "Generic SDK reliability; only loosely tied to the stated developer focus, not to AI or DAM priorities."
+          "reason": "General SDK robustness; no direct tie to agents, AI media, or DAM governance priorities."
         },
         "feasibility": {
-          "score": 4,
-          "reason": "Proxy option and clearer error handling are small changes confined to the .NET SDK HTTP client."
+          "score": 5,
+          "reason": "Small change in one SDK: expose HttpClient proxy settings and improve error message."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear, but the issue is brief, old, and offers few demand signals."
+        "reason": "Issue is short but the problem is clear; reach and impact rest on limited signals."
       }
     },
     {
@@ -1842,70 +1938,34 @@
       "updatedAt": "2017-09-25T10:14:53Z",
       "reactions": 0,
       "comments": 3,
-      "problem": "Users of the breakpoints generator's art direction mode cannot force center cropping when intelligent cropping places non-1:1 crops off-center.",
+      "repoStars": 443,
+      "repoForks": 33,
+      "problem": "Users of the Art Direction tool cannot force center cropping for non-square aspect ratios; automatic intelligent cropping shifts the focus unexpectedly.",
       "scores": {
         "reach": {
-          "score": 1,
-          "reason": "Zero reactions, three comments, niche web tool from 2017; looks like a single user's preference."
+          "score": 2,
+          "reason": "Zero reactions, 3 comments, though repo has 443 stars, above set median."
         },
         "impact": {
           "score": 1,
-          "reason": "No production, paying team, or churn language; a cosmetic crop preference in a free generator tool."
+          "reason": "Workflow preference in a free web tool; no production or paying-team stakes mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "Requester accepts behavior is by design and asks for an optional override; no blocker or deadline."
+          "reason": "Requester accepts behavior is by design; asks for optional override, no blocker language."
         },
         "fit": {
           "score": 2,
-          "reason": "Unrelated to agents, AI media features, or DAM governance; only loosely tied to developer tooling."
+          "reason": "Responsive image cropping option; unrelated to agents, AI media features or DAM governance priorities."
         },
         "feasibility": {
-          "score": 4,
-          "reason": "Likely a small option toggling gravity to center in one tool, though the tool's state is unknown."
+          "score": 5,
+          "reason": "Likely a small toggle switching gravity to center in one tool."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear, but the issue is old and the tool's current maintenance status is unknown."
-      }
-    },
-    {
-      "id": 231823746,
-      "number": 86,
-      "repo": "cloudinary_java",
-      "title": "Replace Map usage with OOP design classes",
-      "url": "https://github.com/cloudinary/cloudinary_java/issues/86",
-      "createdAt": "2017-05-27T19:46:53Z",
-      "updatedAt": "2020-06-13T08:27:42Z",
-      "reactions": 7,
-      "comments": 3,
-      "problem": "Java developers must use untyped Maps and parse exception message strings, making Cloudinary integration error prone and unidiomatic for Java.",
-      "scores": {
-        "reach": {
-          "score": 3,
-          "reason": "7 reactions and 3 comments; Java is a widely used backend SDK, so many developers face this."
-        },
-        "impact": {
-          "score": 3,
-          "reason": "Requester is evaluating to become a customer and is disappointed, suggesting conversion risk, though only one voice."
-        },
-        "urgency": {
-          "score": 2,
-          "reason": "No blocker or deadline language; issue opened in 2017 and framed as quality improvement."
-        },
-        "fit": {
-          "score": 3,
-          "reason": "Developer experience and SDKs are stated priorities; typed SDKs may help AI-optimized SDK goals indirectly."
-        },
-        "feasibility": {
-          "score": 1,
-          "reason": "Typed models for all options, results and exceptions means a large redesign of the whole Java SDK API."
-        }
-      },
-      "confidence": {
-        "level": "medium",
-        "reason": "Issue is clear and specific, but commercial impact rests on one evaluator's comment from 2017."
+        "reason": "Request is clear, but issue is old (2017) and signals are thin."
       }
     },
     {
@@ -1918,70 +1978,74 @@
       "updatedAt": "2019-09-22T08:56:10Z",
       "reactions": 0,
       "comments": 7,
-      "problem": "Scala developers on 2.12 cannot use the Cloudinary Scala SDK because it is only published for older Scala versions.",
+      "repoStars": 15,
+      "repoForks": 14,
+      "problem": "Scala developers on version 2.12 cannot use the Cloudinary Scala SDK because it is not published for their Scala version.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Scala SDK is niche; 0 reactions but 7 comments suggest a few affected users."
+          "reason": "Seven comments but zero reactions; small repo with 15 stars and 14 forks."
         },
         "impact": {
           "score": 2,
-          "reason": "Requester wants to upgrade their stack; no mention of production stakes or paying teams."
+          "reason": "Blocks upgrading for existing users, but text gives no production or paying-team signals."
         },
         "urgency": {
-          "score": 2,
-          "reason": "Polite request with no blocker language; opened 2017, so the 2.12 need is likely stale."
+          "score": 3,
+          "reason": "Requester wants to upgrade to 2.12 now; blocks their upgrade but no deadline stated."
         },
         "fit": {
           "score": 2,
-          "reason": "Keeps an SDK usable for developers, but unrelated to agent, AI media or DAM priorities."
+          "reason": "Basic SDK maintenance; developers are central but not tied to agent, AI or DAM priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Cross-building for a new Scala version in one SDK is usually a modest build change."
+          "reason": "Cross-building and publishing one SDK for a new Scala version is usually a small change."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear, but the issue is very old and comment contents are not shown."
+        "reason": "Request is clear, but the issue is from 2017 and the comments are not shown."
       }
     },
     {
-      "id": 202012332,
-      "number": 131,
-      "repo": "cloudinary_npm",
-      "title": "Library should reject with Error objects",
-      "url": "https://github.com/cloudinary/cloudinary_npm/issues/131",
-      "createdAt": "2017-01-20T00:07:04Z",
-      "updatedAt": "2024-06-05T10:05:15Z",
-      "reactions": 2,
-      "comments": 6,
-      "problem": "Node.js developers get plain objects instead of Error instances on failures, breaking standard error handling, stack traces and instanceof checks.",
+      "id": 231823746,
+      "number": 86,
+      "repo": "cloudinary_java",
+      "title": "Replace Map usage with OOP design classes",
+      "url": "https://github.com/cloudinary/cloudinary_java/issues/86",
+      "createdAt": "2017-05-27T19:46:53Z",
+      "updatedAt": "2020-06-13T08:27:42Z",
+      "reactions": 7,
+      "comments": 3,
+      "repoStars": 176,
+      "repoForks": 114,
+      "problem": "Java developers find the SDK's untyped Map-based options, results and message-only exceptions error prone and unidiomatic, discouraging adoption.",
       "scores": {
         "reach": {
-          "score": 3,
-          "reason": "Node SDK is widely used and errors affect everyone, but only 2 reactions and 6 comments."
+          "score": 4,
+          "reason": "7 reactions is near the top of this set; Java SDK has 176 stars, above the median."
         },
         "impact": {
-          "score": 2,
-          "reason": "Developer ergonomics issue; no production, paying team or churn language in the issue."
+          "score": 3,
+          "reason": "Requester is evaluating becoming a customer and is disappointed; signals adoption risk, though from one prospect."
         },
         "urgency": {
-          "score": 1,
-          "reason": "Opened 2017 with no blocker or deadline language; workarounds exist."
+          "score": 2,
+          "reason": "No blocker or deadline; a design complaint opened in 2017."
         },
         "fit": {
           "score": 3,
-          "reason": "Improves SDK quality, loosely supporting developer-centric and AI-optimized SDK direction."
+          "reason": "Typed, developer-friendly SDKs support the developer focus and AI-optimized SDKs, but the issue does not mention agents."
         },
         "feasibility": {
-          "score": 3,
-          "reason": "Small code change in one SDK, but changes error shape and may break existing consumers."
+          "score": 1,
+          "reason": "Requires redesigning the whole Java SDK API surface, typed results, enums and an exception hierarchy."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is clear but brief; impact and reach are inferred from modest signals."
+        "reason": "Clear request with good signals, but commercial impact rests on a single evaluator's comment."
       }
     },
     {
@@ -1994,23 +2058,25 @@
       "updatedAt": "2017-03-23T12:16:09Z",
       "reactions": 0,
       "comments": 1,
-      "problem": "Ruby developers must handle RestClient timeout exceptions separately because the gem leaks underlying HTTP library errors instead of wrapping them.",
+      "repoStars": 421,
+      "repoForks": 281,
+      "problem": "Ruby developers must handle RestClient timeout exceptions separately because the gem leaks them instead of wrapping them as Cloudinary errors.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions, one comment; affects Ruby gem users handling timeouts, a common but minor concern."
+          "reason": "No reactions, one comment; Ruby gem has 421 stars, above set median audience."
         },
         "impact": {
           "score": 2,
-          "reason": "Developer ergonomics improvement; no production, paying-team or churn language in the issue."
+          "reason": "Developer ergonomics for error handling; no production or commercial stakes mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "Framed as a question from 2017; no blocker or deadline language."
+          "reason": "Phrased as a question from 2017; no blocker or deadline language."
         },
         "fit": {
           "score": 2,
-          "reason": "Loosely supports developer-centric SDK quality; not tied to AI agents, media AI or DAM priorities."
+          "reason": "General SDK quality; not tied to agents, AI media, or DAM priorities."
         },
         "feasibility": {
           "score": 5,
@@ -2019,7 +2085,7 @@
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is clear and specific, but old with few signals; may already be resolved in newer versions."
+        "reason": "Issue is clear and specific, but old; current gem may already handle this differently."
       }
     },
     {
@@ -2032,108 +2098,74 @@
       "updatedAt": "2019-07-18T22:43:27Z",
       "reactions": 0,
       "comments": 18,
-      "problem": "Web developers using Cloudinary responsive images see slow page loads because all images load at once instead of when needed.",
+      "repoStars": 54,
+      "repoForks": 27,
+      "problem": "Web developers using Cloudinary responsive images get slow page loads because all images load at once instead of lazily.",
       "scores": {
         "reach": {
           "score": 3,
-          "reason": "18 comments show sustained interest, but zero reactions; core JS package is widely used on websites."
+          "reason": "18 comments is well above the set median of 2, but 0 reactions and a small repo (54 stars)."
         },
         "impact": {
           "score": 2,
-          "reason": "Page load performance complaint; no mention of production blockers, paying teams or churn."
+          "reason": "Page load performance matters, but the issue shows no paying-team, production or churn signals."
         },
         "urgency": {
           "score": 1,
-          "reason": "Opened 2017, no blocker language; native browser lazy loading now reduces the need."
+          "reason": "No blocker or deadline language; opened in 2017, and native browser lazy loading now exists."
         },
         "fit": {
           "score": 2,
-          "reason": "General developer experience; not tied to agents, AI media features or DAM governance priorities."
+          "reason": "General developer experience; not tied to AI agents, AI media or DAM governance priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Single JS package change; could use native loading attribute or IntersectionObserver."
+          "reason": "Contained change in one JS core package; could use the native loading attribute or an observer."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Request is clear but very old and brief; comment content unseen, current relevance uncertain."
+        "reason": "The issue is clear but brief; comment content is unseen and the request may be outdated."
       }
     },
     {
-      "id": 201885691,
-      "number": 56,
-      "repo": "cloudinary_ios",
-      "title": "OSX support?",
-      "url": "https://github.com/cloudinary/cloudinary_ios/issues/56",
-      "createdAt": "2017-01-19T15:07:58Z",
-      "updatedAt": "2023-07-20T20:54:47Z",
-      "reactions": 0,
-      "comments": 1,
-      "problem": "macOS app developers using Swift cannot use Cloudinary's iOS SDK in their desktop apps.",
+      "id": 202012332,
+      "number": 131,
+      "repo": "cloudinary_npm",
+      "title": "Library should reject with Error objects",
+      "url": "https://github.com/cloudinary/cloudinary_npm/issues/131",
+      "createdAt": "2017-01-20T00:07:04Z",
+      "updatedAt": "2024-06-05T10:05:15Z",
+      "reactions": 2,
+      "comments": 6,
+      "repoStars": 673,
+      "repoForks": 318,
+      "problem": "Node.js developers get plain objects instead of Error instances on failures, breaking standard error handling, stack traces and instanceof checks.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions and one comment; macOS apps are a smaller audience than iOS."
-        },
-        "impact": {
-          "score": 1,
-          "reason": "Simple question with no mention of production use, paying team, or commercial stakes."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "Asks about plans for the near future; no blocker language. Issue dates from 2017."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "General developer SDK coverage; no link to stated AI agent, AI media, or DAM priorities."
-        },
-        "feasibility": {
-          "score": 3,
-          "reason": "Swift codebase helps, but UIKit-dependent parts would need macOS adaptation and testing."
-        }
-      },
-      "confidence": {
-        "level": "low",
-        "reason": "One-line question with no use case or engagement; the 2017 issue may be stale."
-      }
-    },
-    {
-      "id": 141306577,
-      "number": 4,
-      "repo": "pkg-cloudinary-core",
-      "title": "remove lodash dependency",
-      "url": "https://github.com/cloudinary/pkg-cloudinary-core/issues/4",
-      "createdAt": "2016-03-16T15:19:30Z",
-      "updatedAt": "2018-07-03T21:25:47Z",
-      "reactions": 10,
-      "comments": 13,
-      "problem": "JavaScript developers using cloudinary-core get a heavy lodash dependency that bloats bundles and is not declared clearly in package.json.",
-      "scores": {
-        "reach": {
-          "score": 3,
-          "reason": "10 reactions and 13 comments on a widely used core JS package; bundle size affects many frontend users."
+          "score": 4,
+          "reason": "Largest repo in set (673 stars), 2 reactions and 6 comments, above set medians; affects all Node error handling."
         },
         "impact": {
           "score": 2,
-          "reason": "Bundle size and dependency hygiene complaint; no mention of production blockers, paying teams or churn."
+          "reason": "Developer ergonomics issue; no mention of production blockers, paying teams or churn."
         },
         "urgency": {
           "score": 1,
-          "reason": "Phrased as a question from 2016, no blocker or deadline language."
+          "reason": "Opened 2017 with no blocker or deadline language; long-standing nice-to-have."
         },
         "fit": {
-          "score": 2,
-          "reason": "Loosely serves developer experience; not tied to AI agents, MCP, AI media or DAM priorities."
+          "score": 3,
+          "reason": "Improves core SDK quality for developers; SDKs are part of developer and agent push, but indirect."
         },
         "feasibility": {
           "score": 3,
-          "reason": "Replacing lodash usages within one SDK is contained but may touch many internal utility calls."
+          "reason": "Small code change in one SDK, but it is a breaking change for existing error consumers."
         }
       },
       "confidence": {
-        "level": "low",
-        "reason": "Very short 2016 issue framed as a question; current package state and relevance are unclear."
+        "level": "medium",
+        "reason": "Issue is clear but brief; commercial impact and breaking-change cost are inferred."
       }
     },
     {
@@ -2146,32 +2178,114 @@
       "updatedAt": "2023-07-20T20:54:33Z",
       "reactions": 0,
       "comments": 2,
+      "repoStars": 421,
+      "repoForks": 281,
       "problem": "Rails developers using the Ruby gem cannot easily use Cloudinary's responsive breakpoints to generate srcset or picture markup in views.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions and two comments, though Rails responsive images affect many gem users."
+          "score": 3,
+          "reason": "Ruby gem has 421 stars, above median; but zero reactions and only two comments."
         },
         "impact": {
           "score": 2,
-          "reason": "Enthusiastic request with no mention of production use, paying teams or churn risk."
+          "reason": "Convenience helper for responsive images; no production, paying team or churn language in the issue."
         },
         "urgency": {
           "score": 1,
-          "reason": "No blocker or deadline language; opened in 2016 and likely stale."
+          "reason": "Exploratory question from 2016 with no blocker or deadline language."
         },
         "fit": {
           "score": 2,
-          "reason": "Responsive images are core delivery but not tied to stated AI agent, DAM or governance priorities."
+          "reason": "Responsive images are core delivery but not an AI, agent, or DAM priority in the strategy."
+        },
+        "feasibility": {
+          "score": 4,
+          "reason": "View helpers and an upload directive in one SDK; moderate, contained change."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Request is clear but old; it may already be addressed, and engagement signals are minimal."
+      }
+    },
+    {
+      "id": 201885691,
+      "number": 56,
+      "repo": "cloudinary_ios",
+      "title": "OSX support?",
+      "url": "https://github.com/cloudinary/cloudinary_ios/issues/56",
+      "createdAt": "2017-01-19T15:07:58Z",
+      "updatedAt": "2023-07-20T20:54:47Z",
+      "reactions": 0,
+      "comments": 1,
+      "repoStars": 169,
+      "repoForks": 107,
+      "problem": "macOS app developers cannot use Cloudinary's Swift iOS SDK in their desktop applications.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "No reactions, one comment; iOS repo has 169 stars, above median, but macOS demand unshown."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Simple question with no mention of production use, paying team, or commercial stakes."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "Asks about 'near future' plans casually; no blocker language, opened 2017."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Platform expansion of an SDK; only loosely tied to stated developer focus, not agent or AI priorities."
         },
         "feasibility": {
           "score": 3,
-          "reason": "Needs an upload directive plus new view helpers for srcset and picture tags in one SDK."
+          "reason": "Swift code is shared, but UIKit dependencies likely need porting and macOS testing in one SDK."
         }
       },
       "confidence": {
         "level": "low",
-        "reason": "Very old, thin issue; the feature may already be implemented, so scores rest on guesses."
+        "reason": "One-line question from 2017 with no details on use case or demand."
+      }
+    },
+    {
+      "id": 141306577,
+      "number": 4,
+      "repo": "pkg-cloudinary-core",
+      "title": "remove lodash dependency",
+      "url": "https://github.com/cloudinary/pkg-cloudinary-core/issues/4",
+      "createdAt": "2016-03-16T15:19:30Z",
+      "updatedAt": "2018-07-03T21:25:47Z",
+      "reactions": 10,
+      "comments": 13,
+      "repoStars": 54,
+      "repoForks": 27,
+      "problem": "JavaScript developers using cloudinary-core get a heavy, unmanaged lodash dependency that bloats bundles and complicates dependency management.",
+      "scores": {
+        "reach": {
+          "score": 4,
+          "reason": "10 reactions is the set maximum and 13 comments is well above median, despite a small 54-star repo."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Bundle size and dependency hygiene annoyance; no mention of production blockers, paying teams or churn."
+        },
+        "urgency": {
+          "score": 2,
+          "reason": "Phrased as a question with no blocker or deadline language; opened in 2016."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Generic SDK maintenance; only loosely tied to the stated developer and SDK focus, not agents or AI."
+        },
+        "feasibility": {
+          "score": 3,
+          "reason": "Single package, but replacing lodash usage across the core library takes moderate refactoring and testing."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Strong engagement signals but a very short body; the issue is old and may already be addressed."
       }
     },
     {
@@ -2184,70 +2298,34 @@
       "updatedAt": "2023-07-20T20:54:28Z",
       "reactions": 0,
       "comments": 0,
-      "problem": "iOS developers uploading large videos or photos see high memory use because the SDK loads the whole file into RAM before sending.",
+      "repoStars": 169,
+      "repoForks": 107,
+      "problem": "iOS developers uploading large videos or photos hit high memory use because the SDK loads the whole file into RAM before sending.",
       "scores": {
         "reach": {
           "score": 2,
-          "reason": "Zero reactions or comments, though any iOS app uploading large media could be affected."
+          "reason": "No reactions or comments; iOS repo has 169 stars, above set median, but single requester."
         },
         "impact": {
           "score": 2,
-          "reason": "Memory footprint improvement; no production, paying team or churn language in the issue."
+          "reason": "Memory pressure on large uploads could cause app issues, but no production or commercial stakes mentioned."
         },
         "urgency": {
           "score": 1,
-          "reason": "Framed as a quick suggestion worth looking into; no blocker or deadline mentioned."
+          "reason": "Framed as a quick suggestion worth looking into; no blocker language. Opened 2016."
         },
         "fit": {
           "score": 2,
-          "reason": "General SDK quality for developers; no link to agent, AI media or DAM priorities."
+          "reason": "General SDK upload efficiency; not tied to agents, AI media, or DAM governance priorities."
         },
         "feasibility": {
           "score": 4,
-          "reason": "Change limited to the iOS SDK upload path; multipart streaming adds some complexity."
-        }
-      },
-      "confidence": {
-        "level": "low",
-        "reason": "Issue from 2016 targets Objective-C API; the current SDK may already stream uploads, so relevance is uncertain."
-      }
-    },
-    {
-      "id": 119849802,
-      "number": 180,
-      "repo": "cloudinary_gem",
-      "title": "[Suggestion] Restructure source code to make integration easier",
-      "url": "https://github.com/cloudinary/cloudinary_gem/issues/180",
-      "createdAt": "2015-12-02T01:54:44Z",
-      "updatedAt": "2023-07-20T20:54:20Z",
-      "reactions": 0,
-      "comments": 1,
-      "problem": "Ruby developers using non-Rails frameworks or plain Ruby must work around tightly coupled Rails integration code to use the gem.",
-      "scores": {
-        "reach": {
-          "score": 2,
-          "reason": "Zero reactions, one comment; affects non-Rails Ruby users, a smaller slice of the Ruby SDK audience."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Requester's company uses gem in production smoothly; request is architectural cleanliness, no churn or revenue signal."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "Framed as a suggestion, no blocker language, opened in 2015 with no follow-up pressure."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "Developer SDK quality loosely supports developer focus; no tie to AI agents, MCP or DAM priorities."
-        },
-        "feasibility": {
-          "score": 3,
-          "reason": "Single SDK, contributor offers a PR, but restructuring risks breaking existing Rails users."
+          "reason": "Localized change to upload request construction in one SDK, though multipart streaming adds some work."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is clear but old; current gem structure may already differ, so relevance is uncertain."
+        "reason": "Clear technical request, but 2016 Objective-C context may be outdated given SDK rewrites since."
       }
     },
     {
@@ -2260,70 +2338,74 @@
       "updatedAt": "2021-01-12T14:02:37Z",
       "reactions": 0,
       "comments": 32,
-      "problem": "React Native developers cannot use the Node SDK in their apps because it depends on Node's crypto module, which React Native lacks.",
+      "repoStars": 673,
+      "repoForks": 318,
+      "problem": "React Native developers cannot use the Cloudinary Node SDK because it depends on Node's crypto module, unavailable in React Native.",
       "scores": {
         "reach": {
-          "score": 3,
-          "reason": "32 comments show sustained interest; React Native is widely used, though zero reactions recorded."
+          "score": 5,
+          "reason": "32 comments, the most in the set; largest repo (673 stars, 318 forks); React Native is widely used."
         },
         "impact": {
-          "score": 2,
-          "reason": "Issue text gives no production or paying-team context; it is a single screenshot of a failure."
+          "score": 3,
+          "reason": "Blocks mobile developers from using the SDK, but the issue gives no stated production or paying-team stakes."
         },
         "urgency": {
-          "score": 1,
-          "reason": "Opened in 2015 with no blocker or deadline language; very old issue."
+          "score": 2,
+          "reason": "Opened in 2015 with no deadline or blocker language; the thin body is only a screenshot."
         },
         "fit": {
-          "score": 2,
-          "reason": "Loosely serves the developer focus; no stated priority covers mobile or React Native support."
+          "score": 3,
+          "reason": "Serves developer reach generally; not tied to agent, AI media or DAM priorities."
         },
         "feasibility": {
           "score": 3,
-          "reason": "Replacing the crypto dependency in one SDK is contained, but Node-specific APIs may run deeper."
-        }
-      },
-      "confidence": {
-        "level": "low",
-        "reason": "Body is one line plus a screenshot; issue is from 2015 and may be outdated or already resolved."
-      }
-    },
-    {
-      "id": 37798106,
-      "number": 37,
-      "repo": "pycloudinary",
-      "title": "pycloudinary does not implement Django's storage API",
-      "url": "https://github.com/cloudinary/pycloudinary/issues/37",
-      "createdAt": "2014-07-14T15:41:22Z",
-      "updatedAt": "2023-07-20T20:54:10Z",
-      "reactions": 1,
-      "comments": 7,
-      "problem": "Django developers cannot use Cloudinary through standard FileField and storage APIs, making image uploads harder than with other storage backends.",
-      "scores": {
-        "reach": {
-          "score": 3,
-          "reason": "Django is widely used, but only 1 reaction and 7 comments; third-party storage packages may already cover this."
-        },
-        "impact": {
-          "score": 2,
-          "reason": "Developer convenience issue; no production, paying team, or churn language in the issue."
-        },
-        "urgency": {
-          "score": 1,
-          "reason": "Opened 2014, no blocker or deadline language; framed as an enhancement."
-        },
-        "fit": {
-          "score": 2,
-          "reason": "Loosely serves developer focus; unrelated to stated AI agent, MCP, or DAM priorities."
-        },
-        "feasibility": {
-          "score": 4,
-          "reason": "Requester notes a custom storage backend is not hard; change confined to pycloudinary."
+          "reason": "Requires replacing or abstracting crypto usage in one SDK; moderate effort, possibly with signing security concerns."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Issue is short and old; current relevance against today's Django and pycloudinary versions is unclear."
+        "reason": "Strong engagement signals, but the body is minimal and from 2015; the current relevance is unclear."
+      }
+    },
+    {
+      "id": 119849802,
+      "number": 180,
+      "repo": "cloudinary_gem",
+      "title": "[Suggestion] Restructure source code to make integration easier",
+      "url": "https://github.com/cloudinary/cloudinary_gem/issues/180",
+      "createdAt": "2015-12-02T01:54:44Z",
+      "updatedAt": "2023-07-20T20:54:20Z",
+      "reactions": 0,
+      "comments": 1,
+      "repoStars": 421,
+      "repoForks": 281,
+      "problem": "Ruby developers using non-Rails frameworks or plain Ruby must work around the gem's tight Rails coupling to integrate Cloudinary.",
+      "scores": {
+        "reach": {
+          "score": 2,
+          "reason": "No reactions, one comment; gem audience is above median at 421 stars, but non-Rails Ruby users are a subset."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Envato mentions production use but reports things working smoothly; no churn or revenue signal stated."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "Framed as a suggestion from 2015 with no blocker or deadline language."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "General SDK developer experience; not tied to agents, AI media features or DAM governance priorities."
+        },
+        "feasibility": {
+          "score": 2,
+          "reason": "Restructuring gem internals into core plus Rails layer is a sizable refactor with backward-compatibility risk."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Request is clear, but signals are thin and the issue is very old; current gem structure is unknown."
       }
     },
     {
@@ -2336,32 +2418,74 @@
       "updatedAt": "2023-07-20T20:54:16Z",
       "reactions": 0,
       "comments": 6,
+      "repoStars": 421,
+      "repoForks": 281,
       "problem": "Rails developers using CarrierWave with Cloudinary get unwanted remote API delete calls during tests, even with file storage and processing disabled.",
       "scores": {
         "reach": {
-          "score": 2,
-          "reason": "Zero reactions, six comments; affects Rails CarrierWave users running tests, a subset of Ruby SDK users."
+          "score": 3,
+          "reason": "Ruby gem has 421 stars, above set median; 6 comments but zero reactions."
         },
         "impact": {
           "score": 2,
-          "reason": "Test environment friction only; no production, paying team or churn language in the issue."
+          "reason": "Affects test suites and developer experience, not production; no paying-team or churn language."
         },
         "urgency": {
           "score": 2,
-          "reason": "Surfaced after Rails 4.2 upgrade causing test failures, but issue dates from 2015 on old versions."
+          "reason": "Surfaced after a Rails 4.2 upgrade, but issue is from 2015 with no blocking language."
         },
         "fit": {
           "score": 2,
-          "reason": "Developer experience fits 'developers stay central' loosely; unrelated to AI agents, MCP or DAM priorities."
+          "reason": "General developer experience; unrelated to agents, AI media or DAM priorities in the strategy."
         },
         "feasibility": {
-          "score": 4,
-          "reason": "Likely a small guard in carrier_wave.rb delete within one gem, per the stack trace."
+          "score": 5,
+          "reason": "Small conditional check in one gem's CarrierWave delete path."
         }
       },
       "confidence": {
         "level": "medium",
-        "reason": "Clear technical description, but issue is from 2015 and may be stale or already addressed."
+        "reason": "Issue is clear and concrete, but it is old and may already be resolved in current versions."
+      }
+    },
+    {
+      "id": 37798106,
+      "number": 37,
+      "repo": "pycloudinary",
+      "title": "pycloudinary does not implement Django's storage API",
+      "url": "https://github.com/cloudinary/pycloudinary/issues/37",
+      "createdAt": "2014-07-14T15:41:22Z",
+      "updatedAt": "2023-07-20T20:54:10Z",
+      "reactions": 1,
+      "comments": 7,
+      "repoStars": 262,
+      "repoForks": 133,
+      "problem": "Django developers cannot use standard FileField and storage APIs with Cloudinary, making image uploads in Django apps harder.",
+      "scores": {
+        "reach": {
+          "score": 3,
+          "reason": "1 reaction, 7 comments; pycloudinary has 262 stars, above median; Django is widely used."
+        },
+        "impact": {
+          "score": 2,
+          "reason": "Developer convenience; no production, paying team or churn language in the issue."
+        },
+        "urgency": {
+          "score": 1,
+          "reason": "No blocker or deadline language; opened 2014, nice-to-have."
+        },
+        "fit": {
+          "score": 2,
+          "reason": "Serves developers generally but not agents, AI media features or DAM governance."
+        },
+        "feasibility": {
+          "score": 4,
+          "reason": "Custom Django storage backend in one SDK; issue says it is not hard."
+        }
+      },
+      "confidence": {
+        "level": "medium",
+        "reason": "Clear but brief issue; very old, so current relevance is uncertain."
       }
     }
   ]

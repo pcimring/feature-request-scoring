@@ -3,9 +3,10 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import type { Dataset } from "../shared/types.ts";
 import { classifyIssue } from "./classify.ts";
 import { CostMeter } from "./cost.ts";
-import { fetchOpenIssues } from "./github.ts";
+import { fetchOpenIssues, fetchRepoStats } from "./github.ts";
 import { runPipeline, type ClassificationRecord } from "./pipeline.ts";
 import { scoreRequest } from "./score.ts";
+import { setSummary } from "./setSummary.ts";
 
 const ORG = "cloudinary";
 const BUDGET_USD = 1.5;
@@ -28,14 +29,17 @@ const client = new Anthropic();
 const meter = new CostMeter(BUDGET_USD);
 const strategy = readFileSync("pipeline/strategy.md", "utf8").split("\nSources:")[0].trim();
 
-const issues = await fetchOpenIssues(ORG, { token: process.env.GITHUB_TOKEN });
+const fetched = await fetchOpenIssues(ORG, { token: process.env.GITHUB_TOKEN });
+const repoStats = await fetchRepoStats(ORG, [...new Set(fetched.map((i) => i.repo))], { token: process.env.GITHUB_TOKEN });
+const issues = fetched.map((i) => ({ ...i, repoStars: repoStats[i.repo].stars, repoForks: repoStats[i.repo].forks }));
+let summary: string | undefined;
 console.log(`Fetched ${issues.length} open issues from ${ORG}.`);
 
 const result = await runPipeline({
   org: ORG,
   issues,
   classify: (i) => classifyIssue(client, i, meter),
-  score: (i) => scoreRequest(client, i, strategy, meter),
+  score: (i, all) => scoreRequest(client, i, strategy, meter, (summary ??= setSummary(all))),
   previous: {
     classifications: readJson<Record<number, ClassificationRecord>>(CLASS_FILE) ?? {},
     dataset: readJson<Dataset>(SCORES_FILE),

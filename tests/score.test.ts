@@ -33,9 +33,11 @@ describe("scoreRequest", () => {
     expect(calls[0].betas).toEqual(["server-side-fallback-2026-07-01"]);
   });
 
-  it("sends the strategy summary and the issue's reaction count", async () => {
+  it("sends the strategy, the set summary, the reaction count and repo stars", async () => {
     const { client, calls } = stubClient({ parsed_output: output });
-    await scoreRequest(client, issue, "STRATEGY-MARKER", new CostMeter(1.5));
+    await scoreRequest(client, { ...issue, repoStars: 120, repoForks: 30 }, "STRATEGY-MARKER", new CostMeter(1.5), "SET-MARKER");
+    expect(userText(calls[0])).toContain("SET-MARKER");
+    expect(userText(calls[0])).toContain("Repository stars: 120");
     expect(userText(calls[0])).toContain("STRATEGY-MARKER");
     expect(userText(calls[0])).toContain("Reactions: 42");
   });

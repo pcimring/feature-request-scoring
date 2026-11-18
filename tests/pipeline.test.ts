@@ -30,6 +30,15 @@ function recorder<T>(fn: (i: RawIssue) => T) {
 }
 
 describe("runPipeline", () => {
+  it("passes the full set of feature requests to the scorer", async () => {
+    const sets: number[][] = [];
+    await runPipeline({
+      org: "cloudinary", issues: [raw(1), raw(2), raw(3)], classify: async (i) => (i.id === 2 ? bug : feature),
+      score: async (_i, all) => { sets.push(all.map((a) => a.id)); return score(); }, now,
+    });
+    expect(sets[0]).toEqual([1, 3]);
+  });
+
   it("scores only feature requests and counts issues and feature requests", async () => {
     const classify = recorder((i) => (i.id === 2 ? bug : feature));
     const scorer = recorder(() => score());

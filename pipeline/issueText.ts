@@ -8,6 +8,8 @@ export function issueText(issue: RawIssue): string {
     `Labels: ${issue.labels.length ? issue.labels.join(", ") : "none"}`,
     `Reactions: ${issue.reactions}`,
     `Comments: ${issue.comments}`,
+    `Repository stars: ${issue.repoStars ?? "unknown"}`,
+    `Repository forks: ${issue.repoForks ?? "unknown"}`,
     `Opened: ${issue.createdAt.slice(0, 10)}`,
     "<issue_body>",
     issue.body || "(empty)",

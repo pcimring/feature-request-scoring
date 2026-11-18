@@ -7,7 +7,8 @@ export interface PipelineDeps {
   org: string;
   issues: RawIssue[];
   classify: (i: RawIssue) => Promise<Classification>;
-  score: (i: RawIssue) => Promise<Score>;
+  /** `all` is every feature request in this run, so the scorer can judge each one relative to the set. */
+  score: (i: RawIssue, all: RawIssue[]) => Promise<Score>;
   previous?: { classifications: Record<number, ClassificationRecord>; dataset?: Dataset };
   /** Score at most this many new requests (reused scores don't count). */
   limit?: number;
@@ -80,7 +81,7 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
 
   await pool(toScore.slice(0, deps.limit ?? toScore.length), stop, async (i) => {
     try {
-      requests.push({ ...meta(i), ...(await deps.score(i)) });
+      requests.push({ ...meta(i), ...(await deps.score(i, features)) });
     } catch (e) {
       onError("Scoring", i, e);
     }

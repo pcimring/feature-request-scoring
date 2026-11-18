@@ -54,3 +54,21 @@ export async function fetchOpenIssues(
     if (items.length < PER_PAGE) return issues;
   }
 }
+
+export async function fetchRepoStats(
+  org: string,
+  repos: string[],
+  opts: { token?: string; fetchFn?: typeof fetch } = {},
+): Promise<Record<string, { stars: number; forks: number }>> {
+  const fetchFn = opts.fetchFn ?? fetch;
+  const headers: Record<string, string> = { Accept: "application/vnd.github+json" };
+  if (opts.token) headers.Authorization = `Bearer ${opts.token}`;
+  const stats: Record<string, { stars: number; forks: number }> = {};
+  for (const repo of repos) {
+    const res = await fetchFn(`https://api.github.com/repos/${org}/${repo}`, { headers });
+    if (res.status !== 200) throw new Error(`GitHub repo lookup failed for ${repo} with status ${res.status}`);
+    const r = (await res.json()) as { stargazers_count: number; forks_count: number };
+    stats[repo] = { stars: r.stargazers_count, forks: r.forks_count };
+  }
+  return stats;
+}

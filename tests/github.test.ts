@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BODY_LIMIT, fetchOpenIssues } from "../pipeline/github.ts";
+import { BODY_LIMIT, fetchOpenIssues, fetchRepoStats } from "../pipeline/github.ts";
 
 function item(n: number, body: string | null = "body") {
   return {
@@ -75,5 +75,19 @@ describe("fetchOpenIssues", () => {
   it("throws with the status on a non-200 response", async () => {
     const { fetchFn } = stubFetch([[]], 403);
     await expect(fetchOpenIssues("cloudinary", { fetchFn })).rejects.toThrow(/403/);
+  });
+});
+
+describe("fetchRepoStats", () => {
+  it("returns stars and forks per repo", async () => {
+    const calls: string[] = [];
+    const fetchFn = (async (url: string) => {
+      calls.push(url);
+      const name = url.split("/").pop();
+      return new Response(JSON.stringify({ stargazers_count: name === "a" ? 120 : 5, forks_count: name === "a" ? 30 : 1 }));
+    }) as typeof fetch;
+    const stats = await fetchRepoStats("cloudinary", ["a", "b"], { fetchFn });
+    expect(calls).toEqual(["https://api.github.com/repos/cloudinary/a", "https://api.github.com/repos/cloudinary/b"]);
+    expect(stats).toEqual({ a: { stars: 120, forks: 30 }, b: { stars: 5, forks: 1 } });
   });
 });

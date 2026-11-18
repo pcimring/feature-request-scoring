@@ -23,6 +23,9 @@ export interface RawIssue {
   reactions: number;
   comments: number;
   labels: string[];
+  /** Stars and forks of the issue's repository: a proxy for the size of that SDK's audience. */
+  repoStars?: number;
+  repoForks?: number;
 }
 
 export const ClassificationSchema = z.object({
