@@ -5,7 +5,8 @@ import type { CostMeter } from "./cost.ts";
 import { issueText } from "./issueText.ts";
 import { cleanText } from "./sanitize.ts";
 
-export const SCORE_MODEL = "claude-opus-5-5";
+// Haiku 5.5 matched Opus 5.5 closely on a 5-request comparison at about 1/40 of the cost.
+export const SCORE_MODEL = "claude-haiku-5-5";
 
 const SYSTEM = `You help a product manager prioritize feature requests. Each request is a public GitHub issue from one of Cloudinary's open-source SDK repositories. Score it against a fixed rubric so the PM can rank requests and see why.
 

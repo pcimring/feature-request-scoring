@@ -24,9 +24,16 @@ const output: Score = {
 };
 
 describe("scoreRequest", () => {
-  it("uses Opus 5.5 at low effort with default fallbacks", async () => {
+  it("defaults to Haiku 5.5 at low effort", async () => {
     const { client, calls } = stubClient({ parsed_output: output });
     await scoreRequest(client, issue, "Strategy text", new CostMeter(1.5));
+    expect(calls[0].model).toBe("claude-haiku-5-5");
+    expect((calls[0].output_config as { effort: string }).effort).toBe("low");
+  });
+
+  it("uses Opus 5.5 with default fallbacks when asked", async () => {
+    const { client, calls } = stubClient({ parsed_output: output });
+    await scoreRequest(client, issue, "Strategy text", new CostMeter(1.5), "", "claude-opus-5-5");
     expect(calls[0].model).toBe("claude-opus-5-5");
     expect((calls[0].output_config as { effort: string }).effort).toBe("low");
     expect(calls[0].fallbacks).toBe("default");

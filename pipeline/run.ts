@@ -5,7 +5,8 @@ import { classifyIssue } from "./classify.ts";
 import { CostMeter } from "./cost.ts";
 import { fetchOpenIssues, fetchRepoStats } from "./github.ts";
 import { runPipeline, type ClassificationRecord } from "./pipeline.ts";
-import { scoreRequest } from "./score.ts";
+import { calibrateScores } from "./calibrate.ts";
+import { SCORE_MODEL, scoreRequest } from "./score.ts";
 import { setSummary } from "./setSummary.ts";
 
 const ORG = "cloudinary";
@@ -40,6 +41,7 @@ const result = await runPipeline({
   issues,
   classify: (i) => classifyIssue(client, i, meter),
   score: (i, all) => scoreRequest(client, i, strategy, meter, (summary ??= setSummary(all))),
+  calibrate: (rs) => calibrateScores(client, rs, meter, SCORE_MODEL),
   previous: {
     classifications: readJson<Record<number, ClassificationRecord>>(CLASS_FILE) ?? {},
     dataset: readJson<Dataset>(SCORES_FILE),

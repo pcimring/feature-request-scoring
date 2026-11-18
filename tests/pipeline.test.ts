@@ -30,6 +30,34 @@ function recorder<T>(fn: (i: RawIssue) => T) {
 }
 
 describe("runPipeline", () => {
+  it("runs the comparative pass over all rows when something new was scored", async () => {
+    const seen: number[][] = [];
+    const { dataset } = await runPipeline({
+      org: "cloudinary", issues: [raw(1), raw(2)], classify: async () => feature, score: async () => score(), now,
+      calibrate: async (rs) => { seen.push(rs.map((r) => r.id).sort()); return rs.map((r) => ({ ...r, problem: "calibrated" })); },
+    });
+    expect(seen).toEqual([[1, 2]]);
+    expect(dataset.requests.every((r) => r.problem === "calibrated")).toBe(true);
+  });
+
+  it("skips the comparative pass when nothing new was scored", async () => {
+    let called = false;
+    await runPipeline({
+      org: "cloudinary", issues: [raw(1)], classify: async () => bug, score: async () => score(), now,
+      calibrate: async (rs) => { called = true; return rs; },
+    });
+    expect(called).toBe(false);
+  });
+
+  it("keeps the uncalibrated scores when the comparative pass fails", async () => {
+    const { dataset } = await runPipeline({
+      org: "cloudinary", issues: [raw(1)], classify: async () => feature, score: async () => score(), now,
+      calibrate: async () => { throw new Error("boom"); },
+    });
+    expect(dataset.requests[0].problem).toBe("p");
+    expect(dataset.counts.failed).toBe(0);
+  });
+
   it("passes the full set of feature requests to the scorer", async () => {
     const sets: number[][] = [];
     await runPipeline({

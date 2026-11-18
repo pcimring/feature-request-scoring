@@ -9,6 +9,8 @@ export interface PipelineDeps {
   classify: (i: RawIssue) => Promise<Classification>;
   /** `all` is every feature request in this run, so the scorer can judge each one relative to the set. */
   score: (i: RawIssue, all: RawIssue[]) => Promise<Score>;
+  /** Optional comparative pass over every row, run when something new was scored. */
+  calibrate?: (rs: ScoredRequest[]) => Promise<ScoredRequest[]>;
   previous?: { classifications: Record<number, ClassificationRecord>; dataset?: Dataset };
   /** Score at most this many new requests (reused scores don't count). */
   limit?: number;
@@ -71,7 +73,8 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
   });
 
   const features = deps.issues.filter((i) => classifications[i.id]?.label === "feature_request");
-  const requests: ScoredRequest[] = [];
+  let requests: ScoredRequest[] = [];
+  let scoredNew = 0;
   const toScore: RawIssue[] = [];
   for (const i of features) {
     const prev = prevScores.get(i.id);
@@ -82,10 +85,20 @@ export async function runPipeline(deps: PipelineDeps): Promise<PipelineResult> {
   await pool(toScore.slice(0, deps.limit ?? toScore.length), stop, async (i) => {
     try {
       requests.push({ ...meta(i), ...(await deps.score(i, features)) });
+      scoredNew++;
     } catch (e) {
       onError("Scoring", i, e);
     }
   });
+
+  if (deps.calibrate && scoredNew > 0 && !stoppedForBudget) {
+    try {
+      requests = await deps.calibrate(requests);
+    } catch (e) {
+      if (e instanceof BudgetExceededError) stoppedForBudget = true;
+      log(`Comparative pass failed, keeping the per-request scores: ${(e as Error).message}`);
+    }
+  }
 
   return {
     dataset: {
