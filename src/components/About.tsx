@@ -4,11 +4,11 @@ export function About({ company }: { company: string }) {
       <h2 id="about-title">About this demo</h2>
       <h3 id="how-it-works">How it works</h3>
       <p>
-        A script pulls every open issue from a GitHub organization's public repos; this demo uses {company}'s. Claude
-        Haiku sorts them into feature requests, bugs, questions and other.
+        A script pulls every open issue from a GitHub org's public repos; this demo uses {company}. An AI model (Claude
+        Haiku in this demo) sorts them into feature requests, bugs, questions and other.
       </p>
       <p>
-        Next, Claude rewrites each feature request as the problem behind it, so it is judged on the need rather than on
+        Next, the model rewrites each feature request as the problem behind it, so it is judged on the need rather than on
         the fix the requester suggested. It then scores the request from 1 to 5 on five dimensions, each with a one-line
         reason you can check against the issue:
       </p>
@@ -33,7 +33,7 @@ export function About({ company }: { company: string }) {
         </li>
       </ul>
       <p>
-        Claude also rates its confidence in each set of scores, so you know which ones to check first. Because each
+        The model also says how confident it is in each request's scores, so you know which ones to check first. Because each
         request is scored on its own, scores tend to bunch in the middle; a final pass compares all the requests side by
         side and spreads out Reach, Business Impact and Urgency so the ranking can tell them apart.
       </p>
