@@ -38,10 +38,22 @@ export function About({ company }: { company: string }) {
         side and spreads out Reach, Business Impact and Urgency so the ranking can tell them apart.
       </p>
       <p>
-        It also reads the latest comments and flags threads that drifted into several requests, requests that may already
-        be solved (possibly resolved), and requests with a pull request waiting, so a product manager can clear out dead
-        weight instead of ranking it.
+        The model also reads the latest comments in each thread and flags requests that may not need ranking at all:
       </p>
+      <ul className="rubric">
+        <li>
+          <strong>Mixed requests:</strong> the thread drifted into several separate asks, so it may need splitting.
+        </li>
+        <li>
+          <strong>Possibly resolved:</strong> a maintainer says it shipped, a dedicated repo now exists, or the requester
+          accepted a working alternative, so it may be ready to close.
+        </li>
+        <li>
+          <strong>PR waiting:</strong> someone has already opened a pull request, so reviewing it may be cheaper than
+          building from scratch.
+        </li>
+      </ul>
+      <p>This way a product manager can clear out dead weight instead of ranking it.</p>
       <p>
         The results are saved to a file. This page only does the arithmetic for the weights, so no AI runs while you
         browse.
