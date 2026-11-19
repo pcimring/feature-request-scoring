@@ -112,9 +112,10 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
                   <option value="confidence">Confidence (lowest first)</option>
                 </select>
               </label>
-              <ShowOnly selected={showOnly} onChange={setShowOnly} shown={ranked.length} total={dataset.requests.length} />
+              <ShowOnly selected={showOnly} onChange={setShowOnly} />
             </div>
           </section>
+          <p className="showing" aria-live="polite">{`Showing ${ranked.length} of ${dataset.requests.length} requests`}</p>
           <RequestList requests={ranked} />
         </main>
       )}

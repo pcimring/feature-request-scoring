@@ -29,7 +29,7 @@ function Row({ r }: { r: RankedRequest }) {
             {r.total.toFixed(1)}
           </span>
           <span className={`confidence ${r.confidence.level}`} title={CONFIDENCE_TITLE}>
-            {r.confidence.level}
+            {`${r.confidence.level} confidence`}
           </span>
         </span>
         <span className="chips">

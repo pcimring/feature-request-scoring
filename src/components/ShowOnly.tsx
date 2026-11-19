@@ -19,13 +19,9 @@ const KEYS: FilterKey[] = ["low", "possibly_resolved", "mixed_requests", "pr_wai
 export function ShowOnly({
   selected,
   onChange,
-  shown,
-  total,
 }: {
   selected: Set<FilterKey>;
   onChange: (s: Set<FilterKey>) => void;
-  shown: number;
-  total: number;
 }) {
   const toggle = (k: FilterKey) => {
     const next = new Set(selected);
@@ -35,9 +31,7 @@ export function ShowOnly({
   };
   return (
     <fieldset className="show-only">
-      <legend>
-        Show only <span className="showing">{`Showing ${shown} of ${total}`}</span>
-      </legend>
+      <legend>Show only</legend>
       {KEYS.map((k) => (
         <label className="toggle" key={k} title={HINTS[k]}>
           <input type="checkbox" checked={selected.has(k)} onChange={() => toggle(k)} />

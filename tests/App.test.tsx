@@ -191,11 +191,12 @@ describe("PR waiting flag", () => {
 });
 
 describe("filters and confidence placement", () => {
-  it("shows confidence as one color-coded word under the score, apart from the flag badges", () => {
+  it("shows confidence as a color-coded label under the score, naming it as confidence", () => {
     render(<App dataset={fixtureDataset()} />);
     const row = rows().find((r) => within(r).getByTestId("problem").textContent === "Vague problem")!;
     const conf = row.querySelector(".score-col .confidence");
-    expect(conf).toHaveTextContent(/^low$/);
+    // "low" alone under the number read as a rating of the score itself.
+    expect(conf).toHaveTextContent(/^low confidence$/);
     expect(conf).toHaveClass("low");
     expect(row.querySelector(".badges")?.textContent ?? "").not.toMatch(/confidence|review/i);
   });
@@ -221,7 +222,11 @@ describe("show only", () => {
   it("shows everything when nothing is ticked, with a showing count", () => {
     render(<App dataset={data()} />);
     expect(problems()).toHaveLength(3);
-    expect(screen.getByText("Showing 3 of 3")).toBeInTheDocument();
+    const count = screen.getByText("Showing 3 of 3 requests");
+    // The count sits just above the results, outside the controls.
+    expect(screen.getByRole("region", { name: "Controls" })).not.toContainElement(count);
+    const list = screen.getByRole("list", { name: "Ranked feature requests" });
+    expect(count.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it("combines ticked boxes with OR", () => {
@@ -230,7 +235,7 @@ describe("show only", () => {
     expect(problems()).toEqual(["Vague problem"]);
     fireEvent.click(screen.getByLabelText("PR waiting"));
     expect(problems().sort()).toEqual(["Impacty problem", "Vague problem"]);
-    expect(screen.getByText("Showing 2 of 3")).toBeInTheDocument();
+    expect(screen.getByText("Showing 2 of 3 requests")).toBeInTheDocument();
   });
 
   it("labels the count card as low-confidence scores", () => {

@@ -131,15 +131,15 @@ a { color: var(--color-accent); }
 .sdk-stars { color: var(--color-muted); border-left: 1px solid var(--color-border); padding-left: 14px; }
 .badge.flag { background: #fde8e8; color: #a4262c; }
 .flag-reason dt { color: #a4262c; }
-.confidence { font-size: 12px; font-weight: 600; text-transform: lowercase; cursor: help; }
-.confidence.low { color: var(--color-review); }
-.confidence.medium { color: var(--color-muted); }
-.confidence.high { color: var(--color-live); }
+.confidence { padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; text-transform: lowercase; cursor: help; }
+.confidence.low { color: var(--color-review); background: var(--color-review-bg); }
+.confidence.medium { color: var(--color-muted); background: #eef0f4; }
+.confidence.high { color: var(--color-live); background: #e6f4ea; }
 .filters { display: flex; flex-direction: column; gap: 6px; }
 .show-only { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin: 0; padding: 0; border: 0; }
 .show-only legend { float: left; margin-right: 6px; font-weight: 600; font-size: 14px; }
 .show-only .toggle { font-weight: 400; }
-.showing { margin-left: 12px; color: var(--color-muted); font-weight: 400; }
+.showing { margin: 0 0 10px; color: var(--color-muted); font-size: 14px; }
 .list-options { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 14px; border-top: 1px solid var(--color-border); }
 html { scroll-behavior: smooth; }
 .sep { margin: 0 8px; color: var(--color-muted); }
