@@ -1073,5 +1073,10 @@
     "updatedAt": "2026-04-21T13:02:38Z",
     "label": "other",
     "reason": "The issue reports a vulnerable transitive lodash dependency flagged by audit tools and asks for a dependency bump, which falls under the dependency-bump category rather than a functional bug, feature request, or usage question."
+  },
+  "6477962585": {
+    "updatedAt": "2026-11-19T08:08:10Z",
+    "label": "bug",
+    "reason": "The issue reports that uploadLarge computes a negative Content-Range start offset due to int overflow for files over 2 GiB, which is broken behavior contrary to expected functionality, not a request for new capability or a usage question."
   }
 }
