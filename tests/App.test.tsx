@@ -346,3 +346,12 @@ describe("page navigation", () => {
     expect(document.getElementById("top")).not.toBeNull();
   });
 });
+
+describe("row button name", () => {
+  it("names each row by its rank, problem, score and confidence, not every chip and number in it", () => {
+    render(<App dataset={fixtureDataset()} />);
+    const first = within(rows()[0]).getByRole("button");
+    const problem = within(rows()[0]).getByTestId("problem").textContent;
+    expect(first).toHaveAccessibleName(new RegExp(`^1\\. ${problem}\\. Overall score \\d\\.\\d, (low|medium|high) confidence$`));
+  });
+});

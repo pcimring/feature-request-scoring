@@ -2,6 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import type { Dataset } from "../shared/types.ts";
 import { classifyIssue } from "./classify.ts";
+import { parseLimit } from "./args.ts";
 import { CostMeter } from "./cost.ts";
 import { fetchOpenIssues, fetchRepoStats, fetchThread } from "./github.ts";
 import { runPipeline, type ClassificationRecord } from "./pipeline.ts";
@@ -25,8 +26,7 @@ function writeJson(path: string, value: unknown) {
   writeFileSync(path, JSON.stringify(value, null, 2) + "\n");
 }
 
-const limitArg = process.argv.indexOf("--limit");
-const limit = limitArg > -1 ? Number(process.argv[limitArg + 1]) : undefined;
+const limit = parseLimit(process.argv);
 
 const client = new Anthropic();
 const meter = new CostMeter(BUDGET_USD);

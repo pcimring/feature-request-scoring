@@ -28,6 +28,12 @@ function stubFetch(pages: unknown[][], status = 200) {
 }
 
 describe("fetchOpenIssues", () => {
+  it("stops with a clear error when the org has more open issues than GitHub search returns", async () => {
+    const fetchFn = (async () =>
+      new Response(JSON.stringify({ total_count: 1500, items: [item(1)] }), { status: 200 })) as typeof fetch;
+    await expect(fetchOpenIssues("bigorg", { fetchFn })).rejects.toThrow(/1,500 open issues.*at most 1,000/);
+  });
+
   it("queries open issues in the org and follows pages until a short page", async () => {
     const full = Array.from({ length: 100 }, (_, i) => item(i + 1));
     const { fetchFn, calls } = stubFetch([full, [item(101)]]);

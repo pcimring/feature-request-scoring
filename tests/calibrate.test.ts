@@ -49,3 +49,13 @@ describe("calibration input", () => {
     expect(userText(calls[0])).toContain("21 people");
   });
 });
+
+describe("calibration prompt", () => {
+  it("asks for digits even at the start of a reason, and bans superlatives by name", async () => {
+    const { client, calls } = stubClient({ parsed_output: { items: [] } });
+    await calibrateScores(client, [makeRequest()], new CostMeter(1.5), "claude-haiku-5-5");
+    const system = String(calls[0].system);
+    expect(system).toMatch(/"2 people", not "Two people"/);
+    for (const word of ["largest", "strongest", "most", "biggest"]) expect(system).toContain(`"${word}"`);
+  });
+});

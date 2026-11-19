@@ -37,6 +37,9 @@ function toIssue(i: SearchItem): RawIssue {
   };
 }
 
+/** GitHub search never returns more than this many results for one query. */
+const SEARCH_CAP = 1000;
+
 export async function fetchOpenIssues(
   org: string,
   opts: { token?: string; fetchFn?: typeof fetch } = {},
@@ -53,7 +56,13 @@ export async function fetchOpenIssues(
     if (res.status !== 200) {
       throw new Error(`GitHub search failed with status ${res.status}: ${await res.text()}`);
     }
-    const { items } = (await res.json()) as { items: SearchItem[] };
+    const { items, total_count } = (await res.json()) as { items: SearchItem[]; total_count?: number };
+    if (page === 1 && (total_count ?? 0) > SEARCH_CAP) {
+      throw new Error(
+        `${org} has ${total_count!.toLocaleString("en-US")} open issues, but GitHub search returns at most 1,000. ` +
+          "Split the run by repository before scoring this org.",
+      );
+    }
     issues.push(...items.map(toIssue));
     if (items.length < PER_PAGE) return issues;
   }

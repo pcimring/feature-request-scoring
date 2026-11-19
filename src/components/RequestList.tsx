@@ -23,7 +23,12 @@ function Row({ r }: { r: RankedRequest }) {
   const [open, setOpen] = useState(false);
   return (
     <li className={`row${open ? " open" : ""}`}>
-      <button className="row-head" aria-expanded={open} onClick={() => setOpen(!open)}>
+      <button
+        className="row-head"
+        aria-expanded={open}
+        aria-label={`${r.rank}. ${r.problem}. Overall score ${r.total.toFixed(1)}, ${r.confidence.level} confidence`}
+        onClick={() => setOpen(!open)}
+      >
         <span className="rank">{r.rank}</span>
         <span className="problem" data-testid="problem">
           {r.problem}

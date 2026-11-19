@@ -85,6 +85,14 @@ describe("scoring prompt", () => {
     await scoreRequest(client, issue, "s", new CostMeter(1.5));
     expect(String(calls[0].system)).toMatch(/stars and forks belong to the repository/i);
   });
+
+  it("asks for digits even at the start of a reason, and bans superlatives by name", async () => {
+    const { client, calls } = stubClient({ parsed_output: output });
+    await scoreRequest(client, issue, "s", new CostMeter(1.5));
+    const system = String(calls[0].system);
+    expect(system).toMatch(/"2 people", not "Two people"/);
+    for (const word of ["largest", "strongest", "most", "biggest"]) expect(system).toContain(`"${word}"`);
+  });
 });
 
 describe("people in the thread", () => {
