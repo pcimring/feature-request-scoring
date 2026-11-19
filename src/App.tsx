@@ -43,7 +43,7 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
         <h1>Feature-request scoring</h1>
         <p className="lead">
           Product teams get more feature requests than they can build. This tool reads the open feature requests in a
-          GitHub organization, scores each one against a five-part rubric, explains every score, and flags the ones a
+          GitHub organization, scores each one against a five-part rubric, explains each score, and flags the ones a
           product manager should review.
           {dataset && ` This demo uses ${dataset.company}'s public repos.`}
         </p>
