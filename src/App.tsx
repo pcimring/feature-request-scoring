@@ -7,12 +7,29 @@ import { ShowOnly, type FilterKey } from "./components/ShowOnly.tsx";
 import { WeightSliders } from "./components/WeightSliders.tsx";
 import { rankRequests, sortRequests, type SortKey } from "./lib/rank.ts";
 
+type Tab = "scores" | "how";
+const tabFromHash = (): Tab => (window.location.hash === "#how-it-works" ? "how" : "scores");
+// Only these hashes switch tabs; any other hash (such as #top) leaves the current tab alone.
+const isTabHash = (hash: string) => hash === "" || hash === "#scores" || hash === "#how-it-works";
+
 export default function App({ dataset: initial }: { dataset?: Dataset }) {
   const [dataset, setDataset] = useState<Dataset | undefined>(initial);
   const [error, setError] = useState(false);
   const [weights, setWeights] = useState<Weights>(DEFAULT_WEIGHTS);
   const [showOnly, setShowOnly] = useState<Set<FilterKey>>(new Set());
   const [sortBy, setSortBy] = useState<SortKey>("weighted");
+  // The tab lives in the URL hash, so a direct link opens it and the back button switches back.
+  const [tab, setTab] = useState<Tab>(tabFromHash);
+
+  useEffect(() => {
+    const onHash = () => {
+      if (!isTabHash(window.location.hash)) return;
+      setTab(tabFromHash());
+      window.scrollTo({ top: 0 });
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
 
   useEffect(() => {
     if (initial) return;
@@ -38,6 +55,14 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
 
   return (
     <div className="page" id="top">
+      <nav className="tabs" aria-label="Page">
+        <a href="#scores" aria-current={tab === "scores" ? "page" : undefined}>
+          Scores
+        </a>
+        <a href="#how-it-works" aria-current={tab === "how" ? "page" : undefined}>
+          How it works
+        </a>
+      </nav>
       <header className="header">
         <p className="eyebrow">AI demo</p>
         <h1>Feature-request scoring</h1>
@@ -45,14 +70,17 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
           Product teams get more feature requests than they can build. This tool reads the open feature requests in a
           GitHub organization, scores each one against a five-part rubric, explains each score, and flags the ones a
           product manager should review.
-          {dataset && ` This demo uses ${dataset.company}'s public repos.`}
+          {dataset && (
+            <>
+              {` This demo uses ${dataset.company}'s public repos (`}
+              <a href={`https://github.com/${dataset.org}`}>{`github.com/${dataset.org}`}</a>
+              {")."}
+            </>
+          )}
         </p>
-        <p className="lead-more">
-          For a more detailed overview, see <a href="#how-it-works">How it works</a> below.
-        </p>
-        {dataset && (
-          <p className="source">
-            Data source: <a href={`https://github.com/${dataset.org}`}>{`github.com/${dataset.org}`}</a>
+        {tab === "scores" && (
+          <p className="lead-more">
+            For a more detailed overview, see <a href="#how-it-works">How it works</a>.
           </p>
         )}
       </header>
@@ -60,7 +88,13 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
       {error && <p className="notice">The scores could not be loaded. Please refresh the page.</p>}
       {!dataset && !error && <p className="notice">Loading scores...</p>}
 
-      {dataset && (
+      {dataset && tab === "how" && (
+        <main>
+          <About company={dataset.company} />
+        </main>
+      )}
+
+      {dataset && tab === "scores" && (
         <main>
           <Counts dataset={dataset} />
           <section className="controls" aria-label="Controls">
@@ -82,7 +116,6 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
             </div>
           </section>
           <RequestList requests={ranked} />
-          <About company={dataset.company} />
         </main>
       )}
 
@@ -93,7 +126,16 @@ export default function App({ dataset: initial }: { dataset?: Dataset }) {
         <span>
           <a href="https://github.com/pcimring/feature-request-scoring">Source code on GitHub</a>
           <span className="sep">·</span>
-          <a href="#top">Back to top ↑</a>
+          <a
+            href="#top"
+            onClick={(e) => {
+              // Scroll without touching the hash, so the current tab stays open.
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            Back to top ↑
+          </a>
         </span>
       </footer>
     </div>

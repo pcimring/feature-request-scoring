@@ -1,10 +1,19 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import App from "../src/App.tsx";
 import { fixtureDataset } from "./fixtures/dataset.ts";
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  window.location.hash = "";
+});
+
+const goTo = (hash: string) =>
+  act(() => {
+    window.location.hash = hash;
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  });
 
 const rows = () => within(screen.getByRole("list", { name: "Ranked feature requests" })).getAllByRole("listitem");
 const problems = () => rows().map((r) => within(r).getByTestId("problem").textContent);
@@ -13,7 +22,11 @@ describe("App", () => {
   it("says what it is and links the data source", () => {
     render(<App dataset={fixtureDataset()} />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/feature-request scoring/i);
-    expect(screen.getByRole("link", { name: /github\.com\/cloudinary$/ })).toHaveAttribute("href", "https://github.com/cloudinary");
+    const source = screen.getByRole("link", { name: /github\.com\/cloudinary$/ });
+    expect(source).toHaveAttribute("href", "https://github.com/cloudinary");
+    // The data source sits in the intro sentence, so it shows the same way on both tabs.
+    expect(source.closest("p")).toHaveTextContent("This demo uses Cloudinary's public repos (github.com/cloudinary).");
+    expect(screen.queryByText(/Data source:/)).toBeNull();
   });
 
   it("shows the counts and the last-updated date", () => {
@@ -49,8 +62,9 @@ describe("App", () => {
     expect(link).toHaveAttribute("href", "https://github.com/cloudinary/cloudinary_npm/issues/11");
   });
 
-  it("carries the limits and the pricing extension on the page", () => {
+  it("carries the limits and the pricing extension on the How it works tab", () => {
     render(<App dataset={fixtureDataset()} />);
+    goTo("#how-it-works");
     const about = screen.getByRole("region", { name: "About this demo" });
     expect(about).toHaveTextContent(/public GitHub issues/i);
     expect(about).toHaveTextContent(/educated guesses/i);
@@ -251,10 +265,63 @@ describe("flag tooltips", () => {
 });
 
 describe("page navigation", () => {
-  it("links from the top to How it works, and from the bottom back to the top", () => {
+  const nav = () => screen.getByRole("navigation", { name: "Page" });
+
+  it("has a nav bar above the main heading with Scores and How it works tabs", () => {
     render(<App dataset={fixtureDataset()} />);
-    expect(screen.getByRole("link", { name: "How it works" })).toHaveAttribute("href", "#how-it-works");
-    expect(document.getElementById("how-it-works")).toHaveTextContent("How it works");
+    expect(within(nav()).getByRole("link", { name: "Scores" })).toHaveAttribute("href", "#scores");
+    expect(within(nav()).getByRole("link", { name: "How it works" })).toHaveAttribute("href", "#how-it-works");
+    const heading = screen.getByRole("heading", { level: 1 });
+    expect(nav().compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it("opens on the Scores tab: the list shows and the overview does not", () => {
+    render(<App dataset={fixtureDataset()} />);
+    expect(within(nav()).getByRole("link", { name: "Scores" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("list", { name: "Ranked feature requests" })).toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "About this demo" })).toBeNull();
+  });
+
+  it("switches to How it works and back with the hash, so the browser back button works", () => {
+    render(<App dataset={fixtureDataset()} />);
+    goTo("#how-it-works");
+    expect(within(nav()).getByRole("link", { name: "How it works" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("region", { name: "About this demo" })).toBeInTheDocument();
+    expect(screen.queryByRole("list", { name: "Ranked feature requests" })).toBeNull();
+    goTo("#scores");
+    expect(screen.getByRole("list", { name: "Ranked feature requests" })).toBeInTheDocument();
+  });
+
+  it("opens straight on How it works from a direct link", () => {
+    window.location.hash = "#how-it-works";
+    render(<App dataset={fixtureDataset()} />);
+    expect(screen.getByRole("region", { name: "About this demo" })).toBeInTheDocument();
+  });
+
+  it("keeps the title and intro on both tabs, and the overview pointer only on Scores", () => {
+    render(<App dataset={fixtureDataset()} />);
+    const pointer = screen.getByText(/For a more detailed overview/);
+    expect(pointer).toHaveTextContent("For a more detailed overview, see How it works.");
+    expect(within(pointer).getByRole("link", { name: "How it works" })).toHaveAttribute("href", "#how-it-works");
+    goTo("#how-it-works");
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
+    expect(screen.getByText(/Product teams get more feature requests/)).toBeInTheDocument();
+    expect(screen.queryByText(/For a more detailed overview/)).toBeNull();
+  });
+
+  it("stays on How it works when Back to top is clicked", () => {
+    render(<App dataset={fixtureDataset()} />);
+    goTo("#how-it-works");
+    // The browser would follow href="#top" and change the hash; the click must scroll instead.
+    const followed = fireEvent.click(screen.getByRole("link", { name: /back to top/i }));
+    expect(followed).toBe(false);
+    // Any other hash (such as #top) leaves the current tab alone.
+    goTo("#top");
+    expect(screen.getByRole("region", { name: "About this demo" })).toBeInTheDocument();
+  });
+
+  it("links from the bottom back to the top", () => {
+    render(<App dataset={fixtureDataset()} />);
     expect(screen.getByRole("link", { name: /back to top/i })).toHaveAttribute("href", "#top");
     expect(document.getElementById("top")).not.toBeNull();
   });
