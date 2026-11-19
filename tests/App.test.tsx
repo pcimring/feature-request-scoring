@@ -125,11 +125,26 @@ describe("row info line", () => {
 });
 
 describe("people count", () => {
-  it("shows how many people the comments come from", () => {
+  it("shows how many people are in the thread, the author included", () => {
     const data = fixtureDataset();
     data.requests = data.requests.map((r) => ({ ...r, comments: 32, people: 21 }));
     render(<App dataset={data} />);
-    expect(within(rows()[0]).getByText("32 comments from 21 people")).toBeInTheDocument();
+    expect(within(rows()[0]).getByText("32 comments, 21 people in the thread")).toBeInTheDocument();
+  });
+
+  it("reads correctly when there are more people than comments", () => {
+    const data = fixtureDataset();
+    data.requests = data.requests.map((r) => ({ ...r, comments: 7, people: 8 }));
+    render(<App dataset={data} />);
+    expect(within(rows()[0]).getByText("7 comments, 8 people in the thread")).toBeInTheDocument();
+  });
+
+  it("uses the singular for one reaction and one comment", () => {
+    const data = fixtureDataset();
+    data.requests = data.requests.map((r) => ({ ...r, reactions: 1, comments: 1, people: 2 }));
+    render(<App dataset={data} />);
+    expect(within(rows()[0]).getByText("1 reaction")).toBeInTheDocument();
+    expect(within(rows()[0]).getByText("1 comment, 2 people in the thread")).toBeInTheDocument();
   });
 });
 
@@ -143,7 +158,7 @@ describe("people count wording", () => {
     render(<App dataset={data} />);
     const row = (problem: string) => rows().find((r) => within(r).getByTestId("problem").textContent === problem)!;
     expect(within(row(data.requests[0].problem)).getByText("0 comments")).toBeInTheDocument();
-    expect(within(row(data.requests[1].problem)).getByText("3 comments from 1 person")).toBeInTheDocument();
+    expect(within(row(data.requests[1].problem)).getByText("3 comments, 1 person in the thread")).toBeInTheDocument();
   });
 });
 

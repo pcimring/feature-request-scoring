@@ -8,9 +8,13 @@ function monthYear(iso: string): string {
   return new Date(iso).toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" });
 }
 
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
+/** People counts the issue author as well as commenters, so it can exceed the comment count. */
 function commentsText(comments: number, people?: number): string {
-  if (people === undefined || comments === 0) return `${comments} comments`;
-  return `${comments} comments from ${people} ${people === 1 ? "person" : "people"}`;
+  const c = plural(comments, "comment", "comments");
+  if (people === undefined || comments === 0) return c;
+  return `${c}, ${plural(people, "person", "people")} in the thread`;
 }
 
 const CONFIDENCE_TITLE = "The AI's confidence in these scores. Low means a product manager should review them.";
@@ -52,7 +56,7 @@ function Row({ r }: { r: RankedRequest }) {
         <a href={r.url} target="_blank" rel="noreferrer">
           {`${r.repo}#${r.number}`}
         </a>
-        <span>{r.reactions} reactions</span>
+        <span>{plural(r.reactions, "reaction", "reactions")}</span>
         <span>{commentsText(r.comments, r.people)}</span>
         {r.repoStars !== undefined && <span className="sdk-stars" title="Stars on the repository: the size of this SDK's audience">{`SDK: ${r.repoStars} stars`}</span>}
         <span>{`Last activity ${monthYear(r.updatedAt)}`}</span>
